@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="dronex360"
+    content="Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/fav/dronex-fav.png"/>
+  <title> Unlocking the Future of Aerial Brilliance</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon/gotsdonefav.png">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body bg[#161616] >
+
+<nav class="bg-[#161616] shadow w-full px-6 py-5 sticky top-0 left-0 right-0 z-10" x-data="{ open: false }">
+  <div class="container mx-auto flex items-center justify-between">
+    
+    <!-- Logo (left side) -->
+    <div class="flex items-center space-x-3">
+      <img src="images/Dronex 360 Logo 1 PNG 1.png" alt="Logo-gotsdone" class="h-25 w-auto ml-6" />
+    </div>
+
+    <!-- Nav Links (Desktop, centered) -->
+    <div class="hidden md:flex space-x-12 items-center absolute left-1/2 transform -translate-x-1/2">
+      <a href="#" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg">Home</a>
+      <a href="#services" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg">Service & Benefits</a>
+      <a href="#about" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg">Contact Us</a>
+    </div>
+
+    <!-- Language Button (right side) -->
+    <div class="hidden md:flex items-center">
+      <a href="#contact" class="bg-[#89F6F6] hover:bg-[#89F6F6] text-BLACK px-12 py-2 rounded-md">French</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <button @click="open = !open" class="focus:outline-none">
+        <svg class="w-6 h-6 ml-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Dropdown Mobile Menu -->
+  <div x-show="open" class="md:hidden mt-4 px-6 space-y-3">
+    <a href="#" class="block text-white hover:text-blue-600">Home</a>
+    <a href="#about" class="block text-white hover:text-blue-600">Service & Benefits</a>
+    <a href="#about" class="block text-white hover:text-blue-600">Contact Us</a>
+    <a href="#contact" class="block bg-[#89F6F6] hover:bg-blue-800 text-white text-center px-5 py-2 rounded-full">French</a>
+  </div>
+</nav>
+
+<!hero section --->
+
+<section class="relative bg-[#161616] text-white bg-[url('images/vector_background.png')] bg-no-repeat bg-right bg-cover">
+  <div class="container mx-auto px-6 py-16 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+    
+    <div class="flex-1 animate-[slideDown_1s_ease-out] text-center lg:text-left">
+      <h1 class="text-4xl md:text-7xl pl-6 font-bold leading-tight">
+        360 degrees <br />
+        <span class="text-teal-400">of aerial brilliance</span>
+      </h1>
+      <p class="mt-6 text-gray-300 text-lg max-w-xl pl-6 mx-auto lg:mx-0">
+        Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable 
+        Facility Management, Energy Asset Inspection and Beyond with Dronex 360
+      </p>
+      <div class="mt-8 flex justify-center pl-6 lg:justify-start">
+        <a href="#about" 
+           class="inline-flex items-center px-6 py-3 bg-teal-400 hover:bg-teal-500 text-black font-medium rounded-full shadow-lg transition">
+          Learn More
+          <svg xmlns="http://www.w3.org/2000/svg" 
+               fill="none" 
+               viewBox="0 0 24 24" 
+               stroke-width="2" 
+               stroke="currentColor" 
+               class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+<div class="flex-1 flex justify-end relative z-10">
+  <!-- Gradient Background -->
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] 
+              bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.5),_transparent_70%)] 
+              rounded-full blur-3xl"></div>
+
+  <img src="images/drone-hero.png" alt="Drone"
+       class="relative max-w-md w-full h-auto animate-bounce"
+       style="animation-duration: 2s;">
+</div>
+
+
+  </div>
+  
+</section>
+
+
+  <!---------------------service section start hereee ------------------>
+
+
+<section id="services" class="relative bg-[#161616] text-white py-20 px-8 overflow-hidden">
+  <!-- Big Background Text -->
+  <h2 class="absolute top-2 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 opacity-10 select-none tracking-widest">
+    DRONEX360
+  </h2>
+
+  <div class="container mx-auto relative z-10">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-4xl font-bold">
+        <span class="text-cyan-400">Services</span>
+      </h2>
+      <p class="mt-6 text-gray-300 max-w-3xl mx-auto text-lg">
+        At Dronex 360, we revolutionize maintenance and inspection services with
+        cutting-edge drone technology. Our innovative solutions redefine efficiency and
+        precision, ensuring unparalleled results across diverse applications.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl py-8 mx-auto">
+      
+      <div class="bg-[#1F2828]/80 backdrop-blur-lg rounded-xl p-8 shadow-lg hover:shadow-cyan-500/30 transition duration-300">
+        <h3 class="text-xl font-semibold text-cyan-400 mb-4">Drone Cleaning Services</h3>
+        <p class="text-gray-400 mb-6">
+          Experience the future of building maintenance with our advanced drone cleaning services.
+        </p>
+        <a href="#"
+           class="inline-block border border-cyan-400 text-cyan-400 px-5 py-2 rounded-md hover:bg-cyan-400 hover:text-black transition">
+          Read More
+        </a>
+      </div>
+
+      <div class="bg-[#1F2828]/80 backdrop-blur-lg rounded-xl p-8 shadow-lg hover:shadow-cyan-500/30 transition duration-300">
+        <h3 class="text-xl font-semibold text-cyan-400 mb-4">Drone Inspection Services</h3>
+        <p class="text-gray-400 mb-6">
+          Unlock actionable insights with our state-of-the-art drone inspection solutions.
+        </p>
+        <a href="#"
+           class="inline-block border border-cyan-400 text-cyan-400 px-5 py-2 rounded-md hover:bg-cyan-400 hover:text-black transition">
+          Read More
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-2xl"></div>
+
+  <div class="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-20 z-0">
+    <img src="images/vector_service.png" alt="Vector Background" class="w-full h-full object-cover" />
+  </div>
+</section>
+
+
+
+
+  <!--------------------service section end hereee ---------------------->
+
+
+<!---------------------what set us part section -------------------------->
+
+<section class="bg-[#1F2828] text-white py-16 px-6">
+  <h2 class="text-center text-3xl md:text-4xl font-bold mb-12">
+    What Sets Us Apart
+  </h2>
+
+  <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+    <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center"></div>
+      <h3 class="text-lg font-semibold mb-2">Fully Autonomous Inspection Drones</h3>
+      <p class="text-gray-300 text-sm">
+        Operate 24/7 with docking stations — zero manual intervention required.
+      </p>
+    </div>
+
+    <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center"></div>
+      <h3 class="text-lg font-semibold mb-2">Sustainable Technology</h3>
+      <p class="text-gray-300 text-sm">
+        Our electric drones contribute to green operations with reduced water and chemical usage.
+      </p>
+    </div>
+
+    <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center"></div>
+      <h3 class="text-lg font-semibold mb-2">Customized Solutions</h3>
+      <p class="text-gray-300 text-sm">
+        Every site is different—so are our strategies. We tailor every deployment to your facility needs.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!--------------------last section of what set us paar-------------------->
+
+
+
+</body>
