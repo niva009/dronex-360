@@ -47,6 +47,80 @@
   animation: hover 3s ease-in-out infinite;
 }
 
+
+@keyframes border-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.animate-border-move {
+  background-size: 200% 200%;
+  animation: border-move 4s linear infinite;
+}
+
+
+
+/* Animation — paused by default, runs while hovered (.group:hover) */
+.gradient-anim {
+  background-size: 200% 200%;
+  animation: border-move 3s linear infinite;
+  animation-play-state: paused;   /* paused until hover */
+  transition: box-shadow .25s ease;
+}
+
+/* Start moving on hover */
+.group:hover .gradient-anim {
+  animation-play-state: running;
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.12); /* subtle cyan glow */
+}
+
+/* Keyframes shift the gradient smoothly */
+@keyframes border-move {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Optional: make the inner card elevate slightly on hover */
+.group:hover .relative.bg-\[\#111\] {
+  transform: translateY(-4px);
+  transition: transform .25s ease;
+}
+
+/* Border gradient animation */
+.gradient-anim {
+  background-size: 200% 200%;
+  animation: border-move 4s linear infinite;
+  animation-play-state: paused;
+}
+.group:hover .gradient-anim {
+  animation-play-state: running;
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.12);
+}
+@keyframes border-move {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+
+@keyframes borderGlow {
+  0% { box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 20px #22d3ee; }
+  50% { box-shadow: 0 0 15px #22d3ee, 0 0 30px #22d3ee, 0 0 45px #22d3ee; }
+  100% { box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 20px #22d3ee; }
+}
+.animate-border-glow {
+  animation: borderGlow 4s linear infinite;
+}
+
 </style>
 </head>
 
@@ -71,6 +145,41 @@
 
     observer.observe(drone);
   });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const tabLinks = document.querySelectorAll('.tab-link');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  let activeTab = document.querySelector('[data-tab="efficiency"]');
+  let activeContent = document.getElementById('efficiency-content');
+
+  const updateContent = (targetLink) => {
+    tabLinks.forEach(link => {
+      link.classList.remove('bg-teal-400', 'text-black');
+      link.classList.add('text-white');
+    });
+
+    tabContents.forEach(content => {
+      content.classList.add('hidden');
+    });
+
+    targetLink.classList.add('bg-teal-400', 'text-black');
+    targetLink.classList.remove('text-white');
+
+    const targetId = targetLink.dataset.tab;
+    document.getElementById(targetId + '-content').classList.remove('hidden');
+  };
+
+  updateContent(activeTab);
+
+  // Auto switch on mouse hover
+  tabLinks.forEach(link => {
+    link.addEventListener('mouseenter', function () {
+      updateContent(this);
+    });
+  });
+});
+
 </script>
 
 
@@ -233,16 +342,21 @@
   </h2>
 
   <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
-    <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center"></div>
-      <h3 class="text-lg font-semibold mb-2">Fully Autonomous Inspection Drones</h3>
-      <p class="text-gray-300 text-sm">
-        Operate 24/7 with docking stations — zero manual intervention required.
-      </p>
-    </div>
+   <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition">
+  <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
+    <img src="images/Group 12.png" alt="Drone" class="w-10 h-12 object-contain" />
+  </div>
+  <h3 class="text-lg font-semibold mb-2">Fully Autonomous Inspection Drones</h3>
+  <p class="text-gray-300 text-sm">
+    Operate 24/7 with docking stations — zero manual intervention required.
+  </p>
+</div>
+
 
     <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center"></div>
+     <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
+    <img src="images/Group 13.png" alt="Drone" class="w-10 h-12 object-contain" />
+  </div>
       <h3 class="text-lg font-semibold mb-2">Sustainable Technology</h3>
       <p class="text-gray-300 text-sm">
         Our electric drones contribute to green operations with reduced water and chemical usage.
@@ -250,7 +364,9 @@
     </div>
 
     <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center"></div>
+       <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
+    <img src="images/Group 14.png" alt="Drone" class="w-10 h-12 object-contain" />
+  </div>
       <h3 class="text-lg font-semibold mb-2">Customized Solutions</h3>
       <p class="text-gray-300 text-sm">
         Every site is different—so are our strategies. We tailor every deployment to your facility needs.
@@ -261,6 +377,266 @@
 
 
 <!--------------------last section of what set us paar-------------------->
+
+<!---------------------Application Industrys ------------------------------>
+
+<section class="relative bg-black text-white py-20 px-6 overflow-hidden">
+  <div class="absolute inset-0 bg-dots opacity-5"></div>
+  <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+    <div class="relative order-2 md:order-1">
+      <img 
+        src="images/drone_section.png " 
+        alt="High-tech drone" 
+        class="w-full max-w-xl md:max-w-none rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
+      />
+      <div class="absolute inset-0 border-4 border-cyan-400 rounded-xl transform -translate-x-4 translate-y-4 -z-10"></div>
+    </div>
+
+    <div class="order-1 md:order-2">
+      <h2 class="text-4xl lg:text-5xl font-extrabold text-cyan-400 mb-6">
+        APPLICATIONS & INDUSTRIES
+      </h2>
+      <p class="text-xl text-gray-300 mb-8">
+        We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
+        <ul class="space-y-4">
+          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Telecommunication Infra inspection</li>
+          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Thermal imaging for Gas & Pipe Leaks</li>
+          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Facade Cleaning & Solar Panel Cleaning</li>
+          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Underwater inspection ROVG</li>
+        </ul>
+        <ul class="space-y-4">
+          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Autonomous Agricultural irrigation</li>
+          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Pipeline & Refinery Inspections</li>
+          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> 3D Mapping & Modelling</li>
+          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Autonomous Asset Inspection</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!--------------------Application Industrys ---------------------->
+
+
+<section class="bg-black text-cyan-400 py-12 px-6">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-10">
+      How do we add value to your firm?
+    </h2>
+    <div class="flex flex-col md:flex-row gap-4 items-start">
+      
+      <!-- Tabs -->
+      <nav class="w-full md:w-1/3 space-y-2">
+        <a
+          href="#"
+          class="tab-link group block py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
+          data-tab="efficiency"
+        >
+          Efficiency
+        </a>
+        <a
+          href="#"
+          class="tab-link group block py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
+          data-tab="safety"
+        >
+          Safety
+        </a>
+        <a
+          href="#"
+          class="tab-link group block py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
+          data-tab="cost-savings"
+        >
+          Cost Savings
+        </a>
+        <a
+          href="#"
+          class="tab-link group block py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
+          data-tab="accuracy"
+        >
+          Accuracy
+        </a>
+        <a
+          href="#"
+          class="tab-link group block py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
+          data-tab="flexibility"
+        >
+          Flexibility
+        </a>
+      </nav>
+
+      <!-- Content -->
+      <div class="w-full md:w-2/3 bg-[#00BBA7] rounded-lg p-6 transition-all duration-300 text-black shadow-lg">
+        <div id="efficiency-content" class="tab-content">
+          <p class="text-base leading-relaxed">
+            Prioritize the safety of your workforce and the public with our aerial services. Eliminate the need for risky manual tasks and access hard-to-reach areas with ease, minimizing the potential for accidents and injuries.
+          </p>
+        </div>
+        <div id="safety-content" class="tab-content hidden">
+          <p class="text-base leading-relaxed">
+           avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil
+          </p>
+        </div>
+        <div id="cost-savings-content" class="tab-content hidden">
+          <p class="text-base leading-relaxed">
+           avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil
+          </p>
+        </div>
+        <div id="accuracy-content" class="tab-content hidden">
+          <p class="text-base leading-relaxed">
+          avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil
+          </p>
+        </div>
+        <div id="flexibility-content" class="tab-content hidden">
+          <p class="text-base leading-relaxed">
+            avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-------------------- client logs --------------------->
+
+
+  <section class="py-20 bg-black">
+    <div class="max-w-6xl mx-auto text-center ">
+      <h2 class="text-4xl md:text-4xl pb-6 font-bold text-[#8fffe4] mb-10">
+        Supported by
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center">
+        
+        <!-- Logo 1 -->
+        <div class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition">
+          <img src="https://dummyimage.com/150x50/ffffff/000000&text=Logo+1" alt="Client Logo 1" class="max-h-12 object-contain">
+        </div>
+
+        <!-- Logo 2 -->
+        <div class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition">
+          <img src="https://dummyimage.com/150x50/ffffff/000000&text=Logo+2" alt="Client Logo 2" class="max-h-12 object-contain">
+        </div>
+
+        <!-- Logo 3 -->
+        <div class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition">
+          <img src="https://dummyimage.com/150x50/ffffff/000000&text=Logo+3" alt="Client Logo 3" class="max-h-12 object-contain">
+        </div>
+
+        <!-- Logo 4 -->
+        <div class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition">
+          <img src="https://dummyimage.com/150x50/ffffff/000000&text=Logo+4" alt="Client Logo 4" class="max-h-12 object-contain">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!----------------news letter section --------------------->
+
+<section class="w-full bg-black px-12 py-12">
+  <div class="max-w-4xl mx-auto">
+    <!-- Outer wrapper: gradient border lives here (p-0.5 = ~2px) -->
+    <div class="group relative rounded-2xl p-0.5 overflow-hidden bg-gradient-to-r
+                from-cyan-400 via-teal-400 to-cyan-400 gradient-anim">
+      <!-- Inner card (the visible content) -->
+      <div class="relative bg-[#111] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <p class="text-cyan-300 text-lg">Join Our Newsletter</p>
+          <h2 class="text-2xl md:text-4xl text-white font-bold mt-2">
+            Stay In Touch With Us
+          </h2>
+        </div>
+
+        <div>
+          <button class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- -----------------footer section --------------------->
+
+<footer class="w-full bg-black text-gray-300 px-12 py-12 relative">
+  <div class="max-w-7xl mx-auto relative border border-cyan-400 rounded-2xl overflow-hidden">
+
+    <!-- Glow effect border animation -->
+    <div class="absolute inset-0 border-2 border-cyan-400 rounded-2xl animate-border-glow"></div>
+
+    <!-- Footer Content -->
+    <div class="relative bg-[#111] p-8 md:p-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+      <!-- Brand -->
+      <div>
+         <img src="images/Dronex 360 Logo 1 PNG 1.png" alt="Logo-gotsdone" class="h-25 w-auto ml-6" />
+        <p class="mt-3 text-gray-400">
+          Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-cyan-400 transition">Home</a></li>
+          <li><a href="#" class="hover:text-cyan-400 transition">Services & Benefits</a></li>
+          <li><a href="#" class="hover:text-cyan-400 transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Services</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-cyan-400 transition">Custom Drone Manufacturing</a></li>
+          <li><a href="#" class="hover:text-cyan-400 transition">Underwater Inspection</a></li>
+          <li><a href="#" class="hover:text-cyan-400 transition">building Cleaning Solutions</a></li>
+          <li><a href="#" class="hover:text-cyan-400 transition">Survilance & Surveys</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Stay Updated</h3>
+        <p class="mb-4 text-gray-400">Subscribe to our newsletter for the latest updates.</p>
+        <div class="flex">
+          <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg bg-gray-800 text-white outline-none focus:ring-2 focus:ring-cyan-400 w-full"/>
+          <button class="bg-cyan-400 text-black font-semibold px-4 py-2 rounded-r-lg hover:bg-cyan-300 transition">
+            Go
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="relative border-t border-gray-700 mt-8 py-6 px-8 flex flex-col md:flex-row items-center justify-between">
+      <p class="text-gray-500">&copy; 2025 Dronex 360. All rights reserved.</p>
+
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="hover:text-cyan-400 transition">Facebook</a>
+        <a href="#" class="hover:text-cyan-400 transition">Twitter</a>
+        <a href="#" class="hover:text-cyan-400 transition">LinkedIn</a>
+        <a href="#" class="hover:text-cyan-400 transition">Instagram</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
 
 
 
