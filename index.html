@@ -6,7 +6,7 @@
   <meta
     name="dronex360"
     content="Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/fav/dronex-fav.png"/>
   <title> Unlocking the Future of Aerial Brilliance</title>
   <link rel="icon" type="image/x-icon" href="images/favicon/gotsdonefav.png">
@@ -142,6 +142,20 @@
   }
 
 </style>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          nexa: ['Nexa', 'sans-serif'],
+          poppins: ['Poppins', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+
 </head>
 
 <script>
@@ -315,8 +329,9 @@ document.addEventListener('DOMContentLoaded', function () {
                   rounded-full blur-3xl"></div>
 
       <!-- Drone Image (fly in + hover) -->
-      <img id="drone" src="images/drone-hero.png" alt="Drone"
-           class="relative max-w-md w-full h-auto opacity-0 transition-all duration-1000">
+    <img id="drone" src="images/drone-banner.png" alt="Drone"
+     class="relative w-[600px] h-[400px] opacity-0 transition-all duration-1000 object-contain">
+
     </div>
 
   </div>
@@ -327,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <!---------------------service section start hereee ------------------>
 
 
-<section id="services" class="relative bg-[#161616] text-white py-20 px-8 overflow-hidden">
+<section id="services" class="relative bg-[#161616] text-white py-6 px-8 overflow-hidden">
   <!-- Big Background Text -->
   <h2 class="absolute top-2 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 opacity-10 select-none tracking-widest">
     DRONEX360
@@ -336,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="container mx-auto relative z-10">
     <div class="text-center mb-12">
       <h2 class="text-4xl md:text-4xl font-bold">
-        <span class="text-cyan-400">Services</span>
+        <span class="text-cyan-400 font-nexa  bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">Services</span>
       </h2>
       <p class="mt-6 text-gray-300 max-w-3xl mx-auto text-lg">
         At Dronex 360, we revolutionize maintenance and inspection services with
@@ -355,8 +370,8 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <!-- Content -->
     <div class="p-6">
-      <h3 class="text-white text-lg font-bold uppercase mb-3">Custom Drone Manufacturing</h3>
-      <p class="text-gray-300 text-sm leading-relaxed">
+      <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Custom Drone Manufacturing</h3>
+      <p class="font-poppins text-gray-300 text-sm">
         Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities
       </p>
     </div>
@@ -368,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="images/rectangle32.png" alt="Underwater Inspection" class="w-full h-full object-cover">
     </div>
     <div class="p-6">
-      <h3 class="text-white text-lg font-bold uppercase mb-3">Underwater Inspection</h3>
+      <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Underwater Inspection</h3>
       <p class="text-gray-300 text-sm leading-relaxed">
         High capacity drones for underwater inspections. Used for offshore oil fields, ports and related industries
       </p>
@@ -381,8 +396,8 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="images/rectangle331.png" alt="Building Cleaning Solutions" class="w-full h-full object-cover">
     </div>
     <div class="p-6">
-      <h3 class="text-white text-lg font-bold uppercase mb-3">Building Cleaning Solutions</h3>
-      <p class="text-gray-300 text-sm leading-relaxed">
+      <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Building Cleaning Solutions</h3>
+      <p class="font-poppins text-gray-300 text-sm leading-relaxed">
         Using our patented water saving chemical, using 70% less water, making it highly cost effective and eco-friendly
       </p>
     </div>
@@ -394,8 +409,8 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="images/rectangle34.png" alt="Surveillance and Surveys" class="w-full h-full object-cover">
     </div>
     <div class="p-6">
-      <h3 class="text-white text-lg font-bold uppercase mb-3">Surveillance and Surveys</h3>
-      <p class="text-gray-300 text-sm leading-relaxed">
+      <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Surveillance and Surveys</h3>
+      <p class="font-poppins text-gray-300 text-sm leading-relaxed">
         Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities
       </p>
     </div>
@@ -412,6 +427,10 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-20 z-0">
     <img src="images/vector_service.png" alt="Vector Background" class="w-full h-full object-cover" />
   </div>
+  <h2 class="text-center text-3xl pt-10 md:text-4xl font-bold mb-12 
+           bg-gradient-to-r from-[#89F6F6] to-[#ADFCFC] bg-clip-text text-transparent">
+  What Sets Us Apart
+</h2>
 </section>
 
 
@@ -423,17 +442,13 @@ document.addEventListener('DOMContentLoaded', function () {
 <!---------------------what set us part section -------------------------->
 
 <section class="bg-[#1F2828] text-white py-16 px-6">
-  <h2 class="text-center text-3xl md:text-4xl font-bold mb-12">
-    What Sets Us Apart
-  </h2>
-
   <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
 <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition opacity-0 animate-on-scroll">
   <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
     <img src="images/Group 12.png" alt="Drone" class="w-10 h-12 object-contain" />
   </div>
-  <h3 class="text-lg font-semibold mb-2">Fully Autonomous Inspection Drones</h3>
-  <p class="text-gray-300 text-sm">
+  <h3 class="text-lg font-nexa font-semibold mb-2">Fully Autonomous Inspection Drones</h3>
+  <p class="text-gray-300 font-poppins text-sm">
     Operate 24/7 with docking stations — zero manual intervention required.
   </p>
 </div>
@@ -442,8 +457,8 @@ document.addEventListener('DOMContentLoaded', function () {
      <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
     <img src="images/Group 13.png" alt="Drone" class="w-10 h-12 object-contain" />
   </div>
-      <h3 class="text-lg font-semibold mb-2">Sustainable Technology</h3>
-      <p class="text-gray-300 text-sm">
+      <h3 class="text-lg font-nexa font-semibold mb-2">Sustainable Technology</h3>
+      <p class="text-gray-300 font-poppins text-sm">
         Our electric drones contribute to green operations with reduced water and chemical usage.
       </p>
     </div>
@@ -452,8 +467,8 @@ document.addEventListener('DOMContentLoaded', function () {
        <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
     <img src="images/Group 14.png" alt="Drone" class="w-10 h-12 object-contain" />
   </div>
-      <h3 class="text-lg font-semibold mb-2">Customized Solutions</h3>
-      <p class="text-gray-300 text-sm">
+      <h3 class="text-lg font-nexa font-semibold mb-2">Customized Solutions</h3>
+      <p class="text-gray-300 font-poppins text-sm">
         Every site is different—so are our strategies. We tailor every deployment to your facility needs.
       </p>
     </div>
@@ -482,9 +497,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Content -->
     <div class="order-1 md:order-2 animate-on-scroll opacity-0">
-      <h2 class="text-4xl lg:text-5xl font-extrabold text-cyan-400 mb-6">
-        APPLICATIONS & INDUSTRIES
-      </h2>
+     <h2 class="text-4xl lg:text-5xl font-extrabold mb-6 
+           bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
+  APPLICATIONS & INDUSTRIES
+</h2>
+
       <p class="text-xl text-gray-300 mb-8">
         We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.
       </p>
@@ -516,9 +533,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <section class="bg-black text-cyan-400 py-12 px-6">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-10">
-      How do we add value to your firm?
-    </h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 
+           bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
+  How do we add value to your firm?
+</h2>
+
     <div class="flex flex-col md:flex-row gap-4 items-start">
       
       <!-- Tabs -->
@@ -593,15 +612,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <section class="py-20 bg-black">
     <div class="max-w-6xl mx-auto text-center ">
-      <h2 class="text-4xl md:text-4xl pb-6 font-bold text-[#8fffe4] mb-10">
-        Supported by
-      </h2>
+    <h2 class="text-4xl md:text-4xl pb-6 font-bold mb-10
+           bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
+  Supported by
+</h2>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center">
         
         <!-- Logo 1 -->
         <div class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition">
-          <img src="https://dummyimage.com/150x50/ffffff/000000&text=Logo+1" alt="Client Logo 1" class="max-h-12 object-contain">
+          <img src="https://dummyimage.com/150x50/ffffff/000000&text=Logo+1 " alt="Client Logo 1" class="max-h-12 object-contain">
         </div>
 
         <!-- Logo 2 -->
