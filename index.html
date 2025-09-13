@@ -305,20 +305,41 @@ document.addEventListener('DOMContentLoaded', function () {
         Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable 
         Facility Management, Energy Asset Inspection and Beyond with Dronex 360
       </p>
-      <div class="mt-8 flex justify-center pl-6 lg:justify-start">
-        <a href="#about" 
-           class="inline-flex items-center px-6 py-3 bg-teal-400 hover:bg-teal-500 text-black font-medium rounded-full shadow-lg transition">
-          Learn More
-          <svg xmlns="http://www.w3.org/2000/svg" 
-               fill="none" 
-               viewBox="0 0 24 24" 
-               stroke-width="2" 
-               stroke="currentColor" 
-               class="w-5 h-5 ml-2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-          </svg>
-        </a>
-      </div>
+   <!-- Container (optional) -->
+<div class="mt-8 flex justify-center pl-6 lg:justify-start">
+  <a
+    href="#about"
+    class="group inline-flex items-center gap-3 rounded-full px-6 py-3
+           text-black font-medium shadow-lg transition
+           bg-gradient-to-r from-teal-300 to-teal-500
+           hover:from-teal-400 hover:to-teal-600
+           focus:outline-none focus:ring-2 focus:ring-teal-400/60 focus:ring-offset-0
+           active:scale-[0.98]"
+  >
+    <span class="tracking-normal">Learn More</span>
+
+    <!-- Icon badge -->
+    <span
+      class="relative inline-flex h-8 w-8 shrink-0 items-center justify-center
+             rounded-full bg-white/95 text-black
+             transition group-hover:translate-x-0.5"
+      aria-hidden="true"
+    >
+      <!-- Arrow Right (Heroicons outline 24) -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        class="h-4 w-4"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </span>
+  </a>
+</div>
+
     </div>
 
     <!-- Right Image -->
@@ -342,9 +363,9 @@ document.addEventListener('DOMContentLoaded', function () {
   <!---------------------service section start hereee ------------------>
 
 
-<section id="services" class="relative bg-[#161616] text-white py-6 px-8 overflow-hidden">
+<section id="services" class="relative bg-[#161616] text-white pt-35  px-8 overflow-hidden">
   <!-- Big Background Text -->
-  <h2 class="absolute top-2 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 opacity-10 select-none tracking-widest">
+  <h2 class="absolute top-2 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 -mt-6 opacity-40 select-none tracking-widest">
     DRONEX360
   </h2>
 
@@ -427,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-20 z-0">
     <img src="images/vector_service.png" alt="Vector Background" class="w-full h-full object-cover" />
   </div>
-  <h2 class="text-center text-3xl pt-10 md:text-4xl font-bold mb-12 
+  <h2 class="text-center text-3xl pt-10 md:text-4xl font-bold mb-12  
            bg-gradient-to-r from-[#89F6F6] to-[#ADFCFC] bg-clip-text text-transparent">
   What Sets Us Apart
 </h2>
@@ -441,8 +462,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!---------------------what set us part section -------------------------->
 
-<section class="bg-[#1F2828] text-white py-16 px-6">
+<section class="bg-[#1F2828] text-white py-16 px-6 ">
   <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+  
 <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition opacity-0 animate-on-scroll">
   <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
     <img src="images/Group 12.png" alt="Drone" class="w-10 h-12 object-contain" />
