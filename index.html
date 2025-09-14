@@ -141,6 +141,14 @@
     animation: fadeSlideUp 1s ease forwards;
   }
 
+
+  @font-face {
+  font-family: "Nexa";
+  src: url("/fonts/NexaLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+} 
+
 </style>
 
 <script>
@@ -358,11 +366,7 @@ document.addEventListener("DOMContentLoaded", function () {
     DRONEX360
   </h2>
 
-<!-- Left Side Bubbles -->
-<!-- Left Side Bubbles (Flat Style) -->
 
-
-<!-- Spread Bubbles behind Custom Drone Manufacturing card -->
 <!-- Left vertical trail -->
 <div class="absolute top-[26rem] left-6 w-5 h-5 bg-white/15 rounded-full"></div>
 <div class="absolute top-[28rem] left-3 w-8 h-8 bg-white/10 rounded-full"></div>
@@ -375,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="absolute top-[42rem] left-7 w-6 h-6 bg-white/20 rounded-full"></div>
 <div class="absolute top-[44rem] left-16 w-4 h-4 bg-white/15 rounded-full"></div>
 
-<!-- Behind the card (peek effect) -->
+
 <div class="absolute top-[29rem] left-36 w-12 h-12 bg-white/10 rounded-full"></div>
 <div class="absolute top-[33rem] left-40 w-6 h-6 bg-white/20 rounded-full"></div>
 <div class="absolute top-[37rem] left-32 w-8 h-8 bg-white/15 rounded-full"></div>
@@ -451,7 +455,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   </div>
 
-  <!-- Existing Effects -->
+
   <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl"></div>
   <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-2xl"></div>
 
@@ -664,29 +668,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <!----------------news letter section --------------------->
 
-<section class="w-full bg-black px-12 py-12">
+<section class="w-full px-12 py-12 bg-black">
   <div class="max-w-4xl mx-auto">
-    <!-- Outer wrapper: gradient border lives here (p-0.5 = ~2px) -->
     <div class="group relative rounded-2xl p-0.5 overflow-hidden bg-gradient-to-r
                 from-cyan-400 via-teal-400 to-cyan-400 gradient-anim">
-      <!-- Inner card (the visible content) -->
-      <div class="relative bg-[#111] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <p class="text-cyan-300 text-lg">Join Our Newsletter</p>
-          <h2 class="text-2xl md:text-4xl text-white font-bold mt-2">
-            Stay In Touch With Us
-          </h2>
-        </div>
 
-        <div>
-          <button class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition">
-            Subscribe
-          </button>
+      <div class="relative rounded-2xl overflow-hidden">
+        <!-- Background Image -->
+      <div class="absolute inset-0">
+  <img src="images/drone-back.png" alt="Newsletter Background" class="w-full h-full object-cover">
+
+  <div class="absolute inset-0 bg-black/80"></div>
+</div>
+
+
+        <!-- Content -->
+        <div class="relative p-8 md:p-12 flex flex-col md:flex-row font-nexa items-center justify-between gap-6">
+          <div>
+            <p class="text-cyan-300 text-lg">Join Our Newsletter</p>
+          <h2 class="text-2xl md:text-4xl text-white font-nexa font-semi-bold mt-2">
+  Stay In Touch With Us
+</h2>
+          </div>
+
+          <div>
+            <button class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition">
+              Subscribe
+            </button>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
 
 
 <!-- -----------------footer section --------------------->
