@@ -180,40 +180,29 @@
     observer.observe(drone);
   });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const tabLinks = document.querySelectorAll('.tab-link');
-  const tabContents = document.querySelectorAll('.tab-content');
-  
-  let activeTab = document.querySelector('[data-tab="efficiency"]');
-  let activeContent = document.getElementById('efficiency-content');
+document.addEventListener("DOMContentLoaded", function () {
+  const tabLinks = document.querySelectorAll(".tab-link");
+  const headingBox = document.getElementById("active-heading");
+  const textBox = document.getElementById("active-text");
 
-  const updateContent = (targetLink) => {
-    tabLinks.forEach(link => {
-      link.classList.remove('bg-teal-400', 'text-black');
-      link.classList.add('text-white');
-    });
+  tabLinks.forEach((link) => {
+    link.addEventListener("mouseenter", function () {
+      // Fade out
+      headingBox.classList.add("opacity-0");
+      textBox.classList.add("opacity-0", "translate-x-2");
 
-    tabContents.forEach(content => {
-      content.classList.add('hidden');
-    });
+      setTimeout(() => {
+        // Change content
+        headingBox.textContent = this.dataset.heading;
+        textBox.textContent = this.dataset.text;
 
-    targetLink.classList.add('bg-teal-400', 'text-black');
-    targetLink.classList.remove('text-white');
-
-    const targetId = targetLink.dataset.tab;
-    document.getElementById(targetId + '-content').classList.remove('hidden');
-  };
-
-  updateContent(activeTab);
-
-  // Auto switch on mouse hover
-  tabLinks.forEach(link => {
-    link.addEventListener('mouseenter', function () {
-      updateContent(this);
+        // Fade in
+        headingBox.classList.remove("opacity-0");
+        textBox.classList.remove("opacity-0", "translate-x-2");
+      }, 250); // delay matches transition
     });
   });
 });
-
 
 //animation
 
@@ -363,16 +352,42 @@ document.addEventListener('DOMContentLoaded', function () {
   <!---------------------service section start hereee ------------------>
 
 
-<section id="services" class="relative bg-[#161616] text-white pt-35  px-8 overflow-hidden">
+<section id="services" class="relative bg-[#161616] text-white pt-35 px-8 overflow-hidden">
   <!-- Big Background Text -->
   <h2 class="absolute top-2 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 -mt-6 opacity-40 select-none tracking-widest">
     DRONEX360
   </h2>
 
+<!-- Left Side Bubbles -->
+<!-- Left Side Bubbles (Flat Style) -->
+
+
+<!-- Spread Bubbles behind Custom Drone Manufacturing card -->
+<!-- Left vertical trail -->
+<div class="absolute top-[26rem] left-6 w-5 h-5 bg-white/15 rounded-full"></div>
+<div class="absolute top-[28rem] left-3 w-8 h-8 bg-white/10 rounded-full"></div>
+<div class="absolute top-[30rem] left-14 w-6 h-6 bg-white/20 rounded-full"></div>
+<div class="absolute top-[32rem] left-8 w-4 h-4 bg-white/15 rounded-full"></div>
+<div class="absolute top-[34rem] left-18 w-7 h-7 bg-white/10 rounded-full"></div>
+<div class="absolute top-[36rem] left-5 w-10 h-10 bg-white/20 rounded-full"></div>
+<div class="absolute top-[38rem] left-12 w-5 h-5 bg-white/15 rounded-full"></div>
+<div class="absolute top-[40rem] left-20 w-9 h-9 bg-white/10 rounded-full"></div>
+<div class="absolute top-[42rem] left-7 w-6 h-6 bg-white/20 rounded-full"></div>
+<div class="absolute top-[44rem] left-16 w-4 h-4 bg-white/15 rounded-full"></div>
+
+<!-- Behind the card (peek effect) -->
+<div class="absolute top-[29rem] left-36 w-12 h-12 bg-white/10 rounded-full"></div>
+<div class="absolute top-[33rem] left-40 w-6 h-6 bg-white/20 rounded-full"></div>
+<div class="absolute top-[37rem] left-32 w-8 h-8 bg-white/15 rounded-full"></div>
+<div class="absolute top-[41rem] left-38 w-10 h-10 bg-white/10 rounded-full"></div>
+
+
+
+
   <div class="container mx-auto relative z-10">
     <div class="text-center mb-12">
       <h2 class="text-4xl md:text-4xl font-bold">
-        <span class="text-cyan-400 font-nexa  bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">Services</span>
+        <span class="text-cyan-400 font-nexa bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">Services</span>
       </h2>
       <p class="mt-6 text-gray-300 max-w-3xl mx-auto text-lg">
         At Dronex 360, we revolutionize maintenance and inspection services with
@@ -381,78 +396,75 @@ document.addEventListener('DOMContentLoaded', function () {
       </p>
     </div>
 
-<div class="grid md:grid-cols-4 gap-6 max-w-6xl py-12 mx-auto">
+    <div class="grid md:grid-cols-4 gap-6 max-w-6xl py-12 mx-auto">
+      <!-- Card 1 -->
+      <div class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
+        <div class="w-full h-44">
+          <img src="images/group1.png" alt="Custom Drone Manufacturing" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Custom Drone Manufacturing</h3>
+          <p class="font-poppins text-gray-300 text-sm">
+            Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities
+          </p>
+        </div>
+      </div>
 
-  <!-- Card 1 -->
-  <div class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
-    <!-- Image -->
-    <div class="w-full h-44">
-      <img src="images/group1.png" alt="Custom Drone Manufacturing" class="w-full h-full object-cover">
-    </div>
-    <!-- Content -->
-    <div class="p-6">
-      <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Custom Drone Manufacturing</h3>
-      <p class="font-poppins text-gray-300 text-sm">
-        Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities
-      </p>
+      <!-- Card 2 -->
+      <div class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
+        <div class="w-full h-44">
+          <img src="images/rectangle32.png" alt="Underwater Inspection" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Underwater Inspection</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            High capacity drones for underwater inspections. Used for offshore oil fields, ports and related industries
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
+        <div class="w-full h-44">
+          <img src="images/rectangle331.png" alt="Building Cleaning Solutions" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Building Cleaning Solutions</h3>
+          <p class="font-poppins text-gray-300 text-sm leading-relaxed">
+            Using our patented water saving chemical, using 70% less water, making it highly cost effective and eco-friendly
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
+        <div class="w-full h-44">
+          <img src="images/rectangle34.png" alt="Surveillance and Surveys" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Surveillance and Surveys</h3>
+          <p class="font-poppins text-gray-300 text-sm leading-relaxed">
+            Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Card 2 -->
-  <div class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
-    <div class="w-full h-44">
-      <img src="images/rectangle32.png" alt="Underwater Inspection" class="w-full h-full object-cover">
-    </div>
-    <div class="p-6">
-      <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Underwater Inspection</h3>
-      <p class="text-gray-300 text-sm leading-relaxed">
-        High capacity drones for underwater inspections. Used for offshore oil fields, ports and related industries
-      </p>
-    </div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
-    <div class="w-full h-44">
-      <img src="images/rectangle331.png" alt="Building Cleaning Solutions" class="w-full h-full object-cover">
-    </div>
-    <div class="p-6">
-      <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Building Cleaning Solutions</h3>
-      <p class="font-poppins text-gray-300 text-sm leading-relaxed">
-        Using our patented water saving chemical, using 70% less water, making it highly cost effective and eco-friendly
-      </p>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
-    <div class="w-full h-44">
-      <img src="images/rectangle34.png" alt="Surveillance and Surveys" class="w-full h-full object-cover">
-    </div>
-    <div class="p-6">
-      <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Surveillance and Surveys</h3>
-      <p class="font-poppins text-gray-300 text-sm leading-relaxed">
-        Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities
-      </p>
-    </div>
-  </div>
-
-</div>
-
-
-  </div>
-
+  <!-- Existing Effects -->
   <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl"></div>
   <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-2xl"></div>
 
   <div class="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-20 z-0">
     <img src="images/vector_service.png" alt="Vector Background" class="w-full h-full object-cover" />
   </div>
+
   <h2 class="text-center text-3xl pt-10 md:text-4xl font-bold mb-12  
            bg-gradient-to-r from-[#89F6F6] to-[#ADFCFC] bg-clip-text text-transparent">
-  What Sets Us Apart
-</h2>
+    What Sets Us Apart
+  </h2>
 </section>
+
 
 
 
@@ -554,77 +566,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 <section class="bg-black text-cyan-400 py-12 px-6">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 
-           bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
-  How do we add value to your firm?
-</h2>
+  <div class="max-w-5xl mx-auto relative">
+    <h2
+      class="text-3xl md:text-4xl font-bold text-center mb-10 
+             bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
+      How do we add value to your firm?
+    </h2>
 
-    <div class="flex flex-col md:flex-row gap-4 items-start">
-      
-      <!-- Tabs -->
-      <nav class="w-full md:w-1/3 space-y-2">
-        <button
-  class="tab-link group block w-full text-left py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
-          data-tab="efficiency"
-        >
+    <!-- Box -->
+    <div class="relative bg-[#00BBA7] rounded-lg p-4 text-black shadow-lg min-h-[120px] transition-all duration-500">
+      <div class="flex gap-4 items-start">
+        <h3 id="active-heading" 
+            class="text-lg py-8 pl-6 font-bold w-1/3 transition-opacity duration-500 text-left">
           Efficiency
-        </button>
-        <button
-  class="tab-link group block w-full text-left py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
-          data-tab="safety"
-        >
-          Safety
-        </button>
-        <button
-              class="tab-link group block w-full text-left py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
-          data-tab="cost-savings"
-        >
-          Cost Savings
-        </button>
-        <button
-          class="tab-link group block w-full text-left py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
-          data-tab="accuracy"
-        >
-          Accuracy
-        </button>
-        <button
-          class="tab-link group block py-3 px-4 rounded-md font-medium text-lg transition-all duration-300 transform md:-translate-x-1 hover:md:translate-x-0"
-          data-tab="flexibility"
-        >
-          Flexibility
-        </button>
-      </nav>
-
-      <!-- Content -->
-      <div class="w-full md:w-2/3 bg-[#00BBA7] rounded-lg p-6 transition-all duration-300 text-black shadow-lg">
-        <div id="efficiency-content" class="tab-content">
-          <p class="text-base leading-relaxed">
-            Prioritize the safety of your workforce and the public with our aerial services. Eliminate the need for risky manual tasks and access hard-to-reach areas with ease, minimizing the potential for accidents and injuries.
-          </p>
-        </div>
-        <div id="safety-content" class="tab-content hidden">
-          <p class="text-base leading-relaxed">
-           avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil
-          </p>
-        </div>
-        <div id="cost-savings-content" class="tab-content hidden">
-          <p class="text-base leading-relaxed">
-           avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil
-          </p>
-        </div>
-        <div id="accuracy-content" class="tab-content hidden">
-          <p class="text-base leading-relaxed">
-          avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil
-          </p>
-        </div>
-        <div id="flexibility-content" class="tab-content hidden">
-          <p class="text-base leading-relaxed">
-            avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil
-          </p>
-        </div>
+        </h3>
+        <p id="active-text" 
+           class="text-sm font-poppins py-5 leading-relaxed w-2/3 transition-all duration-500 opacity-100">
+          Prioritize the safety of your workforce and the public with our aerial services. 
+          Eliminate the need for risky manual tasks and access hard-to-reach areas with ease, 
+          minimizing the potential for accidents and injuries.
+        </p>
       </div>
     </div>
+
+    <!-- Headings (outside, aligned with Efficiency) -->
+    <nav class="absolute left-6 top-full mt-2 space-y-1">
+      <button
+        class="tab-link block text-gray-400 hover:text-white font-medium text-base transition-all"
+        data-heading="Safety"
+        data-text="Ensure workplace protection by reducing potential hazards and maintaining safe practices across projects."
+      >
+        Safety
+      </button>
+      <button
+        class="tab-link block text-gray-400 hover:text-white font-medium text-base transition-all"
+        data-heading="Cost Savings"
+        data-text="Optimize resources and reduce labor costs with more efficient workflows and smarter operations."
+      >
+        Cost Savings
+      </button>
+      <button
+        class="tab-link block text-gray-400 hover:text-white font-medium text-base transition-all"
+        data-heading="Accuracy"
+        data-text="Guarantee precise outcomes and minimize errors through cutting-edge technology and reliable methods."
+      >
+        Accuracy
+      </button>
+      <button
+        class="tab-link block text-gray-400 hover:text-white font-medium text-base transition-all"
+        data-heading="Flexibility"
+        data-text="Adapt quickly to changing project needs with scalable and versatile service offerings."
+      >
+        Flexibility
+      </button>
+    </nav>
   </div>
 </section>
 
