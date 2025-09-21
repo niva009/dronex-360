@@ -48,23 +48,6 @@
 }
 
 
-@keyframes border-move {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-.animate-border-move {
-  background-size: 200% 200%;
-  animation: border-move 4s linear infinite;
-}
-
-
 
 /* Animation — paused by default, runs while hovered (.group:hover) */
 .gradient-anim {
@@ -80,12 +63,6 @@
   box-shadow: 0 12px 30px rgba(6, 182, 212, 0.12); /* subtle cyan glow */
 }
 
-/* Keyframes shift the gradient smoothly */
-@keyframes border-move {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
 /* Optional: make the inner card elevate slightly on hover */
 .group:hover .relative.bg-\[\#111\] {
@@ -150,20 +127,6 @@
 } 
 
 </style>
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          nexa: ['Nexa', 'sans-serif'],
-          poppins: ['Poppins', 'sans-serif'],
-        },
-      },
-    },
-  }
-</script>
-
 </head>
 
 <script>
@@ -242,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     elements.forEach(el => observer.observe(el));
   });
+
 </script>
 
 
@@ -259,15 +223,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- Nav Links (Desktop, centered) -->
     <div class="hidden md:flex space-x-12 items-center absolute left-1/2 transform -translate-x-1/2">
-      <a href="#" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg">Home</a>
-      <a href="#services" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg">Service & Benefits</a>
-      <a href="#about" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg">Contact Us</a>
+      <a href="#" data-key="Home" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"></a>
+      <a href="#services" data-key="Service_Benefits" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"></a>
+      <a href="#about" data-key="Contact_Us" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"></a>
     </div>
 
     <!-- Language Button (right side) -->
-    <div class="hidden md:flex items-center">
-      <a href="#contact" class="bg-[#89F6F6] hover:bg-[#89F6F6] text-BLACK px-12 py-2 rounded-md">French</a>
-    </div>
+  
+
+  <div class="hidden md:flex items-center">
+  <a href="#fr" 
+     id="langToggle"
+     class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md">
+     French
+  </a>
+</div>
 
     <!-- Mobile Menu Button -->
     <div class="md:hidden">
@@ -281,10 +251,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <!-- Dropdown Mobile Menu -->
   <div x-show="open" class="md:hidden mt-4 px-6 space-y-3">
-    <a href="#" class="block text-white hover:text-blue-600">Home</a>
-    <a href="#about" class="block text-white hover:text-blue-600">Service & Benefits</a>
-    <a href="#about" class="block text-white hover:text-blue-600">Contact Us</a>
-    <a href="#contact" class="block bg-[#89F6F6] hover:bg-blue-800 text-white text-center px-5 py-2 rounded-full">French</a>
+    <a href="#" data-key="Home" class="block text-white hover:text-blue-600"></a>
+    <a href="#about" data-key="Service_Benefits" class="block text-white hover:text-blue-600"></a>
+    <a href="#about" data-key="Contact_Us" class="block text-white hover:text-blue-600"></a>
+      <a href="#"
+     onclick="event.preventDefault(); changeLanguage('fr');"
+     class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md">
+     French
+  </a>
   </div>
 </nav>
 
@@ -296,48 +270,36 @@ document.addEventListener("DOMContentLoaded", function () {
     <!-- Left Text -->
     <div class="flex-1 animate-[slideDown_1s_ease-out] text-center lg:text-left">
       <h1 class="text-4xl md:text-7xl pl-6 font-bold leading-tight">
-        360 degrees <br />
-        <span class="text-teal-400">of aerial brilliance</span>
+        <span data-key="head_360"></span> <br />
+        <span class="text-teal-400" data-key="aerial"></span>
       </h1>
-      <p class="mt-6 text-gray-300 text-lg max-w-xl pl-6 mx-auto lg:mx-0">
-        Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable 
-        Facility Management, Energy Asset Inspection and Beyond with Dronex 360
-      </p>
-   <!-- Container (optional) -->
-<div class="mt-8 flex justify-center pl-6 lg:justify-start">
-  <a
-    href="#about"
-    class="group inline-flex items-center gap-3 rounded-full px-6 py-3
-           text-black font-medium shadow-lg transition
-           bg-gradient-to-r from-teal-300 to-teal-500
-           hover:from-teal-400 hover:to-teal-600
-           focus:outline-none focus:ring-2 focus:ring-teal-400/60 focus:ring-offset-0
-           active:scale-[0.98]"
-  >
-    <span class="tracking-normal">Learn More</span>
 
-    <!-- Icon badge -->
-    <span
-      class="relative inline-flex h-8 w-8 shrink-0 items-center justify-center
-             rounded-full bg-white/95 text-black
-             transition group-hover:translate-x-0.5"
-      aria-hidden="true"
-    >
-      <!-- Arrow Right (Heroicons outline 24) -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        class="h-4 w-4"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-    </span>
-  </a>
-</div>
+      <p class="mt-6 text-gray-300 text-lg max-w-xl pl-6 mx-auto lg:mx-0" data-key="unlocking"></p>
 
+      <!-- Button -->
+      <div class="mt-8 flex justify-center pl-6 lg:justify-start">
+        <a
+          href="#about"
+          class="group inline-flex items-center gap-3 rounded-full px-6 py-3
+                 text-black font-medium shadow-lg transition
+                 bg-gradient-to-r from-teal-300 to-teal-500
+                 hover:from-teal-400 hover:to-teal-600
+                 focus:outline-none focus:ring-2 focus:ring-teal-400/60 focus:ring-offset-0
+                 active:scale-[0.98]"
+        >
+          <span data-key="learn" class="tracking-normal"></span>
+          <span
+            class="relative inline-flex h-8 w-8 shrink-0 items-center justify-center
+                   rounded-full bg-white/95 text-black
+                   transition group-hover:translate-x-0.5"
+            aria-hidden="true"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </a>
+      </div>
     </div>
 
     <!-- Right Image -->
@@ -347,14 +309,14 @@ document.addEventListener("DOMContentLoaded", function () {
                   bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.5),_transparent_70%)] 
                   rounded-full blur-3xl"></div>
 
-      <!-- Drone Image (fly in + hover) -->
-    <img id="drone" src="images/drone-banner.png" alt="Drone"
-     class="relative w-[600px] h-[400px] opacity-0 transition-all duration-1000 object-contain">
-
+      <!-- Drone Image -->
+      <img id="drone" src="images/drone-banner.png" alt="Drone"
+           class="relative w-[600px] h-[400px] opacity-100 transition-all duration-1000 object-contain">
     </div>
 
   </div>
 </section>
+
 
 
 
@@ -392,12 +354,9 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="container mx-auto relative z-10">
     <div class="text-center mb-12">
       <h2 class="text-4xl md:text-4xl font-bold">
-        <span class="text-cyan-400 font-nexa bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">Services</span>
+        <span data-key="Services" class="text-cyan-400 font-nexa bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"></span>
       </h2>
-      <p class="mt-6 text-gray-300 max-w-3xl mx-auto text-lg">
-        At Dronex 360, we revolutionize maintenance and inspection services with
-        cutting-edge drone technology. Our innovative solutions redefine efficiency and
-        precision, ensuring unparalleled results across diverse applications.
+      <p data-key="service_p" class="mt-6 text-gray-300 max-w-3xl mx-auto text-lg">
       </p>
     </div>
 
@@ -408,9 +367,9 @@ document.addEventListener("DOMContentLoaded", function () {
           <img src="images/custom_drone.webp" alt="Custom Drone Manufacturing" class="w-full h-full object-cover">
         </div>
         <div class="p-6">
-          <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Custom Drone Manufacturing</h3>
-          <p class="font-poppins text-gray-300 text-sm">
-            Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities
+          <h3 data-key="manufacture" class="font-nexa text-white text-lg uppercase mb-3 font-semibold"></h3>
+          <p data-key="manufacture_p" class="font-poppins text-gray-300 text-sm">
+        
           </p>
         </div>
       </div>
@@ -421,10 +380,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <img src="images/under_water.webp" alt="Underwater Inspection" class="w-full h-full object-cover">
         </div>
         <div class="p-6">
-          <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Underwater Inspection</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
-            High capacity drones for underwater inspections. Used for offshore oil fields, ports and related industries
-          </p>
+          <h3 data-key="underwater" class="font-nexa text-white text-lg uppercase mb-3 font-semibold"></h3>
+          <p data-key="Underwater_p" class="text-gray-300 text-sm leading-relaxed"> </p>
         </div>
       </div>
 
@@ -434,9 +391,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <img src="images/building_cleaning.jpg" alt="Building Cleaning Solutions" class="w-full h-full object-cover">
         </div>
         <div class="p-6">
-          <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Building Cleaning Solutions</h3>
-          <p class="font-poppins text-gray-300 text-sm leading-relaxed">
-            Using our patented water saving chemical, using 70% less water, making it highly cost effective and eco-friendly
+          <h3 data-key="Building" class="font-nexa text-white text-lg uppercase mb-3 font-semibold"></h3>
+          <p data-key="Building_p" class="font-poppins text-gray-300 text-sm leading-relaxed">
           </p>
         </div>
       </div>
@@ -447,9 +403,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <img src="images/drone_survey.webp" alt="Surveillance and Surveys" class="w-full h-full object-cover">
         </div>
         <div class="p-6">
-          <h3 class="font-nexa text-white text-lg uppercase mb-3 font-semibold">Surveillance and Surveys</h3>
-          <p class="font-poppins text-gray-300 text-sm leading-relaxed">
-            Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities
+          <h3 data-key="Surveillance" class="font-nexa text-white text-lg uppercase mb-3 font-semibold"></h3>
+          <p data-key="Surveillance_p" class="font-poppins text-gray-300 text-sm leading-relaxed">
           </p>
         </div>
       </div>
@@ -464,9 +419,8 @@ document.addEventListener("DOMContentLoaded", function () {
     <img src="images/vector_service.png" alt="Vector Background" class="w-full h-full object-cover" />
   </div>
 
-  <h2 class="text-center text-3xl pt-10 md:text-4xl font-bold mb-12  
+  <h2 data-key="setpart"  class="text-center text-3xl pt-10 md:text-4xl font-bold mb-12  
            bg-gradient-to-r from-[#89F6F6] to-[#ADFCFC] bg-clip-text text-transparent">
-    What Sets Us Apart
   </h2>
 </section>
 
@@ -486,9 +440,8 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
     <img src="images/Group 12.png" alt="Drone" class="w-10 h-12 object-contain" />
   </div>
-  <h3 class="text-lg font-nexa font-semibold mb-2">Fully Autonomous Inspection Drones</h3>
-  <p class="text-gray-300 font-poppins text-sm">
-    Operate 24/7 with docking stations — zero manual intervention required.
+  <h3 data-key="automation_drone" class="text-lg font-nexa font-semibold mb-2"></h3>
+  <p data-key="automation_drone_p" class="text-gray-300 font-poppins text-sm">
   </p>
 </div>
 
@@ -496,9 +449,8 @@ document.addEventListener("DOMContentLoaded", function () {
      <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
     <img src="images/Group 13.png" alt="Drone" class="w-10 h-12 object-contain" />
   </div>
-      <h3 class="text-lg font-nexa font-semibold mb-2">Sustainable Technology</h3>
-      <p class="text-gray-300 font-poppins text-sm">
-        Our electric drones contribute to green operations with reduced water and chemical usage.
+      <h3 data-key="technology" class="text-lg font-nexa font-semibold mb-2"></h3>
+      <p data-key="technology_p" class="text-gray-300 font-poppins text-sm">
       </p>
     </div>
 
@@ -506,9 +458,8 @@ document.addEventListener("DOMContentLoaded", function () {
        <div class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
     <img src="images/Group 14.png" alt="Drone" class="w-10 h-12 object-contain" />
   </div>
-      <h3 class="text-lg font-nexa font-semibold mb-2">Customized Solutions</h3>
-      <p class="text-gray-300 font-poppins text-sm">
-        Every site is different—so are our strategies. We tailor every deployment to your facility needs.
+      <h3 data-key="customized" class="text-lg font-nexa font-semibold mb-2"></h3>
+      <p data-key="customized_p" class="text-gray-300 font-poppins text-sm">
       </p>
     </div>
   </div>
@@ -536,27 +487,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- Content -->
     <div class="order-1 md:order-2 animate-on-scroll opacity-0">
-     <h2 class="text-4xl lg:text-5xl font-extrabold mb-6 
-           bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
-  APPLICATIONS & INDUSTRIES
-</h2>
+     <h2 data-key="application" class="text-4xl lg:text-5xl font-extrabold mb-6 
+           bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"></h2>
 
-      <p class="text-xl text-gray-300 mb-8">
-        We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.
+      <p data-key="application_p" class="text-xl text-gray-300 mb-8">
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
         <ul class="space-y-4">
-          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Telecommunication Infra Inspection</li>
-          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Thermal Imaging for Gas & Pipe Leaks</li>
-          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Facade & Solar Panel Cleaning</li>
-          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Underwater Inspection (ROV)</li>
+          <li class="flex items-center">
+  <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
+  <span data-key="app_1"></span>
+</li>
+
+                  <li class="flex items-center">
+  <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
+  <span data-key="app_2"></span>
+</li>
+        <li class="flex items-center">
+  <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
+  <span data-key="app_3"></span>
+</li>        <li class="flex items-center">
+  <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
+  <span data-key="app_4"></span>
+</li>
         </ul>
         <ul class="space-y-4">
-          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Autonomous Agricultural Irrigation</li>
-          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Pipeline & Refinery Inspections</li>
-          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> 3D Mapping & Modelling</li>
-          <li class="flex items-center"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span> Autonomous Asset Inspection</li>
+                 <li class="flex items-center">
+  <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
+  <span data-key="app_5"></span>
+</li>
+              <li class="flex items-center">
+  <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
+  <span data-key="app_6"></span>
+</li>
+            <li class="flex items-center">
+  <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
+  <span data-key="app_7"></span>
+</li>
+                 <li class="flex items-center">
+  <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
+  <span data-key="app_8"></span>
+</li>
         </ul>
       </div>
     </div>
@@ -572,7 +544,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <section class="bg-black text-cyan-400 py-12 px-6">
   <div class="max-w-5xl mx-auto relative">
-    <h2
+    <h2 data-key="value_firm"
       class="text-3xl md:text-4xl font-bold text-center mb-10 
              bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
       How do we add value to your firm?
@@ -580,15 +552,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <div class="relative bg-[#00BBA7] rounded-lg p-4 text-black shadow-lg min-h-[120px] transition-all duration-500">
       <div class="flex flex-col md:flex-row gap-4 items-start">
-        <h3 id="active-heading" 
+        <h3 id="active-heading" data-key="Efficiency"
             class="text-lg py-4 md:py-8 md:pl-6 font-bold w-full md:w-1/3 transition-opacity duration-500 text-left">
-          Efficiency
         </h3>
-        <p id="active-text" 
+        <p id="active-text"  data-key="Efficiency_p"
            class="text-sm font-poppins py-2 md:py-5 leading-relaxed w-full md:w-2/3 transition-all duration-500 opacity-100">
-          Prioritize the safety of your workforce and the public with our aerial services. 
-          Eliminate the need for risky manual tasks and access hard-to-reach areas with ease, 
-          minimizing the potential for accidents and injuries.
+        
         </p>
       </div>
     </div>
@@ -633,9 +602,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <section class="py-20 bg-black">
     <div class="max-w-6xl mx-auto text-center ">
-    <h2 class="text-4xl md:text-4xl pb-6 font-bold mb-10
+    <h2 data-key="Supported_by" class="text-4xl md:text-4xl pb-6 font-bold mb-10
            bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
-  Supported by
 </h2>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center">
@@ -685,15 +653,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <!-- Content -->
         <div class="relative p-8 md:p-12 flex flex-col md:flex-row font-nexa items-center justify-between gap-6">
           <div>
-            <p class="text-cyan-300 text-lg">Join Our Newsletter</p>
-          <h2 class="text-2xl md:text-4xl text-white font-nexa font-semi-bold mt-2">
-  Stay In Touch With Us
+            <p data-key="Join_Our_Newsletter" class="text-cyan-300 text-lg"></p>
+          <h2 data-key="Stay_In_Touch_With_Us" class="text-2xl md:text-4xl text-white font-nexa font-semi-bold mt-2">
 </h2>
           </div>
 
           <div>
-            <button class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition">
-              Subscribe
+            <button data-key="subscribe" class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition">
             </button>
           </div>
         </div>
@@ -719,36 +685,35 @@ document.addEventListener("DOMContentLoaded", function () {
       <!-- Brand -->
       <div class="col-span-1 sm:col-span-2 md:col-span-1 text-center md:text-left">
         <img src="images/Dronex 360 Logo 1 PNG 1.png" alt="Logo-gotsdone" class="h-16 w-auto mx-auto md:mx-0" />
-        <p class="mt-4 text-gray-400 text-sm leading-relaxed">
-          Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360
+        <p data-key="footer_back" class="mt-4 text-gray-400 text-sm leading-relaxed">
         </p>
       </div>
 
       <!-- Quick Links -->
       <div class="text-center md:text-left">
-        <h3 class="text-lg font-semibold text-white mb-3">Quick Links</h3>
+        <h3 data-key="Quick_Links" class="text-lg font-semibold text-white mb-3"></h3>
         <ul class="space-y-2">
-          <li><a href="#" class="hover:text-cyan-400 transition">Home</a></li>
-          <li><a href="#" class="hover:text-cyan-400 transition">Services & Benefits</a></li>
-          <li><a href="#" class="hover:text-cyan-400 transition">Contact Us</a></li>
+          <li><a href="#" data-key="Home" class="hover:text-cyan-400 transition"></a></li>
+          <li><a href="#" data-key="Service_Benefits" class="hover:text-cyan-400 transition"></a></li>
+          <li><a href="#" data-key="Contact_Us" class="hover:text-cyan-400 transition"></a></li>
         </ul>
       </div>
 
       <!-- Services -->
       <div class="text-center md:text-left">
-        <h3 class="text-lg font-semibold text-white mb-3">Services</h3>
+        <h3 data-key="Services" class="text-lg font-semibold text-white mb-3"></h3>
         <ul class="space-y-2">
-          <li><a href="#" class="hover:text-cyan-400 transition">Custom Drone Manufacturing</a></li>
-          <li><a href="#" class="hover:text-cyan-400 transition">Underwater Inspection</a></li>
-          <li><a href="#" class="hover:text-cyan-400 transition">Building Cleaning Solutions</a></li>
-          <li><a href="#" class="hover:text-cyan-400 transition">Surveillance & Surveys</a></li>
+          <li><a href="#" data-key="manufacture" class="hover:text-cyan-400 transition">Custom Drone Manufacturing</a></li>
+          <li><a href="#" data-key="underwater" class="hover:text-cyan-400 transition">Underwater Inspection</a></li>
+          <li><a href="#" data-key="Building" class="hover:text-cyan-400 transition">Building Cleaning Solutions</a></li>
+          <li><a href="#" data-key="Surveillance" class="hover:text-cyan-400 transition">Surveillance & Surveys</a></li>
         </ul>
       </div>
 
       <!-- Newsletter -->
       <div class="text-center md:text-left">
-        <h3 class="text-lg font-semibold text-white mb-3">Stay Updated</h3>
-        <p class="mb-4 text-gray-400 text-sm">Subscribe to our newsletter for the latest updates.</p>
+        <h3 data-key="Stay_Updated" class="text-lg font-semibold text-white mb-3"></h3>
+        <p data-key="Subscribe_New" class="mb-4 text-gray-400 text-sm"></p>
         <div class="flex flex-col sm:flex-row items-center sm:items-stretch">
           <input 
             type="email" 
@@ -779,5 +744,161 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+<script>
+
+ const translations = {
+  en: {
+    head_360: "360 degrees",
+    aerial: "of aerial brilliance",
+    unlocking: "Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360",
+    learn: "Learn More",
+    Services: "Services",
+    service_p: "At Dronex 360, we revolutionize maintenance and inspection services with cutting-edge drone technology. Our innovative solutions redefine efficiency and precision, ensuring unparalleled results across diverse applications.",
+    manufacture: "Custom Drone Manufacturing",
+    manufacture_p: "Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities",
+    underwater: "Underwater Inspection",
+    Underwater_p: "High capacity drones for underwater inspections. Used for offshore oil fields, ports and related industries.",
+    Building: "Building Cleaning Solutions",
+    Building_p: "Using our patented water saving chemical, using 70% less water, making it highly cost effective and eco-friendly.",
+    Surveillance: "Surveillance and Surveys",
+    Surveillance_p: "Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities",
+    setpart: "What Sets Us Apart",
+    automation_drone: "Fully Autonomous Inspection Drones",
+    automation_drone_p: "Operate 24/7 with docking stations — zero manual intervention requireds",
+    technology: "Sustainable Technology",
+    technology_p: "Our electric drones contribute to green operations with reduced water and chemical usage.",
+    customized: "Customized Solutions",
+    customized_p: "Every site is different—so are our strategies. We tailor every deployment to your facility needs.",
+    application: "APPLICATIONS & INDUSTRIES",
+    application_p: "We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.",
+    app_1: "Telecommunication Infra Inspection",
+    app_2: "Thermal Imaging for Gas & Pipe Leaks",
+    app_3: "Facade & Solar Panel Cleaning",
+    app_4: "Underwater Inspection (ROV)",
+    app_5: "Autonomous Agricultural Irrigation",
+    app_6: "Pipeline & Refinery Inspections",
+    app_7: "3D Mapping & Modelling",
+    app_8: "Autonomous Asset Inspection",
+    value_firm: "How do we add value to your firm?",
+    Efficiency: "Efficiency",
+    Efficiency_p: "Maximize operational efficiency with streamlined processes and advanced drone technology.",
+    Accuracy: "Accuracy",
+    Accuracy_p: "Guarantee precise outcomes and minimize errors through cutting-edge technology and reliable methods.",
+    Safety: "Safety",
+    safety_p: "Ensure workplace protection by reducing potential hazards and maintaining safe practices across projects.",
+    cost: "Cost Savings",
+    cost_p: "Optimize resources and reduce labor costs with more efficient workflows and smarter operations.",
+    Flexibility: "Flexibility",
+    Flexibility_p: "Adapt quickly to changing project needs with scalable and versatile service offerings.",
+    Supported_by: "Supported by",
+    Join_Our_Newsletter: "Join Our Newsletter",
+    Stay_In_Touch_With_Us: "Stay In Touch With Us",
+    subscribe: "Subscribe",
+    footer_back: "Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360",
+    Quick_Links: "Quick Links",
+    Home: "Home",
+    Service_Benefits: "Service & Benefits",
+    Contact_Us: "Contact Us",
+    Services: "Services",
+    Stay_Updated: "Stay Updated",
+    Subscribe_News: "Subscribe to our newsletter for the latest updates and offers.",
+  },
+  fr: {
+    head_360: "360 degrés",
+    aerial: "de brillance aérienne",
+    unlocking: "Débloquer l’avenir de la brillance aérienne : élever la précision, la sécurité et l’efficacité dans la gestion durable des installations, l’inspection des actifs énergétiques et au-delà avec Dronex 360",
+    learn: "En savoir plus",
+    Services: "Services",
+    service_p: "Chez Dronex 360, nous révolutionnons les services de maintenance et d’inspection grâce à la technologie de drones de pointe. Nos solutions innovantes redéfinissent l’efficacité et la précision, garantissant des résultats incomparables dans diverses applications.",
+    manufacture: "Fabrication de drones personnalisés",
+    manufacture_p: "Créez des drones personnalisés de niveau entreprise avec des firmwares compatibles SDK pour des possibilités illimitées",
+    underwater: "Inspection sous-marine",
+    Underwater_p: "Drones à haute capacité pour les inspections sous-marines. Utilisés pour les champs pétroliers offshore, les ports et les industries associées.",
+    Building: "Solutions de nettoyage de bâtiments",
+    Building_p: "En utilisant notre produit chimique breveté qui économise l’eau, réduisant la consommation de 70 %, rendant la solution très rentable et respectueuse de l’environnement.",
+    Surveillance: "Surveillance et enquêtes",
+    Surveillance_p: "Créez des drones personnalisés de niveau entreprise avec des firmwares compatibles SDK pour des possibilités illimitées",
+    setpart: "Ce qui nous distingue",
+    automation_drone: "Drones d’inspection entièrement autonomes",
+    automation_drone_p: "Fonctionnent 24h/24 et 7j/7 avec des stations d’accueil — aucune intervention manuelle requise.",
+    technology: "Technologie durable",
+    technology_p: "Nos drones électriques contribuent à des opérations écologiques avec une réduction de l’utilisation d’eau et de produits chimiques.",
+    customized: "Solutions personnalisées",
+    customized_p: "Chaque site est différent — nos stratégies le sont aussi. Nous adaptons chaque déploiement aux besoins de votre installation.",
+    application: "APPLICATIONS & INDUSTRIES",
+    application_p: "Nous sommes spécialisés dans l’utilisation de la technologie avancée des drones pour fournir des solutions innovantes dans un large éventail de secteurs.",
+    app_1: "Inspection des infrastructures de télécommunication",
+    app_2: "Imagerie thermique pour les fuites de gaz et de tuyaux",
+    app_3: "Nettoyage des façades et panneaux solaires",
+    app_4: "Inspection sous-marine (ROV)",
+    app_5: "Irrigation agricole autonome",
+    app_6: "Inspections de pipelines et de raffineries",
+    app_7: "Cartographie et modélisation 3D",
+    app_8: "Inspection autonome des actifs",
+    value_firm: "Comment ajoutons-nous de la valeur à votre entreprise ?",
+    Efficiency: "Efficacité",
+    Efficiency_p: "Maximisez l’efficacité opérationnelle avec des processus simplifiés et une technologie de drones avancée.",
+    Accuracy: "Précision",
+    Accuracy_p: "Garantissez des résultats précis et minimisez les erreurs grâce à une technologie de pointe et des méthodes fiables.",
+    Safety: "Sécurité",
+    safety_p: "Assurez la protection du lieu de travail en réduisant les risques potentiels et en maintenant des pratiques sûres sur les projets.",
+    cost: "Réduction des coûts",
+    cost_p: "Optimisez les ressources et réduisez les coûts de main-d’œuvre avec des flux de travail plus efficaces et des opérations plus intelligentes.",
+    Flexibility: "Flexibilité",
+    Flexibility_p: "Adaptez-vous rapidement aux besoins changeants des projets grâce à des services évolutifs et polyvalents.",
+    Supported_by: "Soutenu par",
+    Join_Our_Newsletter: "Rejoignez notre newsletter",
+    Stay_In_Touch_With_Us: "Restez en contact avec nous",
+    subscribe: "S’abonner",
+    footer_back: "Débloquer l’avenir de la brillance aérienne : élever la précision, la sécurité et l’efficacité dans la gestion durable des installations, l’inspection des actifs énergétiques et au-delà avec Dronex 360",
+    Quick_Links: "Liens rapides",
+    Home: "Accueil",
+    Service_Benefits: "Services et avantages",
+    Contact_Us: "Contactez-nous",
+    Services: "Services",
+    Stay_Updated: "Restez informé",
+    Subscribe_News: "Abonnez-vous à notre newsletter pour recevoir les dernières mises à jour et offres.",
+  }
+};
+
+document.querySelectorAll("[data-key]").forEach(el => {
+  const key = el.getAttribute("data-key");
+  if (translations.en[key]) el.textContent = translations.en[key];
+});
+
+
+
+let currentLang = "en";
+
+// Function to update page texts
+function changeLanguage(lang) {
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.getAttribute("data-key");
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  currentLang = lang;
+}
+
+// Toggle button logic
+const langToggle = document.getElementById("langToggle");
+langToggle.addEventListener("click", () => {
+  if (currentLang === "en") {
+    changeLanguage("fr");
+    langToggle.textContent = "EN"; // Show option to switch back
+  } else {
+    changeLanguage("en");
+    langToggle.textContent = "fr"; // Show option to switch back
+  }
+});
+
+// Set default language
+changeLanguage(currentLang);
+
+
+
+</script>
 
 </body>
+</html>
