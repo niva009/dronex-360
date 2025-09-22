@@ -19,14 +19,17 @@
       href="images/favicon/gotsdonefav.png"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+<!-- ✅ Swiper (latest version) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- ✅ AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- ✅ Alpine.js -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 
     <style>
       @keyframes flyIn {
@@ -156,6 +159,50 @@
         font-weight: 300;
         font-style: normal;
       }
+
+      @keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-flow 4s linear infinite;
+}
+
+@keyframes borderMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-border {
+  background: linear-gradient(
+    90deg,
+    #00504C,
+    transparent,
+    #00504C,
+    transparent,
+    #00504C
+  );
+  background-size: 200% 200%;
+  animation: borderMove 4s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-15px) translateX(-5px); }
+}
+
+
     </style>
   </head>
 
@@ -354,9 +401,13 @@
         <div
           class="flex-1 animate-[slideDown_1s_ease-out] text-center lg:text-left"
         >
-          <h1 class="text-4xl md:text-7xl pl-6 font-bold leading-tight">
+          <h1 class="text-4xl md:text-7xl pl-6 font-bold font-nexa leading-tight">
             <span data-key="head_360"></span> <br />
-            <span class="text-teal-400" data-key="aerial"></span>
+            <span 
+  class="font-nexa bg-gradient-to-r from-[#89F6F6] via-[#b0f5f5] to-[#89F6F6] bg-clip-text text-transparent animate-gradient"
+  data-key="aerial">
+  Flowing Gradient
+</span>
           </h1>
 
           <p
@@ -427,47 +478,47 @@
 
       <!-- Left vertical trail -->
       <div
-        class="absolute top-[26rem] left-6 w-5 h-5 bg-white/15 rounded-full"
+        class="absolute top-[26rem] left-6 w-5 h-5 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[28rem] left-3 w-8 h-8 bg-white/10 rounded-full"
+        class="absolute top-[28rem] left-3 w-8 h-8 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[30rem] left-14 w-6 h-6 bg-white/20 rounded-full"
+        class="absolute top-[30rem] left-14 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[32rem] left-8 w-4 h-4 bg-white/15 rounded-full"
+        class="absolute top-[32rem] left-8 w-4 h-4 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[34rem] left-18 w-7 h-7 bg-white/10 rounded-full"
+        class="absolute top-[34rem] left-18 w-7 h-7 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[36rem] left-5 w-10 h-10 bg-white/20 rounded-full"
+        class="absolute top-[36rem] left-5 w-10 h-10 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[38rem] left-12 w-5 h-5 bg-white/15 rounded-full"
+        class="absolute top-[38rem] left-12 w-5 h-5 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[40rem] left-20 w-9 h-9 bg-white/10 rounded-full"
+        class="absolute top-[40rem] left-20 w-9 h-9 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[42rem] left-7 w-6 h-6 bg-white/20 rounded-full"
+        class="absolute top-[42rem] left-7 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[44rem] left-16 w-4 h-4 bg-white/15 rounded-full"
+        class="absolute top-[44rem] left-16 w-4 h-4 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
 
       <div
-        class="absolute top-[29rem] left-36 w-12 h-12 bg-white/10 rounded-full"
+        class="absolute top-[29rem] left-36 w-12 h-12 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[33rem] left-40 w-6 h-6 bg-white/20 rounded-full"
+        class="absolute top-[33rem] left-40 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[37rem] left-32 w-8 h-8 bg-white/15 rounded-full"
+        class="absolute top-[37rem] left-32 w-8 h-8 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
       <div
-        class="absolute top-[41rem] left-38 w-10 h-10 bg-white/10 rounded-full"
+        class="absolute top-[41rem] left-38 w-10 h-10 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
       ></div>
 
       <div class="container mx-auto relative z-10">
@@ -707,12 +758,13 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
             <ul class="space-y-4">
-              <li class="flex items-center">
-                <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
-                <span data-key="app_1"></span>
-              </li>
 
-              <li class="flex items-center">
+           <li class="flex items-start">
+              <span class="text-cyan-400 text-2xl mr-3 mt-1">&raquo;</span>
+              <span data-key="app_1"></span>
+            </li>
+
+              <li class="flex items-start">
                 <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
                 <span data-key="app_2"></span>
               </li>
@@ -726,7 +778,7 @@
               </li>
             </ul>
             <ul class="space-y-4">
-              <li class="flex items-center">
+              <li class="flex items-start">
                 <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
                 <span data-key="app_5"></span>
               </li>
@@ -750,73 +802,96 @@
 
     <!--------------------Application Industrys ---------------------->
 
- <section 
-  class="relative bg-black text-cyan-400 py-34 px-6 
-         bg-[url('images/drone_background.jpg')] bg-cover bg-center bg-no-repeat"
->
-  <!-- Overlay -->
-   <div class="absolute inset-0 bg-black/90"></div>
 
-  <div class="relative max-w-5xl mx-auto">
-    <h2
-      data-key="value_firm"
-      class="text-3xl md:text-4xl font-bold text-center mb-10 
-             bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"
-    >
-      How do we add value to your firm?
+<section class="bg-black text-white py-16 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl lg:text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent pb-10">
+      Client Testimonials
     </h2>
 
-    <div
-      class="relative bg-[#00BBA7]/90 rounded-lg p-4 text-black shadow-lg min-h-[120px] transition-all duration-500"
-    >
-      <div class="flex flex-col md:flex-row gap-4 items-start">
-        <h3
-          id="active-heading"
-          data-key="Efficiency"
-          class="text-lg py-4 md:py-8 md:pl-6 font-bold w-full md:w-1/3 transition-opacity duration-500 text-left"
-        ></h3>
-        <p
-          id="active-text"
-          data-key="Efficiency_p"
-          class="text-sm font-poppins py-2 md:py-5 leading-relaxed w-full md:w-2/3 transition-all duration-500 opacity-100"
-        ></p>
+    <!-- ✅ Swiper wrapper -->
+   <!-- Swiper wrapper -->
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+
+    <!-- Card 1 -->
+    <div class="swiper-slide">
+      <div data-aos="fade-up" data-aos-delay="100"
+        class="bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between h-[200px] lg:h-[250px]">
+        <p class="mb-6 text-md flex-grow">
+          “Dronex360 has revolutionized our bridge and overpass inspections with their Al-powered drones. Their speed, precision, and data insights have cut downtime and boosted efficiency-true innovation in line with Dubai's tech-driven vision”
+        </p>
+        <div class="flex items-center gap-3 mt-auto text-left">
+          <img src="images/rta.avif" alt="RTA" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+          <div class="leading-tight">
+            <p class="text-sm text-gray-200">Senior Facilities Manager</p>
+            <p class="font-semibold">RTA</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <nav
-      class="relative md:absolute md:left-6 md:top-full md:mt-2 mt-6 space-y-2 flex flex-wrap md:block"
-    >
-      <button
-        class="tab-link block text-gray-400 hover:text-grey-600 font-medium text-base transition-all w-full md:w-auto text-left"
-        data-heading="Safety"
-        data-text="Ensure workplace protection by reducing potential hazards and maintaining safe practices across projects."
-      >
-        Safety
-      </button>
-      <button
-        class="tab-link block text-gray-400 hover:text-grey-600 font-medium text-base transition-all w-full md:w-auto text-left"
-        data-heading="Cost Savings"
-        data-text="Optimize resources and reduce labor costs with more efficient workflows and smarter operations."
-      >
-        Cost Savings
-      </button>
-      <button
-        class="tab-link block text-gray-400 hover:text-grey-600font-medium text-base transition-all w-full md:w-auto text-left"
-        data-heading="Accuracy"
-        data-text="Guarantee precise outcomes and minimize errors through cutting-edge technology and reliable methods."
-      >
-        Accuracy
-      </button>
-      <button
-        class="tab-link block text-gray-400 hover:text-grey-600 font-medium text-base transition-all w-full md:w-auto text-left"
-        data-heading="Flexibility"
-        data-text="Adapt quickly to changing project needs with scalable and versatile service offerings."
-      >
-        Flexibility
-      </button>
-    </nav>
+    <!-- Card 2 -->
+    <div class="swiper-slide">
+      <div data-aos="fade-up" data-aos-delay="300"
+        class="bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between  h-[200px] lg:h-[250px]">
+        <p class="mb-6 text-md flex-grow">
+          “DroneX 360 transformed our high-risk inspections with autonomous drone solutions that ensured precise monitoring of chemical zones with minimal human exposure.”
+        </p>
+        <div class="flex items-center gap-3 mt-auto text-left">
+          <img src="images/chemex.jpeg" alt="Chemix" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+          <div class="leading-tight">
+            <p class="text-sm text-gray-200">Director</p>
+            <p class="font-semibold">Chemix Industrial Solutions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="swiper-slide">
+      <div data-aos="fade-up" data-aos-delay="500"
+        class="bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between  h-[200px] lg:h-[250px]">
+        <p class="mb-6 text-md flex-grow">
+          “We were highly impressed by Dronex 360's warehouse inspection at our KIZAD facility. Their advanced drone tech enabled precise crack detection, safety issue identification, and exterior cleaning.”
+        </p>
+        <div class="flex items-center gap-3 mt-auto text-left">
+          <img src="images/safecare.jpeg" alt="Selfcare" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+          <div class="leading-tight">
+            <p class="text-sm text-gray-200">Managing Director</p>
+            <p class="font-semibold">Selfcare Medical Group</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="swiper-slide">
+      <div data-aos="fade-up" data-aos-delay="700"
+        class="bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between  h-[200px] lg:h-[250px]">
+        <p class="mb-6 text-md flex-grow">
+          “Dronex360 was a game-changer for us. Their drone-based inspections and facade cleaning cut labor
+needs and eliminated scaffold risks across our high-rises.
+Their tailored approach shows real industry insight.”
+        </p>
+        <div class="flex items-center gap-3 mt-auto text-left">
+          <img src="images/powergroup.png" alt="Extra" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+          <div class="leading-tight">
+            <p class="text-sm text-gray-200">Facilities Manager</p>
+            <p class="font-semibold">Power Group</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
   </div>
 </section>
+
+
+
 
 
     <!-------------------- client logs --------------------->
@@ -824,7 +899,6 @@
 <section class="relative py-30 bg-black overflow-hidden">
 
 
-  <!-- Half Circle Decoration -->
   <div
     class="absolute -left-40 top-1/2 -translate-y-1/3 w-96 h-88
            bg-[#1A3B4A] rounded-full blur-3xl opacity-70"
@@ -899,57 +973,101 @@
 
     <!-- Left Content -->
     <div class="bg-gradient-to-r from-cypress-700 via-black to-teal-800 p-10 rounded-xl">
-      <h2 class="text-4xl md:text-5xl font-bold leading-snug mb-10">
+       <h2 class="text-4xl md:text-5xl pb-6 font-bold mb-10 
+             bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent font-bold leading-snug mb-10 text-center">
         We Would Love To <br /> Hear From You!
       </h2>
 
-      <div class="space-y-8">
-        <div>
-          <p class="text-gray-300 text-sm mb-1">Call Us</p>
-          <a href="tel:0334467879" class="text-lg font-semibold hover:underline">03344 67879</a>
+      <!-- Call Us -->
+   <p class="text-white text-2xl md:text-2xl mb-6 font-bold text-center mr-12">Call Us</p>
+
+
+      <!-- Numbers Grid -->
+      <div class="grid sm:grid-cols-2 pt-6 gap-6">
+        
+        <!-- UAE -->
+        <div class="flex flex-col space-y-2">
+          <p class="text-white text-md font-bold">UAE</p>
+          <a href="tel:+971566414614" class="text-lg hover:underline">+97 1566414614</a>
+          <a href="tel:+971562726433" class="text-lg hover:underline">+97 1562726433</a>
         </div>
 
-        <div>
-          <p class="text-gray-300 text-sm mb-1">Get In Touch</p>
-          <a href="mailto:hello@dronex-360.com" class="text-lg font-semibold hover:underline">
-            hello@dronex-360.com
-          </a>
+        <!-- Germany -->
+        <div class="flex flex-col space-y-2">
+          <p class="text-white text-md font-bold">Germany</p>
+          <a href="tel:+4915214699912" class="text-lg hover:underline">+49 15214699912</a>
         </div>
+
+        <!-- Africa -->
+        <div class="flex flex-col space-y-2">
+          <p class="text-white text-md font-bold">Africa</p>
+          <a href="tel:+817074272693" class="text-lg hover:underline">+81 7074272693</a>
+        </div>
+
+        <!-- India -->
+        <div class="flex flex-col space-y-2">
+          <p class="text-white text-md font-bold">India</p>
+          <a href="tel:+919567666579" class="text-lg hover:underline">+91 9567666579</a>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mt-10">
+        <p class="text-gray-300 text-sm mb-1">Get In Touch</p>
+        <a href="mailto:hello@dronex-360.com" class="text-lg font-semibold hover:underline">
+          hello@dronex-360.com
+        </a>
       </div>
     </div>
 
-    <!-- Right Form -->
-    <div class="bg-black border border-gray-800 rounded-xl p-10">
-      <h3 class="text-lg font-medium mb-8">Simply fill out the form, and we’ll be in touch.</h3>
+
+
+<div class="relative rounded-xl p-10 max-w-lg mx-auto w-full overflow-hidden">
+  <!-- Animated Border -->
+  <div class="absolute inset-0 rounded-xl p-[2px] animate-border">
+    <div class="w-full h-full rounded-xl bg-black"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10">
+    <!-- Your form content here -->
+    <h3 class="text-lg font-medium mb-8 text-center mt-12 md:mt-30">
+      Simply fill out the form, and we’ll be in touch.
+    </h3>
+  
+  <!-- Success message -->
+  <p id="successMessage" class="hidden text-green-400 font-semibold mb-6 text-center "></p>
+
+  <!-- Form -->
+  <form id="contactForm" 
+      class="space-y-6 max-w-md mx-auto w-full mt-12 md:mt-10">
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <input type="text" id="name" placeholder="Name*" required
+        class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
       
-      <!-- Success message (hidden by default) -->
-      <p id="successMessage" class="hidden text-green-400 font-semibold mb-6"></p>
-
-      <form id="contactForm" class="space-y-6">
-
-        <!-- Row 1 -->
-        <div class="grid md:grid-cols-2 gap-6">
-          <input type="text" id="name" placeholder="Name*" required
-            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
-          <input type="email" id="email" placeholder="Email*" required
-            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
-        </div>
-
-        <!-- Row 2 -->
-        <div>
-          <input type="tel" id="phone" placeholder="Phone Number*" required
-            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
-        </div>
-
-        <!-- Button -->
-        <div class="flex justify-center md:justify-end">
-          <button type="submit" 
-            class="bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-500 hover:to-teal-600 text-white font-medium px-6 py-3 rounded-full shadow-md transition">
-            Submit Form
-          </button>
-        </div>
-      </form>
+      <input type="email" id="email" placeholder="Email*" required
+        class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
     </div>
+
+    <!-- Row 2 -->
+    <div>
+      <input type="tel" id="phone" placeholder="Phone Number*" required
+        class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
+    </div>
+
+    <!-- Button -->
+    <div class="flex justify-center">
+      <button type="submit" 
+        class="bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-500 hover:to-teal-600 text-white font-medium px-6 py-3 rounded-full shadow-md transition">
+        Submit Form
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
   </div>
 </section>
 
@@ -1176,13 +1294,13 @@
           setpart: "What Sets Us Apart",
           automation_drone: "Fully Autonomous Inspection Drones",
           automation_drone_p:
-            "Operate 24/7 with docking stations — zero manual intervention requireds",
+            "Operate 24/7 with docking stations zero manual intervention requireds",
           technology: "Sustainable Technology",
           technology_p:
             "Our electric drones contribute to green operations with reduced water and chemical usage.",
           customized: "Customized Solutions",
           customized_p:
-            "Every site is different—so are our strategies. We tailor every deployment to your facility needs.",
+            "Every site is different so are our strategies. We tailor every deployment to your facility needs.",
           application: "APPLICATIONS & INDUSTRIES",
           application_p:
             "We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.",
@@ -1333,6 +1451,34 @@
       // Set default language
       changeLanguage(currentLang);
 
+
+
+// cursol logic
+
+
+  // Init AOS
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
+
+  // Init Swiper
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },   // ✅ Mobile: 1 card
+      768: { slidesPerView: 3 }, // ✅ Desktop: 3 cards
+    },
+  });
 
 
           // form logic
