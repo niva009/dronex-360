@@ -290,103 +290,109 @@
 
       elements.forEach((el) => observer.observe(el));
     });
+    
 
   </script>
 
   <body bg[#161616]>
     <nav
-      class="bg-[#161616] shadow w-full px-6 py-5 static top-0 left-0 right-0 z-10"
+      class="bg-[#161616] backdrop-invert backdrop-invert backdrop-opacity-10 shadow w-full px-6 py-26 static top-0 left-0 right-0 z-10"
       x-data="{ open: false }"
     >
-      <div class="container mx-auto flex items-center justify-between">
-        <!-- Logo (left side) -->
-        <div class="flex items-center space-x-3">
-          <img
-            src="images/Dronex 360 Logo 1 PNG 1.png"
-            alt="Logo-gotsdone"
-            class="h-25 w-auto ml-12"
+
+    <nav
+  class="bg-transparent md:bg-transparent bg-[#161616]/70 md:backdrop-blur-0 backdrop-blur-md shadow w-full px-6 py-5 fixed top-0 left-0 right-0 z-20"
+  x-data="{ open: false }"
+>
+  <div class="container mx-auto flex items-center justify-between">
+    <!-- Logo (left side) -->
+    <div class="flex items-center space-x-3">
+      <img
+        src="images/Dronex 360 Logo 1 PNG 1.png"
+        alt="Logo-gotsdone"
+        class="h-25 w-auto ml-12"
+      />
+    </div>
+
+    <!-- Nav Links (Desktop, centered) -->
+    <div
+      class="hidden md:flex space-x-12 items-center absolute left-1/2 transform -translate-x-1/2"
+    >
+      <a
+        href="#"
+        data-key="Home"
+        class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
+      ></a>
+      <a
+        href="#services"
+        data-key="Service_Benefits"
+        class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
+      ></a>
+      <a
+        href="#contact"
+        data-key="Contact_Us"
+        class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
+      ></a>
+    </div>
+
+    <!-- Language Button (right side) -->
+    <div class="hidden md:flex items-center">
+      <a
+        href="#gr"
+        id="langToggle"
+        class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md"
+      >
+        Germany
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <button @click="open = !open" class="focus:outline-none">
+        <svg
+          class="w-6 h-6 ml-8 text-white"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
           />
-        </div>
+        </svg>
+      </button>
+    </div>
+  </div>
 
-        <!-- Nav Links (Desktop, centered) -->
-        <div
-          class="hidden md:flex space-x-12 items-center absolute left-1/2 transform -translate-x-1/2"
-        >
-          <a
-            href="#"
-            data-key="Home"
-            class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
-          ></a>
-          <a
-            href="#services"
-            data-key="Service_Benefits"
-            class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
-          ></a>
-          <a
-            href="#about"
-            data-key="Contact_Us"
-            class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
-          ></a>
-        </div>
+  <!-- Dropdown Mobile Menu -->
+  <div x-show="open" class="md:hidden mt-4 px-6 space-y-3 bg-[#161616]/80 backdrop-blur-md rounded-md">
+    <a
+      href="#"
+      data-key="Home"
+      class="block text-white hover:text-blue-600"
+    ></a>
+    <a
+      href="#about"
+      data-key="Service_Benefits"
+      class="block text-white hover:text-blue-600"
+    ></a>
+    <a
+      href="#contact"
+      data-key="Contact_Us"
+      class="block text-white hover:text-blue-600"
+    ></a>
+    <a
+      href="#"
+      onclick="event.preventDefault(); changeLanguage('fr');"
+      class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md"
+    >
+      Germany
+    </a>
+  </div>
+</nav>
 
-        <!-- Language Button (right side) -->
-
-        <div class="hidden md:flex items-center">
-          <a
-            href="#fr"
-            id="langToggle"
-            class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md"
-          >
-            French
-          </a>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden">
-          <button @click="open = !open" class="focus:outline-none">
-            <svg
-              class="w-6 h-6 ml-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Dropdown Mobile Menu -->
-      <div x-show="open" class="md:hidden mt-4 px-6 space-y-3">
-        <a
-          href="#"
-          data-key="Home"
-          class="block text-white hover:text-blue-600"
-        ></a>
-        <a
-          href="#about"
-          data-key="Service_Benefits"
-          class="block text-white hover:text-blue-600"
-        ></a>
-        <a
-          href="#about"
-          data-key="Contact_Us"
-          class="block text-white hover:text-blue-600"
-        ></a>
-        <a
-          href="#"
-          onclick="event.preventDefault(); changeLanguage('fr');"
-          class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md"
-        >
-          French
-        </a>
-      </div>
-    </nav>
 
     <!hero section --->
 
@@ -729,296 +735,273 @@
 
     <!---------------------Application Industrys ------------------------------>
 
-    <section class="relative bg-black text-white py-30 px-6 overflow-hidden">
-      <div class="absolute inset-0 bg-dots opacity-5"></div>
 
-      <div
-        class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-      >
-        <!-- Drone Image -->
-        <div class="relative order-2 md:order-1 animate-on-scroll opacity-0">
-          <img
-            src="images/drone_section.jpg"
-            alt="High-tech drone"
-            class="w-full max-w-xl md:max-w-none rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
-          />
-          <div
-            class="absolute inset-0 border-4 border-cyan-400 rounded-xl transform -translate-x-4 translate-y-4 -z-10"
-          ></div>
-        </div>
+<section class="relative text-white py-30 px-6 overflow-hidden">
+  <!-- subtle dots background across the whole section -->
+  <div class="absolute inset-0 bg-dots opacity-5"></div>
 
-        <!-- Content -->
-        <div class="order-1 md:order-2 animate-on-scroll opacity-0">
-          <h2
-            data-key="application"
-            class="text-4xl lg:text-5xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"
-          ></h2>
+  <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
 
-          <p data-key="application_p" class="text-xl text-gray-300 mb-8"></p>
+ <div class="relative z-0 order-2 md:order-1 flex items-center">
+  <div class="relative rounded-xl overflow-hidden shadow-lg w-full">
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
-            <ul class="space-y-4">
+    <img
+      src="images/drone-background.png"
+      alt="background dots"
+      class="absolute inset-0 w-full h-full object-contain z-0"  
+    />
 
-           <li class="flex items-start">
-              <span class="text-cyan-400 text-2xl mr-3 mt-1">&raquo;</span>
-              <span data-key="app_1"></span>
-            </li>
-
-              <li class="flex items-start">
-                <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
-                <span data-key="app_2"></span>
-              </li>
-              <li class="flex items-center">
-                <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
-                <span data-key="app_3"></span>
-              </li>
-              <li class="flex items-center">
-                <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
-                <span data-key="app_4"></span>
-              </li>
-            </ul>
-            <ul class="space-y-4">
-              <li class="flex items-start">
-                <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
-                <span data-key="app_5"></span>
-              </li>
-              <li class="flex items-center">
-                <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
-                <span data-key="app_6"></span>
-              </li>
-              <li class="flex items-center">
-                <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
-                <span data-key="app_7"></span>
-              </li>
-              <li class="flex items-center">
-                <span class="text-cyan-400 text-2xl mr-3">&raquo;</span>
-                <span data-key="app_8"></span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--------------------Application Industrys ---------------------->
-
-
-<section class="bg-black text-white py-16 px-6">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-4xl lg:text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent pb-10">
-      Client Testimonials
-    </h2>
-
-    <!-- ✅ Swiper wrapper -->
-   <!-- Swiper wrapper -->
-<div class="swiper mySwiper">
-  <div class="swiper-wrapper">
-
-    <!-- Card 1 -->
-    <div class="swiper-slide">
-      <div data-aos="fade-up" data-aos-delay="100"
-        class="bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between h-[200px] lg:h-[250px]">
-        <p class="mb-6 text-md flex-grow">
-          “Dronex360 has revolutionized our bridge and overpass inspections with their Al-powered drones. Their speed, precision, and data insights have cut downtime and boosted efficiency-true innovation in line with Dubai's tech-driven vision”
-        </p>
-        <div class="flex items-center gap-3 mt-auto text-left">
-          <img src="images/rta.avif" alt="RTA" class="w-10 h-10 rounded-full object-cover border-2 border-white">
-          <div class="leading-tight">
-            <p class="text-sm text-gray-200">Senior Facilities Manager</p>
-            <p class="font-semibold">RTA</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="swiper-slide">
-      <div data-aos="fade-up" data-aos-delay="300"
-        class="bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between  h-[200px] lg:h-[250px]">
-        <p class="mb-6 text-md flex-grow">
-          “DroneX 360 transformed our high-risk inspections with autonomous drone solutions that ensured precise monitoring of chemical zones with minimal human exposure.”
-        </p>
-        <div class="flex items-center gap-3 mt-auto text-left">
-          <img src="images/chemex.jpeg" alt="Chemix" class="w-10 h-10 rounded-full object-cover border-2 border-white">
-          <div class="leading-tight">
-            <p class="text-sm text-gray-200">Director</p>
-            <p class="font-semibold">Chemix Industrial Solutions</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="swiper-slide">
-      <div data-aos="fade-up" data-aos-delay="500"
-        class="bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between  h-[200px] lg:h-[250px]">
-        <p class="mb-6 text-md flex-grow">
-          “We were highly impressed by Dronex 360's warehouse inspection at our KIZAD facility. Their advanced drone tech enabled precise crack detection, safety issue identification, and exterior cleaning.”
-        </p>
-        <div class="flex items-center gap-3 mt-auto text-left">
-          <img src="images/safecare.jpeg" alt="Selfcare" class="w-10 h-10 rounded-full object-cover border-2 border-white">
-          <div class="leading-tight">
-            <p class="text-sm text-gray-200">Managing Director</p>
-            <p class="font-semibold">Selfcare Medical Group</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="swiper-slide">
-      <div data-aos="fade-up" data-aos-delay="700"
-        class="bg-gradient-to-r from-teal-500 to-teal-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between  h-[200px] lg:h-[250px]">
-        <p class="mb-6 text-md flex-grow">
-          “Dronex360 was a game-changer for us. Their drone-based inspections and facade cleaning cut labor
-needs and eliminated scaffold risks across our high-rises.
-Their tailored approach shows real industry insight.”
-        </p>
-        <div class="flex items-center gap-3 mt-auto text-left">
-          <img src="images/powergroup.png" alt="Extra" class="w-10 h-10 rounded-full object-cover border-2 border-white">
-          <div class="leading-tight">
-            <p class="text-sm text-gray-200">Facilities Manager</p>
-            <p class="font-semibold">Power Group</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <img
+      src="images/back-drone-lat.png"
+      alt="High-tech drone"
+      class="relative z-10 w-full md:max-w-none transform hover:scale-105 transition-transform duration-300"
+    />
   </div>
 </div>
 
-  </div>
-</section>
 
-
-
-
-
-    <!-------------------- client logs --------------------->
-
-<section class="relative py-30 bg-black overflow-hidden">
-
-
-  <div
-    class="absolute -left-40 top-1/2 -translate-y-1/3 w-96 h-88
-           bg-[#1A3B4A] rounded-full blur-3xl opacity-70"
-  ></div>
-
-  <div class="relative max-w-6xl mx-auto text-center">
-    <h2
-      data-key="Supported_by"
-      class="text-4xl md:text-4xl pb-6 font-bold mb-10 
-             bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"
-    >
-      <!-- Optional Title -->
-    </h2>
-
-    <div
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center"
-    >
-      <!-- Logo 1 -->
-      <div
-        class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition"
+    <div class="order-1 md:order-2 flex flex-col justify-end animate-on-scroll opacity-0">
+      <h2
+        class="text-4xl lg:text-5xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"
       >
-        <img
-          src="images/drone_logo_1.png"
-          alt="Client Logo 1"
-          class="max-h-20 ml-10 w-full object-contain"
-        />
-      </div>
+        APPLICATIONS & INDUSTRIES
+      </h2>
 
-      <!-- Logo 2 -->
-      <div
-        class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition"
-      >
-        <img
-          src="images/dronex_logo_2.jpeg"
-          alt="Client Logo 2"
-          class="max-h-20 w-full object-contain"
-        />
-      </div>
+      <p class="text-xl text-gray-300 mb-8">
+        We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.
+      </p>
 
-      <!-- Logo 3 -->
-      <div
-        class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition"
-      >
-        <img
-          src="images/drone_logo_4.png"
-          alt="Client Logo 3"
-          class="max-h-20 w-full object-contain"
-        />
-      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
+        <ul class="space-y-4">
+          <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Telecommunication Infra Inspection</li>
+          <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Autonomous Agricultural Irrigation</li>
+          <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Thermal Imaging for Gas & Pipe Leaks</li>
+          <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Pipeline & Refinery Inspections</li>
+        </ul>
 
-      <!-- Logo 4 -->
-      <div
-        class="bg-[#618c81] rounded-xl p-6 flex items-center justify-center w-full h-24 shadow-md hover:scale-105 transition"
-      >
-        <img
-          src="images/dronex_logo_4.webp"
-          alt="Client Logo 4"
-          class="max-h-20 w-full object-contain"
-        />
+        <ul class="space-y-4">
+          <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Facade & Solar Panel Cleaning</li>
+          <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>3D Mapping & Modelling</li>
+          <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Underwater Inspection (ROV)</li>
+          <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Autonomous Asset Inspection</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 
+
+
+<!-- Application Industries -->
+
+<section class="bg-black text-white py-16 px-6 relative overflow-hidden">
+  <!-- Decorative Circle -->
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-72 h-72 bg-[#1A3B4A] rounded-full blur-3xl opacity-70"></div>
+
+  <div class="max-w-6xl mx-auto text-center">
+    <!-- Section Heading -->
+    <h2 data-key="client" class="text-4xl lg:text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent pb-10"></h2>
+
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Card 1 -->
+        <div class="swiper-slide">
+          <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-[250px] lg:h-[280px]">
+            <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
+              <p data-key="client_1" class="mb-6 text-md flex-grow"></p>
+            </div>
+            <!-- Author -->
+            <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-3 rounded-xl shadow-md">
+              <img src="images/rta.avif" alt="RTA" class="w-12 h-12 rounded-full object-cover border-2 border-white">
+              <div class="flex-1 flex flex-col justify-center min-w-0">
+                <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Senior Facilities Manager</p>
+                <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">RTA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="swiper-slide">
+          <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-[250px] lg:h-[280px]">
+            <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
+              <p data-key="client_2" class="mb-6 text-md flex-grow"></p>
+            </div>
+            <!-- Author -->
+            <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-3 rounded-xl shadow-md">
+              <img src="images/chemex.jpeg" alt="Chemix" class="w-12 h-12 rounded-full object-cover border-2 border-white">
+              <div class="flex-1 flex flex-col justify-center min-w-0">
+                <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Director</p>
+                <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Chemix Industrial Solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="swiper-slide">
+          <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-[250px] lg:h-[280px]">
+            <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
+              <p data-key="client_3" class="mb-6 text-md flex-grow"></p>
+            </div>
+            <!-- Author -->
+            <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-3 rounded-xl shadow-md">
+              <img src="images/safecare.jpeg" alt="Selfcare" class="w-12 h-12 rounded-full object-cover border-2 border-white">
+              <div class="flex-1 flex flex-col justify-center min-w-0">
+                <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Managing Director</p>
+                <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Selfcare Medical Group</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="swiper-slide">
+          <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-[250px] lg:h-[280px]">
+            <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
+              <p data-key="client_4" class="mb-6 text-md flex-grow"></p>
+            </div>
+            <!-- Author -->
+            <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-3 rounded-xl shadow-md">
+              <img src="images/powergroup.png" alt="Power Group" class="w-12 h-12 rounded-full object-cover border-2 border-white">
+              <div class="flex-1 flex flex-col justify-center min-w-0">
+                <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Facilities Manager</p>
+                <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Power Group</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- swiper-wrapper -->
+    </div> <!-- swiper -->
+  </div>
+</section>
+
+
+    <!--------------------Application Industrys --------------------->
+
+    <!-------------------- client logs --------------------->
+
+
+<section class="relative py-20 bg-black overflow-hidden">
+  <!-- Heading -->
+  <div class="text-center mb-10">
+    <h2
+      data-key="Supported_by"
+      class="text-4xl text-primary lg:text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent pb-10"
+    >
+    </h2>
+  </div>
+
+  <!-- Logos Section -->
+  <div class="relative py-10 bg-[#222D2D] overflow-hidden rounded-2xl shadow-lg">
+    <div class="relative max-w-6xl mx-auto text-center">
+      <!-- Swiper Container -->
+     
+<!-- Logo Slider -->
+
+<div class="swiper mySwiperLogos">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide flex items-center justify-center">
+      <img src="images/drone_logo_1.png" alt="Logo 1" 
+           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
+    </div>
+    <div class="swiper-slide flex items-center justify-center">
+      <img src="images/dronex_logo_2.jpeg" alt="Logo 2" 
+           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
+    </div>
+    <div class="swiper-slide flex items-center justify-center">
+      <img src="images/drone_logo_4.png" alt="Logo 3" 
+           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
+    </div>
+    <div class="swiper-slide flex items-center justify-center">
+      <img src="images/dronex_logo_4.webp" alt="Logo 4" 
+           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
+    </div>
+    <!-- Repeat logos for smooth loop -->
+    <div class="swiper-slide flex items-center justify-center">
+      <img src="images/drone_logo_1.png" alt="Logo 1" 
+           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
+    </div>
+    <div class="swiper-slide flex items-center justify-center">
+      <img src="images/dronex_logo_2.jpeg" alt="Logo 2" 
+           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</section>
 
 
 
     <!-----------------Contact Form Section  ---------------->
-<section class="w-full min-h-screen bg-black text-white flex items-center justify-center py-18 px-8">
+
+<section id="contact">
+<div  class="w-full min-h-screen bg-black text-white flex items-center justify-center py-18 px-8">
   <div class="max-w-6xl w-full grid md:grid-cols-2 gap-10">
 
     <!-- Left Content -->
-    <div class="bg-gradient-to-r from-cypress-700 via-black to-teal-800 p-10 rounded-xl">
-       <h2 class="text-4xl md:text-5xl pb-6 font-bold mb-10 
-             bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent font-bold leading-snug mb-10 text-center">
-        We Would Love To <br /> Hear From You!
-      </h2>
+<!-- Left Content -->
+<div class="bg-gradient-to-r from-cypress-700 via-black to-teal-800 p-10 rounded-xl">
+  <h2 data-key="contact_heading" class="text-4xl md:text-5xl pb-6 font-bold mb-10 
+        bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent leading-snug text-center">
+  </h2>
 
-      <!-- Call Us -->
-   <p class="text-white text-2xl md:text-2xl mb-6 font-bold text-center mr-12">Call Us</p>
+  <!-- Call Us -->
+  <p class="text-white text-2xl mb-8 font-bold text-center">Call Us</p>
 
-
-      <!-- Numbers Grid -->
-      <div class="grid sm:grid-cols-2 pt-6 gap-6">
-        
-        <!-- UAE -->
-        <div class="flex flex-col space-y-2">
-          <p class="text-white text-md font-bold">UAE</p>
-          <a href="tel:+971566414614" class="text-lg hover:underline">+97 1566414614</a>
-          <a href="tel:+971562726433" class="text-lg hover:underline">+97 1562726433</a>
-        </div>
-
-        <!-- Germany -->
-        <div class="flex flex-col space-y-2">
-          <p class="text-white text-md font-bold">Germany</p>
-          <a href="tel:+4915214699912" class="text-lg hover:underline">+49 15214699912</a>
-        </div>
-
-        <!-- Africa -->
-        <div class="flex flex-col space-y-2">
-          <p class="text-white text-md font-bold">Africa</p>
-          <a href="tel:+817074272693" class="text-lg hover:underline">+81 7074272693</a>
-        </div>
-
-        <!-- India -->
-        <div class="flex flex-col space-y-2">
-          <p class="text-white text-md font-bold">India</p>
-          <a href="tel:+919567666579" class="text-lg hover:underline">+91 9567666579</a>
-        </div>
-      </div>
-
-      <!-- Email -->
-      <div class="mt-10">
-        <p class="text-gray-300 text-sm mb-1">Get In Touch</p>
-        <a href="mailto:hello@dronex-360.com" class="text-lg font-semibold hover:underline">
-          hello@dronex-360.com
-        </a>
-      </div>
+  <!-- Numbers Grid -->
+  <div class="grid sm:grid-cols-2 gap-6">
+    
+    <!-- UAE -->
+    <div class="bg-black/30 p-5 rounded-xl shadow hover:shadow-lg transition">
+      <p class="text-cyan-400 text-lg font-semibold flex items-center gap-2 mb-2">
+        <span class="material-icons text-cyan-400 text-xl"></span> UAE
+      </p>
+      <a href="tel:+971566414614" class="block text-lg hover:text-cyan-300 transition">+971 566414614</a>
+      <a href="tel:+971562726433" class="block text-lg hover:text-cyan-300 transition">+971 562726433</a>
     </div>
+
+    <!-- Germany -->
+    <div class="bg-black/30 p-5 rounded-xl shadow hover:shadow-lg transition">
+      <p class="text-cyan-400 text-lg font-semibold flex items-center gap-2 mb-2">
+        <span class="material-icons text-cyan-400 text-xl"></span> Germany
+      </p>
+      <a href="tel:+4915214699912" class="block text-lg hover:text-cyan-300 transition">+49 15214699912</a>
+    </div>
+
+    <!-- Africa -->
+    <div class="bg-black/30 p-5 rounded-xl shadow hover:shadow-lg transition">
+      <p class="text-cyan-400 text-lg font-semibold flex items-center gap-2 mb-2">
+        <span class="material-icons text-cyan-400 text-xl"></span> Africa
+      </p>
+      <a href="tel:+817074272693" class="block text-lg hover:text-cyan-300 transition">+81 7074272693</a>
+    </div>
+
+    <!-- India -->
+    <div class="bg-black/30 p-5 rounded-xl shadow hover:shadow-lg transition">
+      <p class="text-cyan-400 text-lg font-semibold flex items-center gap-2 mb-2">
+        <span class="material-icons text-cyan-400 text-xl"></span> India
+      </p>
+      <a href="tel:+919567666579" class="block text-lg hover:text-cyan-300 transition">+91 9567666579</a>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="mt-10 text-center">
+    <p class="text-gray-400 text-sm mb-1">Get In Touch</p>
+    <a href="mailto:hello@dronex-360.com" class="text-lg font-semibold hover:text-cyan-300 transition">
+      hello@dronex-360.com
+    </a>
+  </div>
+</div>
+
 
 
 
@@ -1031,8 +1014,7 @@ Their tailored approach shows real industry insight.”
   <!-- Content -->
   <div class="relative z-10">
     <!-- Your form content here -->
-    <h3 class="text-lg font-medium mb-8 text-center mt-12 md:mt-30">
-      Simply fill out the form, and we’ll be in touch.
+    <h3 data-key="contact_subheading" class="text-lg font-medium mb-8 text-center mt-12 md:mt-30">
     </h3>
   
   <!-- Success message -->
@@ -1069,6 +1051,7 @@ Their tailored approach shows real industry insight.”
 
 
   </div>
+</div>
 </section>
 
 
@@ -1176,7 +1159,7 @@ Their tailored approach shows real industry insight.”
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#contact"
                   data-key="Contact_Us"
                   class="hover:text-cyan-400 transition"
                 ></a>
@@ -1259,10 +1242,10 @@ Their tailored approach shows real industry insight.”
           </p>
 
           <div class="flex space-x-4 mt-4 md:mt-0">
-            <a href="#" class="hover:text-cyan-400 transition">Facebook</a>
-            <a href="#" class="hover:text-cyan-400 transition">Twitter</a>
-            <a href="#" class="hover:text-cyan-400 transition">LinkedIn</a>
-            <a href="#" class="hover:text-cyan-400 transition">Instagram</a>
+            <a href="https://www.facebook.com/people/Dronex-360/61560037713039/" class="hover:text-cyan-400 transition">Facebook</a>
+            <a href="https://x.com/Dronex360social" class="hover:text-cyan-400 transition">Twitter</a>
+            <a href="https://www.linkedin.com/company/dronex-360/posts/?feedView=all" class="hover:text-cyan-400 transition">LinkedIn</a>
+            <a href="https://www.instagram.com/dronex360.de/#" class="hover:text-cyan-400 transition">Instagram</a>
           </div>
         </div>
       </div>
@@ -1342,80 +1325,94 @@ Their tailored approach shows real industry insight.”
           Stay_Updated: "Stay Updated",
           Subscribe_News:
             "Subscribe to our newsletter for the latest updates and offers.",
+            client: "Client Testimonials",
+            client_1: "“Dronex360 has revolutionized our bridge and overpass inspections with their Al-powered drones. Their speed, precision, and data insights have cut downtime and boosted efficiency-true innovation in line with Dubai's tech-driven vision.”",
+            client_2: "“DroneX 360 transformed our high-risk inspections with autonomous drone solutions that ensured precise monitoring of chemical zones with minimal human exposure.”",
+            client_3: "“We were highly impressed by Dronex 360's warehouse  inspection at our KIZAD facility. Their advanced drone tech enabled precise crack detection, safety issue identification, and exterior cleaning.”",
+            client_4: "“Dronex360 was a game-changer for us.  Their drone-based inspections and facade cleaning cut labor needs and eliminated scaffold risks across our high-rises. Their tailored approach shows real industry insight.”",
+            contact_heading: "We Would Love To Hear From You!",
+            contact_subheading: "Simply fill out the form, and we’ll be in touch.",
         },
-        fr: {
-          head_360: "360 degrés",
-          aerial: "de brillance aérienne",
-          unlocking:
-            "Débloquer l’avenir de la brillance aérienne : élever la précision, la sécurité et l’efficacité dans la gestion durable des installations, l’inspection des actifs énergétiques et au-delà avec Dronex 360",
-          learn: "En savoir plus",
-          Services: "Services",
-          service_p:
-            "Chez Dronex 360, nous révolutionnons les services de maintenance et d’inspection grâce à la technologie de drones de pointe. Nos solutions innovantes redéfinissent l’efficacité et la précision, garantissant des résultats incomparables dans diverses applications.",
-          manufacture: "Fabrication de drones personnalisés",
-          manufacture_p:
-            "Créez des drones personnalisés de niveau entreprise avec des firmwares compatibles SDK pour des possibilités illimitées",
-          underwater: "Inspection sous-marine",
-          Underwater_p:
-            "Drones à haute capacité pour les inspections sous-marines. Utilisés pour les champs pétroliers offshore, les ports et les industries associées.",
-          Building: "Solutions de nettoyage de bâtiments",
-          Building_p:
-            "En utilisant notre produit chimique breveté qui économise l’eau, réduisant la consommation de 70 %, rendant la solution très rentable et respectueuse de l’environnement.",
-          Surveillance: "Surveillance et enquêtes",
-          Surveillance_p:
-            "Menez des enquêtes entièrement automatisées, avec précision, utilisez l’imagerie thermique pour une détection facile et bien plus encore.",
-          setpart: "Ce qui nous distingue",
-          automation_drone: "Drones d’inspection entièrement autonomes",
-          automation_drone_p:
-            "Fonctionnent 24h/24 et 7j/7 avec des stations d’accueil — aucune intervention manuelle requise.",
-          technology: "Technologie durable",
-          technology_p:
-            "Nos drones électriques contribuent à des opérations écologiques avec une réduction de l’utilisation d’eau et de produits chimiques.",
-          customized: "Solutions personnalisées",
-          customized_p:
-            "Chaque site est différent — nos stratégies le sont aussi. Nous adaptons chaque déploiement aux besoins de votre installation.",
-          application: "APPLICATIONS & INDUSTRIES",
-          application_p:
-            "Nous sommes spécialisés dans l’utilisation de la technologie avancée des drones pour fournir des solutions innovantes dans un large éventail de secteurs.",
-          app_1: "Inspection des infrastructures de télécommunication",
-          app_2: "Imagerie thermique pour les fuites de gaz et de tuyaux",
-          app_3: "Nettoyage des façades et panneaux solaires",
-          app_4: "Inspection sous-marine (ROV)",
-          app_5: "Irrigation agricole autonome",
-          app_6: "Inspections de pipelines et de raffineries",
-          app_7: "Cartographie et modélisation 3D",
-          app_8: "Inspection autonome des actifs",
-          value_firm: "Comment ajoutons-nous de la valeur à votre entreprise ?",
-          Efficiency: "Efficacité",
-          Efficiency_p:
-            "Maximisez l’efficacité opérationnelle avec des processus simplifiés et une technologie de drones avancée.",
-          Accuracy: "Précision",
-          Accuracy_p:
-            "Garantissez des résultats précis et minimisez les erreurs grâce à une technologie de pointe et des méthodes fiables.",
-          Safety: "Sécurité",
-          safety_p:
-            "Assurez la protection du lieu de travail en réduisant les risques potentiels et en maintenant des pratiques sûres sur les projets.",
-          cost: "Réduction des coûts",
-          cost_p:
-            "Optimisez les ressources et réduisez les coûts de main-d’œuvre avec des flux de travail plus efficaces et des opérations plus intelligentes.",
-          Flexibility: "Flexibilité",
-          Flexibility_p:
-            "Adaptez-vous rapidement aux besoins changeants des projets grâce à des services évolutifs et polyvalents.",
-          Supported_by: "Soutenu par",
-          Join_Our_Newsletter: "Rejoignez notre newsletter",
-          Stay_In_Touch_With_Us: "Restez en contact avec nous",
-          subscribe: "S’abonner",
-          footer_back:
-            "Débloquer l’avenir de la brillance aérienne : élever la précision, la sécurité et l’efficacité dans la gestion durable des installations, l’inspection des actifs énergétiques et au-delà avec Dronex 360",
-          Quick_Links: "Liens rapides",
-          Home: "Accueil",
-          Service_Benefits: "Services et avantages",
-          Contact_Us: "Contactez-nous",
-          Services: "Services",
-          Stay_Updated: "Restez informé",
-          Subscribe_News:
-            "Abonnez-vous à notre newsletter pour recevoir les dernières mises à jour et offres.",
-        },
+        gr:  {
+    head_360: "360 Grad",
+    aerial: "der luftgestützten Brillanz",
+    unlocking:
+      "Die Zukunft der luftgestützten Brillanz freisetzen: Steigerung von Präzision, Sicherheit und Effizienz im nachhaltigen Facility Management, bei Inspektionen von Energieanlagen und darüber hinaus mit Dronex 360",
+    learn: "Mehr erfahren",
+    Services: "Dienstleistungen",
+    service_p:
+      "Bei Dronex 360 revolutionieren wir Wartungs- und Inspektionsdienste mit modernster Drohnentechnologie. Unsere innovativen Lösungen definieren Effizienz und Präzision neu und gewährleisten unvergleichliche Ergebnisse in verschiedensten Anwendungsbereichen.",
+    manufacture: "Individuelle Drohnenfertigung",
+    manufacture_p:
+      "Erstellen Sie unternehmensgerechte, maßgeschneiderte Drohnen mit SDK-kompatibler Firmware für unbegrenzte Möglichkeiten.",
+    underwater: "Unterwasserinspektion",
+    Underwater_p:
+      "Hochleistungsdrohnen für Unterwasserinspektionen. Eingesetzt in Offshore-Ölfeldern, Häfen und verwandten Industrien.",
+    Building: "Gebäudereinigungslösungen",
+    Building_p:
+      "Mit unserem patentierten wassersparenden Reinigungsmittel, das 70 % weniger Wasser verbraucht – hocheffektiv und umweltfreundlich.",
+    Surveillance: "Überwachung und Vermessung",
+    Surveillance_p:
+      "Führen Sie vollautomatisierte Vermessungen mit Präzision durch, nutzen Sie Wärmebildkameras zur einfachen Erkennung und vieles mehr.",
+    setpart: "Was uns auszeichnet",
+    automation_drone: "Vollautonome Inspektionsdrohnen",
+    automation_drone_p:
+      "Rund-um-die-Uhr-Betrieb mit Dockingstationen – kein manuelles Eingreifen erforderlich.",
+    technology: "Nachhaltige Technologie",
+    technology_p:
+      "Unsere elektrischen Drohnen tragen zu umweltfreundlichen Abläufen bei, mit reduziertem Wasser- und Chemikalienverbrauch.",
+    customized: "Individuelle Lösungen",
+    customized_p:
+      "Jeder Standort ist anders – so auch unsere Strategien. Wir passen jeden Einsatz an die Bedürfnisse Ihrer Einrichtung an.",
+    application: "ANWENDUNGEN & BRANCHEN",
+    application_p:
+      "Wir sind spezialisiert auf den Einsatz modernster Drohnentechnologie, um innovative Lösungen in einer Vielzahl von Branchen bereitzustellen.",
+    app_1: "Inspektion von Telekommunikationsinfrastruktur",
+    app_2: "Wärmebildaufnahmen für Gas- & Rohrleitungslecks",
+    app_3: "Fassaden- & Solarpanelreinigung",
+    app_4: "Unterwasserinspektion (ROV)",
+    app_5: "Autonome landwirtschaftliche Bewässerung",
+    app_6: "Pipeline- & Raffinerieinspektionen",
+    app_7: "3D-Kartierung & Modellierung",
+    app_8: "Autonome Anlageninspektion",
+    value_firm: "Wie schaffen wir Mehrwert für Ihr Unternehmen?",
+    Efficiency: "Effizienz",
+    Efficiency_p:
+      "Maximieren Sie die betriebliche Effizienz mit optimierten Prozessen und modernster Drohnentechnologie.",
+    Accuracy: "Genauigkeit",
+    Accuracy_p:
+      "Gewährleisten Sie präzise Ergebnisse und minimieren Sie Fehler durch modernste Technologie und zuverlässige Methoden.",
+    Safety: "Sicherheit",
+    safety_p:
+      "Sorgen Sie für Arbeitssicherheit, indem Sie potenzielle Gefahren reduzieren und sichere Praktiken in allen Projekten einhalten.",
+    cost: "Kosteneinsparungen",
+    cost_p:
+      "Optimieren Sie Ressourcen und senken Sie Arbeitskosten durch effizientere Arbeitsabläufe und intelligentere Prozesse.",
+    Flexibility: "Flexibilität",
+    Flexibility_p:
+      "Reagieren Sie schnell auf sich ändernde Projektanforderungen mit skalierbaren und vielseitigen Dienstleistungen.",
+    Supported_by: "Unterstützt von",
+    Join_Our_Newsletter: "Abonnieren Sie unseren Newsletter",
+    Stay_In_Touch_With_Us: "Bleiben Sie mit uns in Kontakt",
+    subscribe: "Abonnieren",
+    footer_back:
+      "Die Zukunft der luftgestützten Brillanz freisetzen: Steigerung von Präzision, Sicherheit und Effizienz im nachhaltigen Facility Management, bei Inspektionen von Energieanlagen und darüber hinaus mit Dronex 360",
+    Quick_Links: "Schnellzugriff",
+    Home: "Startseite",
+    Service_Benefits: "Dienstleistungen & Vorteile",
+    Contact_Us: "Kontaktieren Sie uns",
+    Services: "Dienstleistungen",
+    Stay_Updated: "Bleiben Sie auf dem Laufenden",
+    Subscribe_News:
+      "Abonnieren Sie unseren Newsletter, um die neuesten Updates und Angebote zu erhalten.",
+      client: "Kundenbewertungen",
+      client_1: "Dronex 360 hat unsere Brücken- und Überführungsinspektionen mit ihren KI-gesteuerten Drohnen revolutioniert. Ihre Geschwindigkeit, Präzision und Datenanalysen haben Ausfallzeiten reduziert und die Effizienz gesteigert",
+      client_2: "Dronex 360 hat unsere Hochrisikoinspektionen mit autonomen Drohnenlösungen transformiert, die eine präzise Überwachung chemischer Zonen bei minimaler menschlicher Exposition gewährleisten.",
+      client_3: "Wir waren von der Lagerinspektion von Dronex 360 in unserer KIZAD-Anlage sehr beeindruckt. Ihre fortschrittliche Drohnentechnologie ermöglichte eine präzise Risserkennung, die Identifizierung von Sicherheitsproblemen und die Außenreinigung.",
+      client_4: "Dronex 360 war ein Wendepunkt für uns. Ihre drohnenbasierten Inspektionen und Fassadenreinigungen reduzierten den Arbeitsbedarf und beseitigten Gerüstrisiken bei unseren Hochhäusern. Ihr maßgeschneiderter Ansatz zeigt echtes Branchenverständnis.", 
+      contact_heading: "Wir würden uns freuen, von Ihnen zu hören!",
+      contact_subheading: "Füllen Sie einfach das Formular aus, und wir werden uns bei Ihnen melden.", 
+  },
       };
 
       document.querySelectorAll("[data-key]").forEach((el) => {
@@ -1440,11 +1437,11 @@ Their tailored approach shows real industry insight.”
       const langToggle = document.getElementById("langToggle");
       langToggle.addEventListener("click", () => {
         if (currentLang === "en") {
-          changeLanguage("fr");
+          changeLanguage("gr");
           langToggle.textContent = "EN"; // Show option to switch back
         } else {
           changeLanguage("en");
-          langToggle.textContent = "fr"; // Show option to switch back
+          langToggle.textContent = "Germany"; 
         }
       });
 
@@ -1479,6 +1476,54 @@ Their tailored approach shows real industry insight.”
       768: { slidesPerView: 3 }, // ✅ Desktop: 3 cards
     },
   });
+  
+
+  //logo swiper
+
+  AOS.init({
+  duration: 800,
+  once: true,
+});
+
+// ✅ Testimonial Slider
+var testimonialSwiper = new Swiper(".mySwiper", {
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    0: { slidesPerView: 1 },   // Mobile
+    768: { slidesPerView: 3 }, // Desktop
+  },
+});
+
+
+  var logoSwiper = new Swiper(".mySwiperLogos", {
+    slidesPerView: 4,
+    spaceBetween: 40,
+    loop: true,
+    speed: 5000,           // adjust for scroll speed
+    freeMode: true,
+    freeModeMomentum: false,  // disables stop on release
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      0: { slidesPerView: 2, spaceBetween: 20 },
+      640: { slidesPerView: 3, spaceBetween: 30 },
+      1024: { slidesPerView: 4, spaceBetween: 40 },
+    },
+  });
+
+
+
 
 
           // form logic
