@@ -318,8 +318,7 @@
 
 </script>
 
-<body bg[#161616] class="min-h-screen flex flex-col">
-  <main class="flex-1">
+<body bg[#161616] >
   <nav
     class="bg-[#161616] backdrop-invert backdrop-invert backdrop-opacity-10 shadow w-full px-6 py-26 static top-0 left-0 right-0 z-10"
     x-data="{ open: false }">
@@ -369,10 +368,10 @@
           Germany
         </a>
       </div>
-    
-</nav>
+    </nav>
 
-    <!-- hero section --->
+
+    <!hero section --->
 
       <section id="hero"
         class="relative bg-[#161616] text-white bg-[url('images/vector_background.png')] bg-no-repeat bg-right bg-cover">
@@ -966,30 +965,35 @@
 
       <!----------------news letter section --------------------->
 
-    <section class="w-full px-12 pt-12 pb-8 bg-black"> <!-- was py-12 -->
-  <div class="max-w-4xl mx-auto">
-    <div class="group relative rounded-2xl p-0.5 overflow-hidden bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-400 gradient-anim">
-      <div class="relative rounded-2xl overflow-hidden">
-        <div class="absolute inset-0">
-          <img src="images/drone-back.png" alt="Newsletter Background" class="w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-black/80"></div>
-        </div>
-        <div class="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <p data-key="Join_Our_Newsletter" class="text-cyan-300 text-lg last:mb-0"></p>
-            <h2 data-key="Stay_In_Touch_With_Us" class="text-2xl md:text-4xl text-white font-semi-bold mt-2 last:mb-0"></h2>
-          </div>
-          <div>
-            <button data-key="subscribe" class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition"></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      <section class="w-full px-12 py-12 bg-black">
+        <div class="max-w-4xl mx-auto">
+          <div
+            class="group relative rounded-2xl p-0.5 overflow-hidden bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-400 gradient-anim">
+            <div class="relative rounded-2xl overflow-hidden">
+              <!-- Background Image -->
+              <div class="absolute inset-0">
+                <img src="images/drone-back.png" alt="Newsletter Background" class="w-full h-full object-cover" />
 
+                <div class="absolute inset-0 bg-black/80"></div>
+              </div>
 
-     
+              <!-- Content -->
+              <div class="relative p-8 md:p-12 flex flex-col md:flex-row font-nexa items-center justify-between gap-6">
+                <div>
+                  <p data-key="Join_Our_Newsletter" class="text-cyan-300 text-lg"></p>
+                  <h2 data-key="Stay_In_Touch_With_Us"
+                    class="text-2xl md:text-4xl text-white font-nexa font-semi-bold mt-2"></h2>
+                </div>
+
+                <div>
+                  <button data-key="subscribe"
+                    class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- -----------------footer section --------------------->
 
@@ -1056,7 +1060,7 @@
     </div>
   </div>
 </footer>
- </main>
+
 
       <script>
         const translations = {
