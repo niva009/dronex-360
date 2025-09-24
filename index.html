@@ -1,772 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="dronex360"
-      content="Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="images/fav/dronex-fav.png" />
-    <title>Unlocking the Future of Aerial Brilliance</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="images/favicon/gotsdonefav.png"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<!-- ✅ Swiper (latest version) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- ✅ AOS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="dronex360"
+    content="Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/fav/dronex-fav.png" />
+  <title>Unlocking the Future of Aerial Brilliance</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon/gotsdonefav.png" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- ✅ Swiper (latest version) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- ✅ Alpine.js -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- ✅ AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- ✅ Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 
-    <style>
-      @keyframes flyIn {
-        0% {
-          transform: translateX(200px) translateY(100px) scale(0.5);
-          opacity: 0;
-        }
-        60% {
-          transform: translateX(-50px) translateY(-20px) scale(1.05);
-          opacity: 1;
-        }
-        100% {
-          transform: translateX(0) translateY(0) scale(1);
-          opacity: 1;
-        }
+  <style>
+    @keyframes flyIn {
+      0% {
+        transform: translateX(200px) translateY(100px) scale(0.5);
+        opacity: 0;
       }
 
-      @keyframes hover {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
+      60% {
+        transform: translateX(-50px) translateY(-20px) scale(1.05);
+        opacity: 1;
       }
 
-      .fly-drone {
-        animation: flyIn 2s ease-out forwards;
+      100% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes hover {
+
+      0%,
+      100% {
+        transform: translateY(0);
       }
 
-      .hovering {
-        animation: hover 3s ease-in-out infinite;
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .fly-drone {
+      animation: flyIn 2s ease-out forwards;
+    }
+
+    .hovering {
+      animation: hover 3s ease-in-out infinite;
+    }
+
+    /* Animation — paused by default, runs while hovered (.group:hover) */
+    .gradient-anim {
+      background-size: 200% 200%;
+      animation: border-move 3s linear infinite;
+      animation-play-state: paused;
+      /* paused until hover */
+      transition: box-shadow 0.25s ease;
+    }
+
+    /* Start moving on hover */
+    .group:hover .gradient-anim {
+      animation-play-state: running;
+      box-shadow: 0 12px 30px rgba(6, 182, 212, 0.12);
+      /* subtle cyan glow */
+    }
+
+    /* Optional: make the inner card elevate slightly on hover */
+    .group:hover .relative.bg-\[\#111\] {
+      transform: translateY(-4px);
+      transition: transform 0.25s ease;
+    }
+
+    /* Border gradient animation */
+    .gradient-anim {
+      background-size: 200% 200%;
+      animation: border-move 4s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .group:hover .gradient-anim {
+      animation-play-state: running;
+      box-shadow: 0 12px 30px rgba(6, 182, 212, 0.12);
+    }
+
+    @keyframes border-move {
+      0% {
+        background-position: 0% 50%;
       }
 
-      /* Animation — paused by default, runs while hovered (.group:hover) */
-      .gradient-anim {
-        background-size: 200% 200%;
-        animation: border-move 3s linear infinite;
-        animation-play-state: paused; /* paused until hover */
-        transition: box-shadow 0.25s ease;
+      50% {
+        background-position: 100% 50%;
       }
 
-      /* Start moving on hover */
-      .group:hover .gradient-anim {
-        animation-play-state: running;
-        box-shadow: 0 12px 30px rgba(6, 182, 212, 0.12); /* subtle cyan glow */
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes borderGlow {
+      0% {
+        box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 20px #22d3ee;
       }
 
-      /* Optional: make the inner card elevate slightly on hover */
-      .group:hover .relative.bg-\[\#111\] {
-        transform: translateY(-4px);
-        transition: transform 0.25s ease;
+      50% {
+        box-shadow: 0 0 15px #22d3ee, 0 0 30px #22d3ee, 0 0 45px #22d3ee;
       }
 
-      /* Border gradient animation */
-      .gradient-anim {
-        background-size: 200% 200%;
-        animation: border-move 4s linear infinite;
-        animation-play-state: paused;
+      100% {
+        box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 20px #22d3ee;
       }
-      .group:hover .gradient-anim {
-        animation-play-state: running;
-        box-shadow: 0 12px 30px rgba(6, 182, 212, 0.12);
-      }
-      @keyframes border-move {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+    }
+
+    .animate-border-glow {
+      animation: borderGlow 4s linear infinite;
+    }
+
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px);
       }
 
-      @keyframes borderGlow {
-        0% {
-          box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 20px #22d3ee;
-        }
-        50% {
-          box-shadow: 0 0 15px #22d3ee, 0 0 30px #22d3ee, 0 0 45px #22d3ee;
-        }
-        100% {
-          box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 20px #22d3ee;
-        }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .animate-border-glow {
-        animation: borderGlow 4s linear infinite;
-      }
+    }
 
-      @keyframes slideDown {
-        0% {
-          opacity: 0;
-          transform: translateY(-40px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
+    .animate-slideDown {
+      animation: slideDown 1s ease forwards;
+    }
+
+    /* Border gradient animation */
+
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
       }
 
-      .animate-slideDown {
-        animation: slideDown 1s ease forwards;
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-slide-up {
+      animation: fadeSlideUp 1s ease forwards;
+    }
+
+    @font-face {
+      font-family: "Nexa";
+      src: url("/fonts/NexaLight.woff2") format("woff2");
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    @keyframes gradient-flow {
+      0% {
+        background-position: 0% 50%;
       }
 
-      /* Border gradient animation */
-
-      @keyframes fadeSlideUp {
-        0% {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      100% {
+        background-position: 100% 50%;
       }
-      .fade-slide-up {
-        animation: fadeSlideUp 1s ease forwards;
-      }
+    }
 
-      @font-face {
-        font-family: "Nexa";
-        src: url("/fonts/NexaLight.woff2") format("woff2");
-        font-weight: 300;
-        font-style: normal;
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient-flow 4s linear infinite;
+    }
+
+    @keyframes borderMove {
+      0% {
+        background-position: 0% 50%;
       }
 
-      @keyframes gradient-flow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
+      100% {
+        background-position: 200% 50%;
+      }
+    }
 
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-flow 4s linear infinite;
-}
+    .animate-border {
+      background: linear-gradient(90deg,
+          #00504C,
+          transparent,
+          #00504C,
+          transparent,
+          #00504C);
+      background-size: 200% 200%;
+      animation: borderMove 4s linear infinite;
+    }
 
-@keyframes borderMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
+    @keyframes float {
 
-.animate-border {
-  background: linear-gradient(
-    90deg,
-    #00504C,
-    transparent,
-    #00504C,
-    transparent,
-    #00504C
-  );
-  background-size: 200% 200%;
-  animation: borderMove 4s linear infinite;
-}
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-20px) translateX(10px); }
-}
+      50% {
+        transform: translateY(-20px) translateX(10px);
+      }
+    }
 
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-15px) translateX(-5px); }
-}
+    @keyframes float-slow {
 
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
 
-    </style>
-  </head>
+      50% {
+        transform: translateY(-15px) translateX(-5px);
+      }
+    }
+  </style>
+</head>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const drone = document.getElementById("drone");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Play fly in animation first
-              drone.classList.add("fly-drone");
-              drone.classList.remove("opacity-0");
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const drone = document.getElementById("drone");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Play fly in animation first
+            drone.classList.add("fly-drone");
+            drone.classList.remove("opacity-0");
 
-              // After fly-in completes, start hovering
-              setTimeout(() => {
-                drone.classList.remove("fly-drone");
-                drone.classList.add("hovering");
-              }, 2000); // matches flyIn duration
-            }
-          });
-        },
-        { threshold: 0.4 }
-      );
-
-      observer.observe(drone);
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const tabLinks = document.querySelectorAll(".tab-link");
-      const headingBox = document.getElementById("active-heading");
-      const textBox = document.getElementById("active-text");
-
-      tabLinks.forEach((link) => {
-        link.addEventListener("mouseenter", function () {
-          // Fade out
-          headingBox.classList.add("opacity-0");
-          textBox.classList.add("opacity-0", "translate-x-2");
-
-          setTimeout(() => {
-            // Change content
-            headingBox.textContent = this.dataset.heading;
-            textBox.textContent = this.dataset.text;
-
-            // Fade in
-            headingBox.classList.remove("opacity-0");
-            textBox.classList.remove("opacity-0", "translate-x-2");
-          }, 250); // delay matches transition
+            // After fly-in completes, start hovering
+            setTimeout(() => {
+              drone.classList.remove("fly-drone");
+              drone.classList.add("hovering");
+            }, 2000); // matches flyIn duration
+          }
         });
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(drone);
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabLinks = document.querySelectorAll(".tab-link");
+    const headingBox = document.getElementById("active-heading");
+    const textBox = document.getElementById("active-text");
+
+    tabLinks.forEach((link) => {
+      link.addEventListener("mouseenter", function () {
+        // Fade out
+        headingBox.classList.add("opacity-0");
+        textBox.classList.add("opacity-0", "translate-x-2");
+
+        setTimeout(() => {
+          // Change content
+          headingBox.textContent = this.dataset.heading;
+          textBox.textContent = this.dataset.text;
+
+          // Fade in
+          headingBox.classList.remove("opacity-0");
+          textBox.classList.remove("opacity-0", "translate-x-2");
+        }, 250); // delay matches transition
       });
     });
+  });
 
-    //animation
+  //animation
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const elements = document.querySelectorAll(".animate-on-scroll");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("animate-slideDown");
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".animate-on-scroll");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-slideDown");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-      elements.forEach((el) => observer.observe(el));
-    });
+    elements.forEach((el) => observer.observe(el));
+  });
 
-    //application INDUSTRIES
+  //application INDUSTRIES
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const elements = document.querySelectorAll(".animate-on-scroll");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("fade-slide-up");
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".animate-on-scroll");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-slide-up");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-      elements.forEach((el) => observer.observe(el));
-    });
-    
-
-  </script>
-
-  <body bg[#161616]>
-    <nav
-      class="bg-[#161616] backdrop-invert backdrop-invert backdrop-opacity-10 shadow w-full px-6 py-26 static top-0 left-0 right-0 z-10"
-      x-data="{ open: false }"
-    >
-
-    <nav
-  class="bg-transparent md:bg-transparent bg-[#161616]/70 md:backdrop-blur-0 backdrop-blur-md shadow w-full px-6 py-5 fixed top-0 left-0 right-0 z-20"
-  x-data="{ open: false }"
->
-  <div class="container mx-auto flex items-center justify-between">
-    <!-- Logo (left side) -->
-    <div class="flex items-center space-x-3">
-      <img
-        src="images/Dronex 360 Logo 1 PNG 1.png"
-        alt="Logo-gotsdone"
-        class="h-25 w-auto ml-12"
-      />
-    </div>
-
-    <!-- Nav Links (Desktop, centered) -->
-    <div
-      class="hidden md:flex space-x-12 items-center absolute left-1/2 transform -translate-x-1/2"
-    >
-      <a
-        href="#"
-        data-key="Home"
-        class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
-      ></a>
-      <a
-        href="#services"
-        data-key="Service_Benefits"
-        class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
-      ></a>
-      <a
-        href="#contact"
-        data-key="Contact_Us"
-        class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"
-      ></a>
-    </div>
-
-    <!-- Language Button (right side) -->
-    <div class="hidden md:flex items-center">
-      <a
-        href="#gr"
-        id="langToggle"
-        class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md"
-      >
-        Germany
-      </a>
-    </div>
-
-    <!-- Mobile Menu Button -->
-    <div class="md:hidden">
-      <button @click="open = !open" class="focus:outline-none">
-        <svg
-          class="w-6 h-6 ml-8 text-white"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- Dropdown Mobile Menu -->
-  <div x-show="open" class="md:hidden mt-4 px-6 space-y-3 bg-[#161616]/80 backdrop-blur-md rounded-md">
-    <a
-      href="#"
-      data-key="Home"
-      class="block text-white hover:text-blue-600"
-    ></a>
-    <a
-      href="#about"
-      data-key="Service_Benefits"
-      class="block text-white hover:text-blue-600"
-    ></a>
-    <a
-      href="#contact"
-      data-key="Contact_Us"
-      class="block text-white hover:text-blue-600"
-    ></a>
-    <a
-      href="#"
-      onclick="event.preventDefault(); changeLanguage('fr');"
-      class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md"
-    >
-      Germany
-    </a>
-  </div>
-</nav>
+    elements.forEach((el) => observer.observe(el));
+  });
 
 
-    <!hero section --->
+</script>
 
-    <section
-      id="hero"
-      class="relative bg-[#161616] text-white bg-[url('images/vector_background.png')] bg-no-repeat bg-right bg-cover"
-    >
-      <div
-        class="container mx-auto px-6 py-16 flex flex-col-reverse lg:flex-row items-center justify-between gap-12"
-      >
-        <!-- Left Text -->
-        <div
-          class="flex-1 animate-[slideDown_1s_ease-out] text-center lg:text-left"
-        >
-          <h1 class="text-4xl md:text-7xl pl-6 font-bold font-nexa leading-tight">
-            <span data-key="head_360"></span> <br />
-            <span 
-  class="font-nexa bg-gradient-to-r from-[#89F6F6] via-[#b0f5f5] to-[#89F6F6] bg-clip-text text-transparent animate-gradient"
-  data-key="aerial">
-  Flowing Gradient
-</span>
-          </h1>
+<body class="bg-[#161616]">
 
-          <p
-            class="mt-6 text-gray-300 text-lg max-w-xl pl-6 mx-auto lg:mx-0"
-            data-key="unlocking"
-          ></p>
 
-          <!-- Button -->
-          <div class="mt-8 flex justify-center pl-6 lg:justify-start">
-            <a
-              href="#about"
-              class="group inline-flex items-center gap-3 rounded-full px-6 py-3 text-black font-medium shadow-lg transition bg-gradient-to-r from-teal-300 to-teal-500 hover:from-teal-400 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-400/60 focus:ring-offset-0 active:scale-[0.98]"
-            >
-              <span data-key="learn" class="tracking-normal"></span>
+
+
+    <!--hero section --->
+
+      <section id="hero"
+     class="relative bg-[#161616] text-white bg-[url('images/vector_background.png')] bg-no-repeat bg-right bg-cover">
+
+
+     <nav
+  class="absolute top-0 left-0 right-0 z-20 w-full px-6 py-5 bg-transparent shadow-none backdrop-blur-none"
+  x-data="{ open: false }">
+
+      <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo (left side) -->
+        <div class="flex items-center space-x-3">
+          <img src="images/Dronex 360 Logo 1 PNG 1.png" alt="Logo-gotsdone" class="h-25 w-auto ml-12" />
+        </div>
+
+        <!-- Nav Links (Desktop, centered) -->
+        <div class="hidden md:flex space-x-12 items-center absolute left-1/2 transform -translate-x-1/2">
+          <a href="#" data-key="Home" class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"></a>
+          <a href="#services" data-key="Service_Benefits"
+            class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"></a>
+          <a href="#contact" data-key="Contact_Us"
+            class="text-white hover:text-[#89F6F6] hover:font-semibold text-lg"></a>
+        </div>
+
+        <!-- Language Button (right side) -->
+        <div class="hidden md:flex items-center">
+          <a href="#gr" id="langToggle" class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md">
+            Germany
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button @click="open = !open" class="focus:outline-none">
+            <svg class="w-6 h-6 ml-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dropdown Mobile Menu -->
+      <div x-show="open" class="md:hidden mt-4 px-6 space-y-3 bg-[#161616]/80 backdrop-blur-md rounded-md">
+        <a href="#" data-key="Home" class="block text-white hover:text-blue-600"></a>
+        <a href="#about" data-key="Service_Benefits" class="block text-white hover:text-blue-600"></a>
+        <a href="#contact" data-key="Contact_Us" class="block text-white hover:text-blue-600"></a>
+        <a href="#" onclick="event.preventDefault(); changeLanguage('fr');"
+          class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md">
+          Germany
+        </a>
+      </div>
+    </nav>
+
+        <div class="container mx-auto px-6 py-36 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+          <!-- Left Text -->
+          <div class="flex-1 animate-[slideDown_1s_ease-out] text-center lg:text-left">
+            <h1 class="text-4xl md:text-7xl pl-6 font-bold font-nexa leading-tight">
+              <span data-key="head_360"></span> <br />
               <span
-                class="relative inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/95 text-black transition group-hover:translate-x-0.5"
-                aria-hidden="true"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  class="h-4 w-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+                class="font-nexa bg-gradient-to-r from-[#89F6F6] via-[#b0f5f5] to-[#89F6F6] bg-clip-text text-transparent animate-gradient"
+                data-key="aerial">
+                Flowing Gradient
               </span>
-            </a>
+            </h1>
+
+            <p class="mt-6 text-gray-300 text-lg max-w-xl pl-6 mx-auto lg:mx-0" data-key="unlocking"></p>
+
+            <!-- Button -->
+            <div class="mt-8 flex justify-center pl-6 lg:justify-start">
+              <a href="#about"
+                class="group inline-flex items-center gap-3 rounded-full px-6 py-3 text-black font-medium shadow-lg transition bg-gradient-to-r from-teal-300 to-teal-500 hover:from-teal-400 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-400/60 focus:ring-offset-0 active:scale-[0.98]">
+                <span data-key="learn" class="tracking-normal"></span>
+                <span
+                  class="relative inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/95 text-black transition group-hover:translate-x-0.5"
+                  aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" class="h-4 w-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Image -->
+          <div class="flex-1 flex justify-end relative z-10">
+            <!-- Gradient Background -->
+            <div
+              class="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.5),_transparent_70%)] rounded-full blur-3xl">
+            </div>
+
+            <!-- Drone Image -->
+            <img id="drone" src="images/dronex landing.png" alt="Drone"
+              class="relative w-[600px] h-[400px] opacity-100 transition-all duration-1000 object-contain" />
           </div>
         </div>
+      </section>
 
-        <!-- Right Image -->
-        <div class="flex-1 flex justify-end relative z-10">
-          <!-- Gradient Background -->
-          <div
-            class="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.5),_transparent_70%)] rounded-full blur-3xl"
-          ></div>
+      <!---------------------service section start hereee ------------------>
 
-          <!-- Drone Image -->
-          <img
-            id="drone"
-            src="images/dronex landing.png"
-            alt="Drone"
-            class="relative w-[600px] h-[400px] opacity-100 transition-all duration-1000 object-contain"
-          />
-        </div>
-      </div>
-    </section>
+      <section id="services" class="relative bg-[#161616] text-white pt-35 px-8 overflow-hidden">
+        <!-- Big Background Text -->
+        <h2
+          class="absolute top-2 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 -mt-6 opacity-40 select-none tracking-widest">
+          DRONEX360
+        </h2>
 
-    <!---------------------service section start hereee ------------------>
-
-    <section
-      id="services"
-      class="relative bg-[#161616] text-white pt-35 px-8 overflow-hidden"
-    >
-      <!-- Big Background Text -->
-      <h2
-        class="absolute top-2 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 -mt-6 opacity-40 select-none tracking-widest"
-      >
-        DRONEX360
-      </h2>
-
-      <!-- Left vertical trail -->
-      <div
-        class="absolute top-[26rem] left-6 w-5 h-5 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[28rem] left-3 w-8 h-8 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[30rem] left-14 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[32rem] left-8 w-4 h-4 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[34rem] left-18 w-7 h-7 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[36rem] left-5 w-10 h-10 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[38rem] left-12 w-5 h-5 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[40rem] left-20 w-9 h-9 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[42rem] left-7 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[44rem] left-16 w-4 h-4 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-
-      <div
-        class="absolute top-[29rem] left-36 w-12 h-12 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[33rem] left-40 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[37rem] left-32 w-8 h-8 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-      <div
-        class="absolute top-[41rem] left-38 w-10 h-10 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full"
-      ></div>
-
-      <div class="container mx-auto relative z-10">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl md:text-4xl font-bold">
-            <span
-              data-key="Services"
-              class="text-cyan-400 font-nexa bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"
-            ></span>
-          </h2>
-          <p
-            data-key="service_p"
-            class="mt-6 text-gray-300 max-w-3xl mx-auto text-lg"
-          ></p>
-        </div>
-
-        <div class="grid md:grid-cols-4 gap-6 max-w-6xl py-12 mx-auto">
-          <!-- Card 1 -->
-          <div
-            class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300"
-          >
-            <div class="w-full h-44">
-              <img
-                src="images/custom_drone.webp"
-                alt="Custom Drone Manufacturing"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <h3
-                data-key="manufacture"
-                class="font-nexa text-white text-lg uppercase mb-3 font-semibold"
-              ></h3>
-              <p
-                data-key="manufacture_p"
-                class="font-poppins text-gray-300 text-sm"
-              ></p>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div
-            class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300"
-          >
-            <div class="w-full h-44">
-              <img
-                src="images/under_water.webp"
-                alt="Underwater Inspection"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <h3
-                data-key="underwater"
-                class="font-nexa text-white text-lg uppercase mb-3 font-semibold"
-              ></h3>
-              <p
-                data-key="Underwater_p"
-                class="text-gray-300 text-sm leading-relaxed"
-              ></p>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div
-            class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300"
-          >
-            <div class="w-full h-44">
-              <img
-                src="images/building_cleaning.jpg"
-                alt="Building Cleaning Solutions"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <h3
-                data-key="Building"
-                class="font-nexa text-white text-lg uppercase mb-3 font-semibold"
-              ></h3>
-              <p
-                data-key="Building_p"
-                class="font-poppins text-gray-300 text-sm leading-relaxed"
-              ></p>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div
-            class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300"
-          >
-            <div class="w-full h-44">
-              <img
-                src="images/drone_survey.webp"
-                alt="Surveillance and Surveys"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <h3
-                data-key="Surveillance"
-                class="font-nexa text-white text-lg uppercase mb-3 font-semibold"
-              ></h3>
-              <p
-                data-key="Surveillance_p"
-                class="font-poppins text-gray-300 text-sm leading-relaxed"
-              ></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl"
-      ></div>
-      <div
-        class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-2xl"
-      ></div>
-
-      <div class="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-20 z-0">
-        <img
-          src="images/vector_service.png"
-          alt="Vector Background"
-          class="w-full h-full object-cover"
-        />
-      </div>
-
-      <h2
-        data-key="setpart"
-        class="text-center text-3xl pt-10 md:text-4xl font-bold mb-12 bg-gradient-to-r from-[#89F6F6] to-[#ADFCFC] bg-clip-text text-transparent"
-      ></h2>
-    </section>
-
-    <!--------------------service section end hereee ---------------------->
-
-    <!---------------------what set us part section -------------------------->
-
-    <section class="bg-[#1F2828] text-white py-16 px-6">
-      <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+        <!-- Left vertical trail -->
         <div
-          class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition opacity-0 animate-on-scroll"
-        >
-          <div
-            class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden"
-          >
-            <img
-              src="images/Group 12.png"
-              alt="Drone"
-              class="w-10 h-12 object-contain"
-            />
-          </div>
-          <h3
-            data-key="automation_drone"
-            class="text-lg font-nexa font-semibold mb-2"
-          ></h3>
-          <p
-            data-key="automation_drone_p"
-            class="text-gray-300 font-poppins text-sm"
-          ></p>
+          class="absolute top-[26rem] left-6 w-5 h-5 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[28rem] left-3 w-8 h-8 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[30rem] left-14 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[32rem] left-8 w-4 h-4 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[34rem] left-18 w-7 h-7 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[36rem] left-5 w-10 h-10 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[38rem] left-12 w-5 h-5 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[40rem] left-20 w-9 h-9 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[42rem] left-7 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[44rem] left-16 w-4 h-4 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full">
         </div>
 
         <div
-          class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition opacity-0 animate-on-scroll"
-        >
-          <div
-            class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden"
-          >
-            <img
-              src="images/Group 13.png"
-              alt="Drone"
-              class="w-10 h-12 object-contain"
-            />
-          </div>
-          <h3
-            data-key="technology"
-            class="text-lg font-nexa font-semibold mb-2"
-          ></h3>
-          <p
-            data-key="technology_p"
-            class="text-gray-300 font-poppins text-sm"
-          ></p>
+          class="absolute top-[29rem] left-36 w-12 h-12 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full">
         </div>
-
         <div
-          class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition opacity-0 animate-on-scroll"
-        >
-          <div
-            class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden"
-          >
-            <img
-              src="images/Group 14.png"
-              alt="Drone"
-              class="w-10 h-12 object-contain"
-            />
-          </div>
-          <h3
-            data-key="customized"
-            class="text-lg font-nexa font-semibold mb-2"
-          ></h3>
-          <p
-            data-key="customized_p"
-            class="text-gray-300 font-poppins text-sm"
-          ></p>
+          class="absolute top-[33rem] left-40 w-6 h-6 bg-white/20 animate-[float_4s_ease-in-out_infinite] rounded-full">
         </div>
-      </div>
-    </section>
+        <div
+          class="absolute top-[37rem] left-32 w-8 h-8 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
+        <div
+          class="absolute top-[41rem] left-38 w-10 h-10 bg-white/10 animate-[float_4s_ease-in-out_infinite] rounded-full">
+        </div>
 
-    <!--------------------last section of what set us paar-------------------->
+        <div class="container mx-auto relative z-10">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-4xl font-bold">
+              <span data-key="Services"
+                class="text-cyan-400 font-nexa bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"></span>
+            </h2>
+            <p data-key="service_p" class="mt-6 text-gray-300 max-w-3xl mx-auto text-lg"></p>
+          </div>
 
-    <!---------------------Application Industrys ------------------------------>
+          <div class="grid md:grid-cols-4 gap-6 max-w-6xl py-12 mx-auto">
+            <!-- Card 1 -->
+            <div
+              class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
+              <div class="w-full h-44">
+                <img src="images/custom_drone.webp" alt="Custom Drone Manufacturing"
+                  class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6">
+                <h3 data-key="manufacture" class="font-nexa text-white text-lg uppercase mb-3 font-semibold"></h3>
+                <p data-key="manufacture_p" class="font-poppins text-gray-300 text-sm"></p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
+              <div class="w-full h-44">
+                <img src="images/under_water.webp" alt="Underwater Inspection" class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6">
+                <h3 data-key="underwater" class="font-nexa text-white text-lg uppercase mb-3 font-semibold"></h3>
+                <p data-key="Underwater_p" class="text-gray-300 text-sm leading-relaxed"></p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
+              <div class="w-full h-44">
+                <img src="images/building_cleaning.jpg" alt="Building Cleaning Solutions"
+                  class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6">
+                <h3 data-key="Building" class="font-nexa text-white text-lg uppercase mb-3 font-semibold"></h3>
+                <p data-key="Building_p" class="font-poppins text-gray-300 text-sm leading-relaxed"></p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="bg-[#1F2828]/90 rounded-xl shadow-lg overflow-hidden hover:shadow-cyan-500/30 transition duration-300">
+              <div class="w-full h-44">
+                <img src="images/drone_survey.webp" alt="Surveillance and Surveys" class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6">
+                <h3 data-key="Surveillance" class="font-nexa text-white text-lg uppercase mb-3 font-semibold"></h3>
+                <p data-key="Surveillance_p" class="font-poppins text-gray-300 text-sm leading-relaxed"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-2xl"></div>
+
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-20 z-0">
+          <img src="images/vector_service.png" alt="Vector Background" class="w-full h-full object-cover" />
+        </div>
+
+        <h2 data-key="setpart"
+          class="text-center text-3xl pt-10 md:text-4xl font-bold mb-12 bg-gradient-to-r from-[#89F6F6] to-[#ADFCFC] bg-clip-text text-transparent">
+        </h2>
+      </section>
+
+      <!--------------------service section end hereee ---------------------->
+
+      <!---------------------what set us part section -------------------------->
+
+      <section class="bg-[#1F2828] text-white py-16 px-6">
+        <div class="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+          <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition opacity-0 animate-on-scroll">
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
+              <img src="images/Group 12.png" alt="Drone" class="w-10 h-12 object-contain" />
+            </div>
+            <h3 data-key="automation_drone" class="text-lg font-nexa font-semibold mb-2"></h3>
+            <p data-key="automation_drone_p" class="text-gray-300 font-poppins text-sm"></p>
+          </div>
+
+          <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition opacity-0 animate-on-scroll">
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
+              <img src="images/Group 13.png" alt="Drone" class="w-10 h-12 object-contain" />
+            </div>
+            <h3 data-key="technology" class="text-lg font-nexa font-semibold mb-2"></h3>
+            <p data-key="technology_p" class="text-gray-300 font-poppins text-sm"></p>
+          </div>
+
+          <div class="text-center p-6 rounded-xl hover:bg-[#1f1f1f] transition opacity-0 animate-on-scroll">
+            <div
+              class="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
+              <img src="images/Group 14.png" alt="Drone" class="w-10 h-12 object-contain" />
+            </div>
+            <h3 data-key="customized" class="text-lg font-nexa font-semibold mb-2"></h3>
+            <p data-key="customized_p" class="text-gray-300 font-poppins text-sm"></p>
+          </div>
+        </div>
+      </section>
+
+      <!--------------------last section of what set us paar-------------------->
+
+      <!---------------------Application Industrys ------------------------------>
 
 
 <section class="relative text-white py-30 px-6 overflow-hidden">
-  <!-- subtle dots background across the whole section -->
+  <!-- dots bg -->
   <div class="absolute inset-0 bg-dots opacity-5"></div>
 
-  <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
+  <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- Visual column -->
+    <div class="order-first md:order-1">
+      <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[16/9] md:h-[520px]">
+        <!-- Background -->
+        <img src="images/drone-background.png" alt="Background"
+             class="absolute inset-0 w-full h-full object-contain md:object-cover object-center" />
 
- <div class="relative z-0 order-2 md:order-1 flex items-center">
-  <div class="relative rounded-xl overflow-hidden shadow-lg w-full">
+        <!-- Cyan glow -->
+        <div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                    w-[70%] sm:w-[60%] aspect-square rounded-full
+                    bg-[radial-gradient(closest-side,rgba(137,246,246,0.18),transparent_70%)]
+                    blur-2xl"></div>
 
-    <img
-      src="images/drone-background.png"
-      alt="background dots"
-      class="absolute inset-0 w-full h-full object-contain z-0"  
-    />
+        <!-- Pulse ring -->
+        <div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                    w-40 sm:w-56 h-40 sm:h-56 rounded-full border border-cyan-300/30
+                    animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
 
-    <img
-      src="images/back-drone-lat.png"
-      alt="High-tech drone"
-      class="relative z-10 w-full md:max-w-none transform hover:scale-105 transition-transform duration-300"
-    />
-  </div>
-</div>
+        <!-- Scan ring -->
+        <div class="pointer-events-none absolute inset-0
+                    [mask-image:radial-gradient(closest-side,transparent_48%,black_50%,transparent_52%)]
+                    animate-[spin_12s_linear_infinite]
+                    bg-[conic-gradient(from_0deg,rgba(137,246,246,0.25),transparent_40%,transparent)]
+                    opacity-40"></div>
 
+        <!-- Drone -->
+        <img src="images/back-drone-lat.png" alt="High-tech drone"
+             class="absolute z-10 left-1/2 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                    max-w-[88%] sm:max-w-[82%] md:max-w-[80%]
+                    transition-transform duration-300 hover:scale-105" />
+      </div>
+    </div>
 
+    <!-- Text column -->
     <div class="order-1 md:order-2 flex flex-col justify-end animate-on-scroll opacity-0">
-      <h2
-        class="text-4xl lg:text-5xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent"
-      >
+      <h2 class="text-4xl lg:text-5xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent">
         APPLICATIONS & INDUSTRIES
       </h2>
-
       <p class="text-xl text-gray-300 mb-8">
         We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.
       </p>
@@ -778,7 +644,6 @@
           <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Thermal Imaging for Gas & Pipe Leaks</li>
           <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Pipeline & Refinery Inspections</li>
         </ul>
-
         <ul class="space-y-4">
           <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>Facade & Solar Panel Cleaning</li>
           <li class="flex"><span class="text-cyan-400 text-2xl mr-3">&raquo;</span>3D Mapping & Modelling</li>
@@ -793,538 +658,485 @@
 
 
 
-<!-- Application Industries -->
+      <!-- Application Industries end  -->
 
-<section class="bg-black text-white py-16 px-6 relative overflow-hidden">
-  <!-- Decorative Circle -->
-  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-72 h-72 bg-[#1A3B4A] rounded-full blur-3xl opacity-70"></div>
 
-  <div class="max-w-6xl mx-auto text-center">
-    <!-- Section Heading -->
-    <h2 data-key="client" class="text-4xl lg:text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent pb-10"></h2>
 
-    <!-- Swiper -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
+      <!-- client testimonials start -->
 
-        <!-- Card 1 -->
-        <div class="swiper-slide">
-          <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-[250px] lg:h-[280px]">
-            <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
-              <p data-key="client_1" class="mb-6 text-md flex-grow"></p>
-            </div>
-            <!-- Author -->
-            <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-3 rounded-xl shadow-md">
-              <img src="images/rta.avif" alt="RTA" class="w-12 h-12 rounded-full object-cover border-2 border-white">
-              <div class="flex-1 flex flex-col justify-center min-w-0">
-                <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Senior Facilities Manager</p>
-                <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">RTA</p>
-              </div>
-            </div>
-          </div>
+
+
+      <section class="bg-black text-white py-16 px-6 relative overflow-hidden">
+        <!-- Decorative Circle -->
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-72 h-72 bg-[#1A3B4A] rounded-full blur-3xl opacity-70">
         </div>
 
-        <!-- Card 2 -->
-        <div class="swiper-slide">
-          <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-[250px] lg:h-[280px]">
-            <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
-              <p data-key="client_2" class="mb-6 text-md flex-grow"></p>
-            </div>
-            <!-- Author -->
-            <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-3 rounded-xl shadow-md">
-              <img src="images/chemex.jpeg" alt="Chemix" class="w-12 h-12 rounded-full object-cover border-2 border-white">
-              <div class="flex-1 flex flex-col justify-center min-w-0">
-                <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Director</p>
-                <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Chemix Industrial Solutions</p>
+        <div class="max-w-6xl mx-auto text-center">
+          <!-- Section Heading -->
+          <h2 data-key="client"
+            class="text-4xl lg:text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent pb-10">
+          </h2>
+
+          <!-- Swiper -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+              <!-- Card 1 -->
+              <div class="swiper-slide">
+                <div data-aos="fade-up" data-aos-delay="100"
+                  class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-auto min-h-[240px] lg:h-[280px]">
+                  <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
+                    <p data-key="client_1" class="mb-6 text-md"></p>
+                  </div>
+                  <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-4 rounded-xl shadow-md flex-none">
+                    <img src="images/rta.avif" alt="RTA"
+                      class="w-12 h-12 rounded-full object-cover border-2 border-white">
+                    <div class="flex-1 min-w-0 text-left">
+                      <p class="text-sm text-black font-medium leading-none pb-1 truncate">Senior Facilities Manager</p>
+                      <p class="text-base font-bold text-gray-600 leading-none truncate">RTA</p>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Card 3 -->
-        <div class="swiper-slide">
-          <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-[250px] lg:h-[280px]">
-            <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
-              <p data-key="client_3" class="mb-6 text-md flex-grow"></p>
-            </div>
-            <!-- Author -->
-            <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-3 rounded-xl shadow-md">
-              <img src="images/safecare.jpeg" alt="Selfcare" class="w-12 h-12 rounded-full object-cover border-2 border-white">
-              <div class="flex-1 flex flex-col justify-center min-w-0">
-                <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Managing Director</p>
-                <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Selfcare Medical Group</p>
+              <!-- Card 2 -->
+              <div class="swiper-slide">
+                <div data-aos="fade-up" data-aos-delay="100"
+                  class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-auto min-h-[240px] lg:h-[280px]">
+                  <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
+                    <p data-key="client_1" class="mb-6 text-md"></p>
+                  </div>
+                  <!-- Author -->
+                  <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-5 rounded-xl shadow-md">
+                    <img src="images/chemex.jpeg" alt="Chemix"
+                      class="w-12 h-12 rounded-full object-cover border-2 border-white">
+                    <div class="flex-1 min-w-0 text-left">
+                      <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Director</p>
+                      <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Chemix
+                        Industrial Solutions</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Card 4 -->
-        <div class="swiper-slide">
-          <div data-aos="fade-up" data-aos-delay="100" class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-[250px] lg:h-[280px]">
-            <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
-              <p data-key="client_4" class="mb-6 text-md flex-grow"></p>
-            </div>
-            <!-- Author -->
-            <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-3 rounded-xl shadow-md">
-              <img src="images/powergroup.png" alt="Power Group" class="w-12 h-12 rounded-full object-cover border-2 border-white">
-              <div class="flex-1 flex flex-col justify-center min-w-0">
-                <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Facilities Manager</p>
-                <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Power Group</p>
+              <!-- Card 3 -->
+              <div class="swiper-slide">
+                <div data-aos="fade-up" data-aos-delay="100"
+                  class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-auto min-h-[240px] lg:h-[280px]">
+                  <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
+                    <p data-key="client_1" class="mb-6 text-md"></p>
+                  </div>
+                  <!-- Author -->
+                  <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-5 rounded-xl shadow-md">
+                    <img src="images/safecare.jpeg" alt="Selfcare"
+                      class="w-12 h-12 rounded-full object-cover border-2 border-white">
+                    <div class="flex-1 min-w-0 text-left">
+                      <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Managing
+                        Director</p>
+                      <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Selfcare
+                        Medical Group</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+
+              <!-- Card 4 -->
+              <div class="swiper-slide">
+                <div data-aos="fade-up" data-aos-delay="100"
+                  class="rounded-2xl overflow-hidden bg-[#101518] shadow-lg flex flex-col h-auto min-h-[240px] lg:h-[280px]">
+                  <div class="p-6 text-sm text-white/80 leading-relaxed flex-grow">
+                    <p data-key="client_1" class="mb-6 text-md"></p>
+                  </div>
+                  <!-- Author -->
+                  <div class="bg-[#89F6F6] flex items-center px-4 py-3 gap-5 rounded-xl shadow-md">
+                    <img src="images/powergroup.png" alt="Power Group"
+                      class="w-12 h-12 rounded-full object-cover border-2 border-white">
+                    <div class="flex-1 min-w-0 text-left">
+                      <p class="text-sm text-black font-medium leading-none pb-1 truncate sm:truncate-none">Facilities
+                        Manager</p>
+                      <p class="text-base font-bold text-gray-600 leading-none truncate sm:truncate-none">Power Group
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div> <!-- swiper-wrapper -->
+          </div> <!-- swiper -->
         </div>
-
-      </div> <!-- swiper-wrapper -->
-    </div> <!-- swiper -->
-  </div>
-</section>
+      </section>
 
 
-    <!--------------------Application Industrys --------------------->
+      <!--------------------Application Industrys --------------------->
 
-    <!-------------------- client logs --------------------->
-
-
-<section class="relative py-20 bg-black overflow-hidden">
-  <!-- Heading -->
-  <div class="text-center mb-10">
-    <h2
-      data-key="Supported_by"
-      class="text-4xl text-primary lg:text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent pb-10"
-    >
-    </h2>
-  </div>
-
-  <!-- Logos Section -->
-  <div class="relative py-10 bg-[#222D2D] overflow-hidden rounded-2xl shadow-lg">
-    <div class="relative max-w-6xl mx-auto text-center">
-      <!-- Swiper Container -->
-     
-<!-- Logo Slider -->
-
-<div class="swiper mySwiperLogos">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide flex items-center justify-center">
-      <img src="images/drone_logo_1.png" alt="Logo 1" 
-           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
-    </div>
-    <div class="swiper-slide flex items-center justify-center">
-      <img src="images/dronex_logo_2.jpeg" alt="Logo 2" 
-           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
-    </div>
-    <div class="swiper-slide flex items-center justify-center">
-      <img src="images/drone_logo_4.png" alt="Logo 3" 
-           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
-    </div>
-    <div class="swiper-slide flex items-center justify-center">
-      <img src="images/dronex_logo_4.webp" alt="Logo 4" 
-           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
-    </div>
-    <!-- Repeat logos for smooth loop -->
-    <div class="swiper-slide flex items-center justify-center">
-      <img src="images/drone_logo_1.png" alt="Logo 1" 
-           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
-    </div>
-    <div class="swiper-slide flex items-center justify-center">
-      <img src="images/dronex_logo_2.jpeg" alt="Logo 2" 
-           class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"/>
-    </div>
-  </div>
-</div>
+      <!-------------------- client logs --------------------->
 
 
-    </div>
-  </div>
-</section>
+      <section class="relative py-20 bg-black overflow-hidden">
 
-
-
-    <!-----------------Contact Form Section  ---------------->
-
-<section id="contact">
-<div  class="w-full min-h-screen bg-black text-white flex items-center justify-center py-18 px-8">
-  <div class="max-w-6xl w-full grid md:grid-cols-2 gap-10">
-
-    <!-- Left Content -->
-<!-- Left Content -->
-<div class="bg-gradient-to-r from-cypress-700 via-black to-teal-800 p-10 rounded-xl">
-  <h2 data-key="contact_heading" class="text-4xl md:text-5xl pb-6 font-bold mb-10 
-        bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent leading-snug text-center">
-  </h2>
-
-  <!-- Call Us -->
-  <p class="text-white text-2xl mb-8 font-bold text-center">Call Us</p>
-
-  <!-- Numbers Grid -->
-  <div class="grid sm:grid-cols-2 gap-6">
-    
-    <!-- UAE -->
-    <div class="bg-black/30 p-5 rounded-xl shadow hover:shadow-lg transition">
-      <p class="text-cyan-400 text-lg font-semibold flex items-center gap-2 mb-2">
-        <span class="material-icons text-cyan-400 text-xl"></span> UAE
-      </p>
-      <a href="tel:+971566414614" class="block text-lg hover:text-cyan-300 transition">+971 566414614</a>
-      <a href="tel:+971562726433" class="block text-lg hover:text-cyan-300 transition">+971 562726433</a>
-    </div>
-
-    <!-- Germany -->
-    <div class="bg-black/30 p-5 rounded-xl shadow hover:shadow-lg transition">
-      <p class="text-cyan-400 text-lg font-semibold flex items-center gap-2 mb-2">
-        <span class="material-icons text-cyan-400 text-xl"></span> Germany
-      </p>
-      <a href="tel:+4915214699912" class="block text-lg hover:text-cyan-300 transition">+49 15214699912</a>
-    </div>
-
-    <!-- Africa -->
-    <div class="bg-black/30 p-5 rounded-xl shadow hover:shadow-lg transition">
-      <p class="text-cyan-400 text-lg font-semibold flex items-center gap-2 mb-2">
-        <span class="material-icons text-cyan-400 text-xl"></span> Africa
-      </p>
-      <a href="tel:+817074272693" class="block text-lg hover:text-cyan-300 transition">+81 7074272693</a>
-    </div>
-
-    <!-- India -->
-    <div class="bg-black/30 p-5 rounded-xl shadow hover:shadow-lg transition">
-      <p class="text-cyan-400 text-lg font-semibold flex items-center gap-2 mb-2">
-        <span class="material-icons text-cyan-400 text-xl"></span> India
-      </p>
-      <a href="tel:+919567666579" class="block text-lg hover:text-cyan-300 transition">+91 9567666579</a>
-    </div>
-  </div>
-
-  <!-- Email -->
-  <div class="mt-10 text-center">
-    <p class="text-gray-400 text-sm mb-1">Get In Touch</p>
-    <a href="mailto:hello@dronex-360.com" class="text-lg font-semibold hover:text-cyan-300 transition">
-      hello@dronex-360.com
-    </a>
-  </div>
-</div>
-
-
-
-
-<div class="relative rounded-xl p-10 max-w-lg mx-auto w-full overflow-hidden">
-  <!-- Animated Border -->
-  <div class="absolute inset-0 rounded-xl p-[2px] animate-border">
-    <div class="w-full h-full rounded-xl bg-black"></div>
-  </div>
-
-  <!-- Content -->
-  <div class="relative z-10">
-    <!-- Your form content here -->
-    <h3 data-key="contact_subheading" class="text-lg font-medium mb-8 text-center mt-12 md:mt-30">
-    </h3>
-  
-  <!-- Success message -->
-  <p id="successMessage" class="hidden text-green-400 font-semibold mb-6 text-center "></p>
-
-  <!-- Form -->
-  <form id="contactForm" 
-      class="space-y-6 max-w-md mx-auto w-full mt-12 md:mt-10">
-
-    <div class="grid md:grid-cols-2 gap-6">
-      <input type="text" id="name" placeholder="Name*" required
-        class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
-      
-      <input type="email" id="email" placeholder="Email*" required
-        class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
-    </div>
-
-    <!-- Row 2 -->
-    <div>
-      <input type="tel" id="phone" placeholder="Phone Number*" required
-        class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"/>
-    </div>
-
-    <!-- Button -->
-    <div class="flex justify-center">
-      <button type="submit" 
-        class="bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-500 hover:to-teal-600 text-white font-medium px-6 py-3 rounded-full shadow-md transition">
-        Submit Form
-      </button>
-    </div>
-  </form>
-</div>
-
-
-
-  </div>
-</div>
-</section>
-
-
-
-
-
-    <!------------------contact Form section End Here ----------------->
-
-    <!----------------news letter section --------------------->
-
-    <section class="w-full px-12 py-12 bg-black">
-      <div class="max-w-4xl mx-auto">
         <div
-          class="group relative rounded-2xl p-0.5 overflow-hidden bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-400 gradient-anim"
-        >
-          <div class="relative rounded-2xl overflow-hidden">
-            <!-- Background Image -->
-            <div class="absolute inset-0">
-              <img
-                src="images/drone-back.png"
-                alt="Newsletter Background"
-                class="w-full h-full object-cover"
-              />
+          class="pointer-events-none absolute inset-0
+              [background-image:radial-gradient(60%_40%_at_50%_0%,rgba(20,120,140,0.35),transparent_70%),linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.6)_70%,rgba(0,0,0,0.9)_100%)]">
+        </div>
 
-              <div class="absolute inset-0 bg-black/80"></div>
+        <!-- Soft vignette -->
+        <div class="pointer-events-none absolute inset-0
+              [mask-image:radial-gradient(70%_60%_at_50%_40%,black,transparent)]"></div>
+
+
+        <!-- Heading -->
+        <div class="text-center mb-10">
+          <h2 data-key="Supported_by"
+            class="text-4xl text-primary lg:text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent pb-10">
+          </h2>
+        </div>
+
+        <!-- Logos Section -->
+        <div class="relative py-10 bg-[#222D2D]/80 overflow-hidden rounded-2xl shadow-lg">
+          <!-- Cyan glow behind logos -->
+          <div class="pointer-events-none absolute -inset-x-20 -top-24 h-64
+                [background:radial-gradient(40%_60%_at_50%_50%,rgba(77,216,216,0.25),transparent_70%)]"></div>
+
+          <!-- Subtle scan rings -->
+          <div class="pointer-events-none absolute inset-0
+                [background-image:radial-gradient(circle_at_50%_50%,rgba(137,246,246,0.08)_1px,transparent_1px)]
+                [background-size:22px_22px]
+                opacity-30"></div>
+
+          <div class="relative max-w-6xl mx-auto text-center">
+            <div class="swiper mySwiperLogos">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide flex items-center justify-center">
+                  <img src="images/drone_logo_1.png" alt="Logo 1"
+                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                </div>
+                <div class="swiper-slide flex items-center justify-center">
+                  <img src="images/dronex_logo_2.jpeg" alt="Logo 2"
+                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                </div>
+                <div class="swiper-slide flex items-center justify-center">
+                  <img src="images/drone_logo_4.png" alt="Logo 3"
+                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                </div>
+                <div class="swiper-slide flex items-center justify-center">
+                  <img src="images/dronex_logo_4.webp" alt="Logo 4"
+                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                </div>
+                <!-- Repeat logos for smooth loop -->
+                <div class="swiper-slide flex items-center justify-center">
+                  <img src="images/drone_logo_1.png" alt="Logo 1"
+                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                </div>
+                <div class="swiper-slide flex items-center justify-center">
+                  <img src="images/dronex_logo_2.jpeg" alt="Logo 2"
+                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-----------------Contact Form Section  ---------------->
+      <section id="contact">
+        <div
+          class="w-full min-h-screen bg-black text-white flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16">
+          <div class="relative w-full max-w-6xl rounded-xl overflow-hidden">
+            <!-- Animated gradient border layer -->
+            <div
+              class="absolute inset-0 rounded-xl p-[2px] bg-gradient-to-r from-teal-500 via-cyan-400 to-fuchsia-500 bg-[length:400%_400%] animate-border">
+              <div class="w-full h-full rounded-xl bg-black"></div>
             </div>
 
             <!-- Content -->
-            <div
-              class="relative p-8 md:p-12 flex flex-col md:flex-row font-nexa items-center justify-between gap-6"
-            >
-              <div>
-                <p
-                  data-key="Join_Our_Newsletter"
-                  class="text-cyan-300 text-lg"
-                ></p>
-                <h2
-                  data-key="Stay_In_Touch_With_Us"
-                  class="text-2xl md:text-4xl text-white font-nexa font-semi-bold mt-2"
-                ></h2>
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 rounded-xl overflow-hidden">
+              <div class="absolute inset-0 z-0 pointer-events-none">
+                <img src="images/vector_background.png"
+                  class="w-full h-full object-cover filter brightness-[200%] saturate-[150%]" />
               </div>
 
-              <div>
-                <button
-                  data-key="subscribe"
-                  class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition"
-                ></button>
+
+              <!-- Left Content -->
+              <div
+                class="relative z-10 bg-gradient-to-r from-cypress-700 via-black to-teal-800 p-6 sm:p-8 md:p-10 rounded-lg md:rounded-xl">
+                <h2 data-key="contact_heading" class="text-3xl sm:text-4xl md:text-5xl pb-4 sm:pb-6 font-bold mb-6 sm:mb-8 md:mb-10 
+                 bg-gradient-to-r from-[#89F6F6] to-[#FBFBFB] bg-clip-text text-transparent leading-snug text-center">
+                </h2>
+
+                <p class="text-white text-xl sm:text-2xl mb-6 sm:mb-8 font-bold text-center">Call Us</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div class="bg-black/30 p-4 sm:p-5 rounded-xl shadow hover:shadow-lg transition">
+                    <p class="text-cyan-400 text-base sm:text-lg font-semibold flex items-center gap-2 mb-2">
+                      <span class="material-icons text-cyan-400 text-xl"></span> 🇦🇪 UAE
+                    </p>
+                    <a href="tel:+971566414614" class="block text-base sm:text-lg hover:text-cyan-300 transition">+971
+                      566414614</a>
+                    <a href="tel:+971562726433" class="block text-base sm:text-lg hover:text-cyan-300 transition">+971
+                      562726433</a>
+                  </div>
+
+                  <div class="bg-black/30 p-4 sm:p-5 rounded-xl shadow hover:shadow-lg transition">
+                    <p class="text-cyan-400 text-base sm:text-lg font-semibold flex items-center gap-2 mb-2">
+                      <span class="material-icons text-cyan-400 text-xl"></span> 🇩🇪 Germany
+                    </p>
+                    <a href="tel:+4915214699912" class="block text-base sm:text-lg hover:text-cyan-300 transition">+49
+                      15214699912</a>
+                  </div>
+
+                  <div class="bg-black/30 p-4 sm:p-5 rounded-xl shadow hover:shadow-lg transition">
+                    <p class="text-cyan-400 text-base sm:text-lg font-semibold flex items-center gap-2 mb-2">
+                      <span class="material-icons text-cyan-400 text-xl"></span> 🇿🇦 Africa
+                    </p>
+                    <a href="tel:+817074272693" class="block text-base sm:text-lg hover:text-cyan-300 transition">+81
+                      7074272693</a>
+                  </div>
+
+                  <div class="bg-black/30 p-4 sm:p-5 rounded-xl shadow hover:shadow-lg transition">
+                    <p class="text-cyan-400 text-base sm:text-lg font-semibold flex items-center gap-2 mb-2">
+                      <span class="material-icons text-cyan-400 text-xl"></span> 🇮🇳 India
+                    </p>
+                    <a href="tel:+919567666579" class="block text-base sm:text-lg hover:text-cyan-300 transition">+91
+                      9567666579</a>
+                  </div>
+                </div>
+
+                <div class="mt-8 sm:mt-10 text-center">
+                  <p class="text-gray-400 text-sm mb-1">Get In Touch</p>
+                  <a href="mailto:hello@dronex-360.com"
+                    class="text-base sm:text-lg font-semibold hover:text-cyan-300 transition">
+                    hello@dronex-360.com
+                  </a>
+                </div>
               </div>
+
+              <!-- Right Content with Background -->
+              <div
+                class="relative z-10 p-6 sm:p-8 md:p-10 md:mt-32 w-full max-w-lg mx-auto rounded-lg md:rounded-xl overflow-hidden">
+                <div
+                  class="absolute right-0 top-[60%] w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_rgba(34,211,238,0.4),_transparent_70%)] rounded-full blur-3xl z-0">
+                </div>
+
+                <div class="relative z-10">
+                  <h3 data-key="contact_subheading"
+                    class="text-base sm:text-lg font-medium mb-6 sm:mb-8 text-center mt-8 sm:mt-12 md:mt-12"></h3>
+                  <p id="successMessage" class="hidden text-green-400 font-semibold mb-6 text-center"></p>
+
+                  <form id="contactForm" class="space-y-5 sm:space-y-6 max-w-md mx-auto w-full mt-8 sm:mt-12">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                      <input type="text" id="name" placeholder="Name*" required
+                        class="w-full min-h-[44px] px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                      <input type="email" id="email" placeholder="Email*" required
+                        class="w-full min-h-[44px] px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                    </div>
+
+                    <div>
+                      <input type="tel" id="phone" placeholder="Phone Number*" required
+                        class="w-full min-h-[44px] px-4 py-3 bg-gray-900 border border-gray-700 rounded-full text-gray-200 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                    </div>
+
+                    <div class="flex justify-center">
+                      <button type="submit"
+                        class="bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-500 hover:to-teal-600 text-white font-medium px-6 py-3 rounded-full shadow-md transition">
+                        Submit Form
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- -----------------footer section --------------------->
 
-    <footer class="w-full bg-black text-gray-300 px-6 py-10 relative">
-      <div
-        class="max-w-7xl mx-auto relative border border-cyan-400 rounded-2xl overflow-hidden"
-      >
-        <!-- Glow effect border animation -->
-        <div
-          class="absolute inset-0 border-2 border-cyan-400 rounded-2xl animate-border-glow"
-        ></div>
 
-        <!-- Footer Content -->
-        <div
-          class="relative bg-[#111] p-6 md:p-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
-        >
-          <!-- Brand -->
+
+
+
+
+
+      <!------------------contact Form section End Here ----------------->
+
+      <!----------------news letter section --------------------->
+
+      <section class="w-full px-12 py-12 bg-black">
+        <div class="max-w-4xl mx-auto">
           <div
-            class="col-span-1 sm:col-span-2 md:col-span-1 text-center md:text-left"
-          >
-            <img
-              src="images/Dronex 360 Logo 1 PNG 1.png"
-              alt="Logo-gotsdone"
-              class="h-16 w-auto mx-auto md:mx-0"
-            />
-            <p
-              data-key="footer_back"
-              class="mt-4 text-gray-400 text-sm leading-relaxed"
-            ></p>
-          </div>
+            class="group relative rounded-2xl p-0.5 overflow-hidden bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-400 gradient-anim">
+            <div class="relative rounded-2xl overflow-hidden">
+              <!-- Background Image -->
+              <div class="absolute inset-0">
+                <img src="images/drone-back.png" alt="Newsletter Background" class="w-full h-full object-cover" />
 
-          <!-- Quick Links -->
-          <div class="text-center md:text-left">
-            <h3
-              data-key="Quick_Links"
-              class="text-lg font-semibold text-white mb-3"
-            ></h3>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  data-key="Home"
-                  class="hover:text-cyan-400 transition"
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  data-key="Service_Benefits"
-                  class="hover:text-cyan-400 transition"
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  data-key="Contact_Us"
-                  class="hover:text-cyan-400 transition"
-                ></a>
-              </li>
-            </ul>
-          </div>
+                <div class="absolute inset-0 bg-black/80"></div>
+              </div>
 
-          <!-- Services -->
-          <div class="text-center md:text-left">
-            <h3
-              data-key="Services"
-              class="text-lg font-semibold text-white mb-3"
-            ></h3>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  data-key="manufacture"
-                  class="hover:text-cyan-400 transition"
-                  >Custom Drone Manufacturing</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  data-key="underwater"
-                  class="hover:text-cyan-400 transition"
-                  >Underwater Inspection</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  data-key="Building"
-                  class="hover:text-cyan-400 transition"
-                  >Building Cleaning Solutions</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  data-key="Surveillance"
-                  class="hover:text-cyan-400 transition"
-                  >Surveillance & Surveys</a
-                >
-              </li>
-            </ul>
-          </div>
+              <!-- Content -->
+              <div class="relative p-8 md:p-12 flex flex-col md:flex-row font-nexa items-center justify-between gap-6">
+                <div>
+                  <p data-key="Join_Our_Newsletter" class="text-cyan-300 text-lg"></p>
+                  <h2 data-key="Stay_In_Touch_With_Us"
+                    class="text-2xl md:text-4xl text-white font-nexa font-semi-bold mt-2"></h2>
+                </div>
 
-          <!-- Newsletter -->
-          <div class="text-center md:text-left">
-            <h3
-              data-key="Stay_Updated"
-              class="text-lg font-semibold text-white mb-3"
-            ></h3>
-            <p data-key="Subscribe_New" class="mb-4 text-gray-400 text-sm"></p>
-            <div
-              class="flex flex-col sm:flex-row items-center sm:items-stretch"
-            >
-              <input
-                type="email"
-                placeholder="Your email"
-                class="px-4 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none bg-gray-800 text-white outline-none focus:ring-2 focus:ring-cyan-400 w-full sm:w-auto flex-1 mb-3 sm:mb-0"
-              />
-              <button
-                class="bg-cyan-400 text-black font-semibold px-6 py-2 rounded-lg sm:rounded-r-lg sm:rounded-l-none hover:bg-cyan-300 transition"
-              >
-                Go
-              </button>
+                <div>
+                  <button data-key="subscribe"
+                    class="bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-cyan-300 transition"></button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Bottom -->
-        <div
-          class="relative border-t border-gray-700 mt-8 py-6 px-6 flex flex-col md:flex-row items-center justify-between"
-        >
-          <p class="text-gray-500 text-sm text-center md:text-left">
-            &copy; 2025 Dronex 360. All rights reserved.
-          </p>
+      <!-- -----------------footer section --------------------->
 
-          <div class="flex space-x-4 mt-4 md:mt-0">
-            <a href="https://www.facebook.com/people/Dronex-360/61560037713039/" class="hover:text-cyan-400 transition">Facebook</a>
-            <a href="https://x.com/Dronex360social" class="hover:text-cyan-400 transition">Twitter</a>
-            <a href="https://www.linkedin.com/company/dronex-360/posts/?feedView=all" class="hover:text-cyan-400 transition">LinkedIn</a>
-            <a href="https://www.instagram.com/dronex360.de/#" class="hover:text-cyan-400 transition">Instagram</a>
-          </div>
+<footer class="w-full bg-black text-gray-300 px-6 pt-10 pb-0 relative">
+  <div class="max-w-7xl mx-auto relative border border-cyan-400 rounded-2xl overflow-hidden">
+    <!-- Glow effect border animation -->
+    <div class="pointer-events-none absolute inset-0 border-2 border-cyan-400 rounded-2xl animate-border-glow"></div>
+
+    <!-- Footer Content -->
+    <div class="relative bg-[#111] p-6 md:p-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="col-span-1 sm:col-span-2 md:col-span-1 text-center md:text-left">
+        <img src="images/Dronex 360 Logo 1 PNG 1.png" alt="Logo-gotsdone"
+             class="block h-16 w-auto mx-auto md:mx-0" />
+        <p data-key="footer_back" class="mt-4 text-gray-400 text-sm leading-relaxed last:mb-0"></p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="text-center md:text-left">
+        <h3 data-key="Quick_Links" class="text-lg font-semibold text-white mb-3"></h3>
+        <ul class="space-y-2 last:mb-0">
+          <li><a href="#" data-key="Home" class="hover:text-cyan-400 transition"></a></li>
+          <li><a href="#" data-key="Service_Benefits" class="hover:text-cyan-400 transition"></a></li>
+          <li><a href="#contact" data-key="Contact_Us" class="hover:text-cyan-400 transition"></a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="text-center md:text-left">
+        <h3 data-key="Services" class="text-lg font-semibold text-white mb-3"></h3>
+        <ul class="space-y-2 last:mb-0">
+          <li><a href="#" data-key="manufacture" class="hover:text-cyan-400 transition">Custom Drone Manufacturing</a></li>
+          <li><a href="#" data-key="underwater" class="hover:text-cyan-400 transition">Underwater Inspection</a></li>
+          <li><a href="#" data-key="Building" class="hover:text-cyan-400 transition">Building Cleaning Solutions</a></li>
+          <li><a href="#" data-key="Surveillance" class="hover:text-cyan-400 transition">Surveillance & Surveys</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="text-center md:text-left">
+        <h3 data-key="Stay_Updated" class="text-lg font-semibold text-white mb-3"></h3>
+        <p data-key="Subscribe_New" class="mb-4 text-gray-400 text-sm last:mb-0"></p>
+        <div class="flex flex-col sm:flex-row items-center sm:items-stretch">
+          <input type="email" placeholder="Your email"
+                 class="px-4 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none bg-gray-800 text-white outline-none focus:ring-2 focus:ring-cyan-400 w-full sm:w-auto flex-1 mb-3 sm:mb-0" />
+          <button class="bg-cyan-400 text-black font-semibold px-6 py-2 rounded-lg sm:rounded-r-lg sm:rounded-l-none hover:bg-cyan-300 transition">
+            Go
+          </button>
         </div>
       </div>
-    </footer>
+    </div>
 
-    <script>
-      const translations = {
-        en: {
-          head_360: "360 degrees",
-          aerial: "of aerial brilliance",
-          unlocking:
-            "Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360",
-          learn: "Learn More",
-          Services: "Services",
-          service_p:
-            "At Dronex 360, we revolutionize maintenance and inspection services with cutting-edge drone technology. Our innovative solutions redefine efficiency and precision, ensuring unparalleled results across diverse applications.",
-          manufacture: "Custom Drone Manufacturing",
-          manufacture_p:
-            "Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities",
-          underwater: "Underwater Inspection",
-          Underwater_p:
-            "High capacity drones for underwater inspections. Used for offshore oil fields, ports and related industries.",
-          Building: "Building Cleaning Solutions",
-          Building_p:
-            "Using our patented water saving chemical, using 70% less water, making it highly cost effective and eco-friendly.",
-          Surveillance: "Surveillance and Surveys",
-          Surveillance_p:
-            "Conduct fully automated surveys, with precision, use thermal imaging for easy detection and much more.",
-          setpart: "What Sets Us Apart",
-          automation_drone: "Fully Autonomous Inspection Drones",
-          automation_drone_p:
-            "Operate 24/7 with docking stations zero manual intervention requireds",
-          technology: "Sustainable Technology",
-          technology_p:
-            "Our electric drones contribute to green operations with reduced water and chemical usage.",
-          customized: "Customized Solutions",
-          customized_p:
-            "Every site is different so are our strategies. We tailor every deployment to your facility needs.",
-          application: "APPLICATIONS & INDUSTRIES",
-          application_p:
-            "We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.",
-          app_1: "Telecommunication Infra Inspection",
-          app_2: "Thermal Imaging for Gas & Pipe Leaks",
-          app_3: "Facade & Solar Panel Cleaning",
-          app_4: "Underwater Inspection (ROV)",
-          app_5: "Autonomous Agricultural Irrigation",
-          app_6: "Pipeline & Refinery Inspections",
-          app_7: "3D Mapping & Modelling",
-          app_8: "Autonomous Asset Inspection",
-          value_firm: "How do we add value to your firm?",
-          Efficiency: "Efficiency",
-          Efficiency_p:
-            "Maximize operational efficiency with streamlined processes and advanced drone technology.",
-          Accuracy: "Accuracy",
-          Accuracy_p:
-            "Guarantee precise outcomes and minimize errors through cutting-edge technology and reliable methods.",
-          Safety: "Safety",
-          safety_p:
-            "Ensure workplace protection by reducing potential hazards and maintaining safe practices across projects.",
-          cost: "Cost Savings",
-          cost_p:
-            "Optimize resources and reduce labor costs with more efficient workflows and smarter operations.",
-          Flexibility: "Flexibility",
-          Flexibility_p:
-            "Adapt quickly to changing project needs with scalable and versatile service offerings.",
-          Supported_by: "Supported by",
-          Join_Our_Newsletter: "Join Our Newsletter",
-          Stay_In_Touch_With_Us: "Stay In Touch With Us",
-          subscribe: "Subscribe",
-          footer_back:
-            "Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360",
-          Quick_Links: "Quick Links",
-          Home: "Home",
-          Service_Benefits: "Service & Benefits",
-          Contact_Us: "Contact Us",
-          Services: "Services",
-          Stay_Updated: "Stay Updated",
-          Subscribe_News:
-            "Subscribe to our newsletter for the latest updates and offers.",
+    <!-- Bottom -->
+    <div class="relative border-t border-gray-700 mt-0 py-6 px-6 flex flex-col md:flex-row items-center justify-between">
+      <p class="text-gray-500 text-sm text-center md:text-left">
+        &copy; 2025 Dronex 360. All rights reserved.
+      </p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="https://www.facebook.com/people/Dronex-360/61560037713039/" class="hover:text-cyan-400 transition">Facebook</a>
+        <a href="https://x.com/Dronex360social" class="hover:text-cyan-400 transition">Twitter</a>
+        <a href="https://www.linkedin.com/company/dronex-360/posts/?feedView=all" class="hover:text-cyan-400 transition">LinkedIn</a>
+        <a href="https://www.instagram.com/dronex360.de/#" class="hover:text-cyan-400 transition">Instagram</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+      <script>
+        const translations = {
+          en: {
+            head_360: "360 degrees",
+            aerial: "of aerial brilliance",
+            unlocking:
+              "Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360",
+            learn: "Learn More",
+            Services: "Services",
+            service_p:
+              "At Dronex 360, we revolutionize maintenance and inspection services with cutting-edge drone technology. Our innovative solutions redefine efficiency and precision, ensuring unparalleled results across diverse applications.",
+            manufacture: "Custom Drone Manufacturing",
+            manufacture_p:
+              "Create enterprise grade Custom drones with SDK compatible firmwares for unlimited possibilities",
+            underwater: "Underwater Inspection",
+            Underwater_p:
+              "High capacity drones for underwater inspections. Used for offshore oil fields, ports and related industries.",
+            Building: "Building Cleaning Solutions",
+            Building_p:
+              "Using our patented water saving chemical, using 70% less water, making it highly cost effective and eco-friendly.",
+            Surveillance: "Surveillance and Surveys",
+            Surveillance_p:
+              "Conduct fully automated surveys, with precision, use thermal imaging for easy detection and much more.",
+            setpart: "What Sets Us Apart",
+            automation_drone: "Fully Autonomous Inspection Drones",
+            automation_drone_p:
+              "Operate 24/7 with docking stations zero manual intervention requireds",
+            technology: "Sustainable Technology",
+            technology_p:
+              "Our electric drones contribute to green operations with reduced water and chemical usage.",
+            customized: "Customized Solutions",
+            customized_p:
+              "Every site is different so are our strategies. We tailor every deployment to your facility needs.",
+            application: "APPLICATIONS & INDUSTRIES",
+            application_p:
+              "We specialize in leveraging advanced drone technology to provide innovative solutions across a wide range of sectors.",
+            app_1: "Telecommunication Infra Inspection",
+            app_2: "Thermal Imaging for Gas & Pipe Leaks",
+            app_3: "Facade & Solar Panel Cleaning",
+            app_4: "Underwater Inspection (ROV)",
+            app_5: "Autonomous Agricultural Irrigation",
+            app_6: "Pipeline & Refinery Inspections",
+            app_7: "3D Mapping & Modelling",
+            app_8: "Autonomous Asset Inspection",
+            value_firm: "How do we add value to your firm?",
+            Efficiency: "Efficiency",
+            Efficiency_p:
+              "Maximize operational efficiency with streamlined processes and advanced drone technology.",
+            Accuracy: "Accuracy",
+            Accuracy_p:
+              "Guarantee precise outcomes and minimize errors through cutting-edge technology and reliable methods.",
+            Safety: "Safety",
+            safety_p:
+              "Ensure workplace protection by reducing potential hazards and maintaining safe practices across projects.",
+            cost: "Cost Savings",
+            cost_p:
+              "Optimize resources and reduce labor costs with more efficient workflows and smarter operations.",
+            Flexibility: "Flexibility",
+            Flexibility_p:
+              "Adapt quickly to changing project needs with scalable and versatile service offerings.",
+            Supported_by: "Supported by",
+            Join_Our_Newsletter: "Join Our Newsletter",
+            Stay_In_Touch_With_Us: "Stay In Touch With Us",
+            subscribe: "Subscribe",
+            footer_back:
+              "Unlocking the Future of Aerial Brilliance: Elevating Precision, Safety and Efficiency in Sustainable Facility Management, Energy Asset Inspection and Beyond with Dronex 360",
+            Quick_Links: "Quick Links",
+            Home: "Home",
+            Service_Benefits: "Service & Benefits",
+            Contact_Us: "Contact Us",
+            Services: "Services",
+            Stay_Updated: "Stay Updated",
+            Subscribe_News:
+              "Subscribe to our newsletter for the latest updates and offers.",
             client: "Client Testimonials",
             client_1: "“Dronex360 has revolutionized our bridge and overpass inspections with their Al-powered drones. Their speed, precision, and data insights have cut downtime and boosted efficiency-true innovation in line with Dubai's tech-driven vision.”",
             client_2: "“DroneX 360 transformed our high-risk inspections with autonomous drone solutions that ensured precise monitoring of chemical zones with minimal human exposure.”",
@@ -1332,234 +1144,235 @@
             client_4: "“Dronex360 was a game-changer for us.  Their drone-based inspections and facade cleaning cut labor needs and eliminated scaffold risks across our high-rises. Their tailored approach shows real industry insight.”",
             contact_heading: "We Would Love To Hear From You!",
             contact_subheading: "Simply fill out the form, and we’ll be in touch.",
-        },
-        gr:  {
-    head_360: "360 Grad",
-    aerial: "der luftgestützten Brillanz",
-    unlocking:
-      "Die Zukunft der luftgestützten Brillanz freisetzen: Steigerung von Präzision, Sicherheit und Effizienz im nachhaltigen Facility Management, bei Inspektionen von Energieanlagen und darüber hinaus mit Dronex 360",
-    learn: "Mehr erfahren",
-    Services: "Dienstleistungen",
-    service_p:
-      "Bei Dronex 360 revolutionieren wir Wartungs- und Inspektionsdienste mit modernster Drohnentechnologie. Unsere innovativen Lösungen definieren Effizienz und Präzision neu und gewährleisten unvergleichliche Ergebnisse in verschiedensten Anwendungsbereichen.",
-    manufacture: "Individuelle Drohnenfertigung",
-    manufacture_p:
-      "Erstellen Sie unternehmensgerechte, maßgeschneiderte Drohnen mit SDK-kompatibler Firmware für unbegrenzte Möglichkeiten.",
-    underwater: "Unterwasserinspektion",
-    Underwater_p:
-      "Hochleistungsdrohnen für Unterwasserinspektionen. Eingesetzt in Offshore-Ölfeldern, Häfen und verwandten Industrien.",
-    Building: "Gebäudereinigungslösungen",
-    Building_p:
-      "Mit unserem patentierten wassersparenden Reinigungsmittel, das 70 % weniger Wasser verbraucht – hocheffektiv und umweltfreundlich.",
-    Surveillance: "Überwachung und Vermessung",
-    Surveillance_p:
-      "Führen Sie vollautomatisierte Vermessungen mit Präzision durch, nutzen Sie Wärmebildkameras zur einfachen Erkennung und vieles mehr.",
-    setpart: "Was uns auszeichnet",
-    automation_drone: "Vollautonome Inspektionsdrohnen",
-    automation_drone_p:
-      "Rund-um-die-Uhr-Betrieb mit Dockingstationen – kein manuelles Eingreifen erforderlich.",
-    technology: "Nachhaltige Technologie",
-    technology_p:
-      "Unsere elektrischen Drohnen tragen zu umweltfreundlichen Abläufen bei, mit reduziertem Wasser- und Chemikalienverbrauch.",
-    customized: "Individuelle Lösungen",
-    customized_p:
-      "Jeder Standort ist anders – so auch unsere Strategien. Wir passen jeden Einsatz an die Bedürfnisse Ihrer Einrichtung an.",
-    application: "ANWENDUNGEN & BRANCHEN",
-    application_p:
-      "Wir sind spezialisiert auf den Einsatz modernster Drohnentechnologie, um innovative Lösungen in einer Vielzahl von Branchen bereitzustellen.",
-    app_1: "Inspektion von Telekommunikationsinfrastruktur",
-    app_2: "Wärmebildaufnahmen für Gas- & Rohrleitungslecks",
-    app_3: "Fassaden- & Solarpanelreinigung",
-    app_4: "Unterwasserinspektion (ROV)",
-    app_5: "Autonome landwirtschaftliche Bewässerung",
-    app_6: "Pipeline- & Raffinerieinspektionen",
-    app_7: "3D-Kartierung & Modellierung",
-    app_8: "Autonome Anlageninspektion",
-    value_firm: "Wie schaffen wir Mehrwert für Ihr Unternehmen?",
-    Efficiency: "Effizienz",
-    Efficiency_p:
-      "Maximieren Sie die betriebliche Effizienz mit optimierten Prozessen und modernster Drohnentechnologie.",
-    Accuracy: "Genauigkeit",
-    Accuracy_p:
-      "Gewährleisten Sie präzise Ergebnisse und minimieren Sie Fehler durch modernste Technologie und zuverlässige Methoden.",
-    Safety: "Sicherheit",
-    safety_p:
-      "Sorgen Sie für Arbeitssicherheit, indem Sie potenzielle Gefahren reduzieren und sichere Praktiken in allen Projekten einhalten.",
-    cost: "Kosteneinsparungen",
-    cost_p:
-      "Optimieren Sie Ressourcen und senken Sie Arbeitskosten durch effizientere Arbeitsabläufe und intelligentere Prozesse.",
-    Flexibility: "Flexibilität",
-    Flexibility_p:
-      "Reagieren Sie schnell auf sich ändernde Projektanforderungen mit skalierbaren und vielseitigen Dienstleistungen.",
-    Supported_by: "Unterstützt von",
-    Join_Our_Newsletter: "Abonnieren Sie unseren Newsletter",
-    Stay_In_Touch_With_Us: "Bleiben Sie mit uns in Kontakt",
-    subscribe: "Abonnieren",
-    footer_back:
-      "Die Zukunft der luftgestützten Brillanz freisetzen: Steigerung von Präzision, Sicherheit und Effizienz im nachhaltigen Facility Management, bei Inspektionen von Energieanlagen und darüber hinaus mit Dronex 360",
-    Quick_Links: "Schnellzugriff",
-    Home: "Startseite",
-    Service_Benefits: "Dienstleistungen & Vorteile",
-    Contact_Us: "Kontaktieren Sie uns",
-    Services: "Dienstleistungen",
-    Stay_Updated: "Bleiben Sie auf dem Laufenden",
-    Subscribe_News:
-      "Abonnieren Sie unseren Newsletter, um die neuesten Updates und Angebote zu erhalten.",
-      client: "Kundenbewertungen",
-      client_1: "Dronex 360 hat unsere Brücken- und Überführungsinspektionen mit ihren KI-gesteuerten Drohnen revolutioniert. Ihre Geschwindigkeit, Präzision und Datenanalysen haben Ausfallzeiten reduziert und die Effizienz gesteigert",
-      client_2: "Dronex 360 hat unsere Hochrisikoinspektionen mit autonomen Drohnenlösungen transformiert, die eine präzise Überwachung chemischer Zonen bei minimaler menschlicher Exposition gewährleisten.",
-      client_3: "Wir waren von der Lagerinspektion von Dronex 360 in unserer KIZAD-Anlage sehr beeindruckt. Ihre fortschrittliche Drohnentechnologie ermöglichte eine präzise Risserkennung, die Identifizierung von Sicherheitsproblemen und die Außenreinigung.",
-      client_4: "Dronex 360 war ein Wendepunkt für uns. Ihre drohnenbasierten Inspektionen und Fassadenreinigungen reduzierten den Arbeitsbedarf und beseitigten Gerüstrisiken bei unseren Hochhäusern. Ihr maßgeschneiderter Ansatz zeigt echtes Branchenverständnis.", 
-      contact_heading: "Wir würden uns freuen, von Ihnen zu hören!",
-      contact_subheading: "Füllen Sie einfach das Formular aus, und wir werden uns bei Ihnen melden.", 
-  },
-      };
+          },
+          gr: {
+            head_360: "360 Grad",
+            aerial: "der luftgestützten Brillanz",
+            unlocking:
+              "Die Zukunft der luftgestützten Brillanz freisetzen: Steigerung von Präzision, Sicherheit und Effizienz im nachhaltigen Facility Management, bei Inspektionen von Energieanlagen und darüber hinaus mit Dronex 360",
+            learn: "Mehr erfahren",
+            Services: "Dienstleistungen",
+            service_p:
+              "Bei Dronex 360 revolutionieren wir Wartungs- und Inspektionsdienste mit modernster Drohnentechnologie. Unsere innovativen Lösungen definieren Effizienz und Präzision neu und gewährleisten unvergleichliche Ergebnisse in verschiedensten Anwendungsbereichen.",
+            manufacture: "Individuelle Drohnenfertigung",
+            manufacture_p:
+              "Erstellen Sie unternehmensgerechte, maßgeschneiderte Drohnen mit SDK-kompatibler Firmware für unbegrenzte Möglichkeiten.",
+            underwater: "Unterwasserinspektion",
+            Underwater_p:
+              "Hochleistungsdrohnen für Unterwasserinspektionen. Eingesetzt in Offshore-Ölfeldern, Häfen und verwandten Industrien.",
+            Building: "Gebäudereinigungslösungen",
+            Building_p:
+              "Mit unserem patentierten wassersparenden Reinigungsmittel, das 70 % weniger Wasser verbraucht – hocheffektiv und umweltfreundlich.",
+            Surveillance: "Überwachung und Vermessung",
+            Surveillance_p:
+              "Führen Sie vollautomatisierte Vermessungen mit Präzision durch, nutzen Sie Wärmebildkameras zur einfachen Erkennung und vieles mehr.",
+            setpart: "Was uns auszeichnet",
+            automation_drone: "Vollautonome Inspektionsdrohnen",
+            automation_drone_p:
+              "Rund-um-die-Uhr-Betrieb mit Dockingstationen – kein manuelles Eingreifen erforderlich.",
+            technology: "Nachhaltige Technologie",
+            technology_p:
+              "Unsere elektrischen Drohnen tragen zu umweltfreundlichen Abläufen bei, mit reduziertem Wasser- und Chemikalienverbrauch.",
+            customized: "Individuelle Lösungen",
+            customized_p:
+              "Jeder Standort ist anders – so auch unsere Strategien. Wir passen jeden Einsatz an die Bedürfnisse Ihrer Einrichtung an.",
+            application: "ANWENDUNGEN & BRANCHEN",
+            application_p:
+              "Wir sind spezialisiert auf den Einsatz modernster Drohnentechnologie, um innovative Lösungen in einer Vielzahl von Branchen bereitzustellen.",
+            app_1: "Inspektion von Telekommunikationsinfrastruktur",
+            app_2: "Wärmebildaufnahmen für Gas- & Rohrleitungslecks",
+            app_3: "Fassaden- & Solarpanelreinigung",
+            app_4: "Unterwasserinspektion (ROV)",
+            app_5: "Autonome landwirtschaftliche Bewässerung",
+            app_6: "Pipeline- & Raffinerieinspektionen",
+            app_7: "3D-Kartierung & Modellierung",
+            app_8: "Autonome Anlageninspektion",
+            value_firm: "Wie schaffen wir Mehrwert für Ihr Unternehmen?",
+            Efficiency: "Effizienz",
+            Efficiency_p:
+              "Maximieren Sie die betriebliche Effizienz mit optimierten Prozessen und modernster Drohnentechnologie.",
+            Accuracy: "Genauigkeit",
+            Accuracy_p:
+              "Gewährleisten Sie präzise Ergebnisse und minimieren Sie Fehler durch modernste Technologie und zuverlässige Methoden.",
+            Safety: "Sicherheit",
+            safety_p:
+              "Sorgen Sie für Arbeitssicherheit, indem Sie potenzielle Gefahren reduzieren und sichere Praktiken in allen Projekten einhalten.",
+            cost: "Kosteneinsparungen",
+            cost_p:
+              "Optimieren Sie Ressourcen und senken Sie Arbeitskosten durch effizientere Arbeitsabläufe und intelligentere Prozesse.",
+            Flexibility: "Flexibilität",
+            Flexibility_p:
+              "Reagieren Sie schnell auf sich ändernde Projektanforderungen mit skalierbaren und vielseitigen Dienstleistungen.",
+            Supported_by: "Unterstützt von",
+            Join_Our_Newsletter: "Abonnieren Sie unseren Newsletter",
+            Stay_In_Touch_With_Us: "Bleiben Sie mit uns in Kontakt",
+            subscribe: "Abonnieren",
+            footer_back:
+              "Die Zukunft der luftgestützten Brillanz freisetzen: Steigerung von Präzision, Sicherheit und Effizienz im nachhaltigen Facility Management, bei Inspektionen von Energieanlagen und darüber hinaus mit Dronex 360",
+            Quick_Links: "Schnellzugriff",
+            Home: "Startseite",
+            Service_Benefits: "Dienstleistungen & Vorteile",
+            Contact_Us: "Kontaktieren Sie uns",
+            Services: "Dienstleistungen",
+            Stay_Updated: "Bleiben Sie auf dem Laufenden",
+            Subscribe_News:
+              "Abonnieren Sie unseren Newsletter, um die neuesten Updates und Angebote zu erhalten.",
+            client: "Kundenbewertungen",
+            client_1: "Dronex 360 hat unsere Brücken- und Überführungsinspektionen mit ihren KI-gesteuerten Drohnen revolutioniert. Ihre Geschwindigkeit, Präzision und Datenanalysen haben Ausfallzeiten reduziert und die Effizienz gesteigert",
+            client_2: "Dronex 360 hat unsere Hochrisikoinspektionen mit autonomen Drohnenlösungen transformiert, die eine präzise Überwachung chemischer Zonen bei minimaler menschlicher Exposition gewährleisten.",
+            client_3: "Wir waren von der Lagerinspektion von Dronex 360 in unserer KIZAD-Anlage sehr beeindruckt. Ihre fortschrittliche Drohnentechnologie ermöglichte eine präzise Risserkennung, die Identifizierung von Sicherheitsproblemen und die Außenreinigung.",
+            client_4: "Dronex 360 war ein Wendepunkt für uns. Ihre drohnenbasierten Inspektionen und Fassadenreinigungen reduzierten den Arbeitsbedarf und beseitigten Gerüstrisiken bei unseren Hochhäusern. Ihr maßgeschneiderter Ansatz zeigt echtes Branchenverständnis.",
+            contact_heading: "Wir würden uns freuen, von Ihnen zu hören!",
+            contact_subheading: "Füllen Sie einfach das Formular aus, und wir werden uns bei Ihnen melden.",
+          },
+        };
 
-      document.querySelectorAll("[data-key]").forEach((el) => {
-        const key = el.getAttribute("data-key");
-        if (translations.en[key]) el.textContent = translations.en[key];
-      });
-
-      let currentLang = "en";
-
-      // Function to update page texts
-      function changeLanguage(lang) {
         document.querySelectorAll("[data-key]").forEach((el) => {
           const key = el.getAttribute("data-key");
-          if (translations[lang][key]) {
-            el.textContent = translations[lang][key];
+          if (translations.en[key]) el.textContent = translations.en[key];
+        });
+
+        let currentLang = "en";
+
+        // Function to update page texts
+        function changeLanguage(lang) {
+          document.querySelectorAll("[data-key]").forEach((el) => {
+            const key = el.getAttribute("data-key");
+            if (translations[lang][key]) {
+              el.textContent = translations[lang][key];
+            }
+          });
+          currentLang = lang;
+        }
+
+        // Toggle button logic
+        const langToggle = document.getElementById("langToggle");
+        langToggle.addEventListener("click", () => {
+          if (currentLang === "en") {
+            changeLanguage("gr");
+            langToggle.textContent = "EN"; // Show option to switch back
+          } else {
+            changeLanguage("en");
+            langToggle.textContent = "Germany";
           }
         });
-        currentLang = lang;
-      }
 
-      // Toggle button logic
-      const langToggle = document.getElementById("langToggle");
-      langToggle.addEventListener("click", () => {
-        if (currentLang === "en") {
-          changeLanguage("gr");
-          langToggle.textContent = "EN"; // Show option to switch back
-        } else {
-          changeLanguage("en");
-          langToggle.textContent = "Germany"; 
-        }
-      });
-
-      // Set default language
-      changeLanguage(currentLang);
+        // Set default language
+        changeLanguage(currentLang);
 
 
 
-// cursol logic
+        // cursol logic
 
 
-  // Init AOS
-  AOS.init({
-    duration: 800,
-    once: true,
-  });
+        // Init AOS
+        AOS.init({
+          duration: 800,
+          once: true,
+        });
 
-  // Init Swiper
-  var swiper = new Swiper(".mySwiper", {
-    spaceBetween: 20,
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      0: { slidesPerView: 1 },   // ✅ Mobile: 1 card
-      768: { slidesPerView: 3 }, // ✅ Desktop: 3 cards
-    },
-  });
-  
-
-  //logo swiper
-
-  AOS.init({
-  duration: 800,
-  once: true,
-});
-
-// ✅ Testimonial Slider
-var testimonialSwiper = new Swiper(".mySwiper", {
-  spaceBetween: 20,
-  loop: true,
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  breakpoints: {
-    0: { slidesPerView: 1 },   // Mobile
-    768: { slidesPerView: 3 }, // Desktop
-  },
-});
+        // Init Swiper
+        var swiper = new Swiper(".mySwiper", {
+          spaceBetween: 20,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          breakpoints: {
+            0: { slidesPerView: 1 },   // ✅ Mobile: 1 card
+            768: { slidesPerView: 3 }, // ✅ Desktop: 3 cards
+          },
+        });
 
 
-  var logoSwiper = new Swiper(".mySwiperLogos", {
-    slidesPerView: 4,
-    spaceBetween: 40,
-    loop: true,
-    speed: 5000,           // adjust for scroll speed
-    freeMode: true,
-    freeModeMomentum: false,  // disables stop on release
-    autoplay: {
-      delay: 0,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      0: { slidesPerView: 2, spaceBetween: 20 },
-      640: { slidesPerView: 3, spaceBetween: 30 },
-      1024: { slidesPerView: 4, spaceBetween: 40 },
-    },
-  });
+        //logo swiper
+
+        AOS.init({
+          duration: 800,
+          once: true,
+        });
+
+        // ✅ Testimonial Slider
+        var testimonialSwiper = new Swiper(".mySwiper", {
+          spaceBetween: 20,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          breakpoints: {
+            0: { slidesPerView: 1 },   // Mobile
+            768: { slidesPerView: 3 }, // Desktop
+          },
+        });
+
+
+        var logoSwiper = new Swiper(".mySwiperLogos", {
+          slidesPerView: 4,
+          spaceBetween: 40,
+          loop: true,
+          speed: 5000,           // adjust for scroll speed
+          freeMode: true,
+          freeModeMomentum: false,  // disables stop on release
+          autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+          },
+          breakpoints: {
+            0: { slidesPerView: 2, spaceBetween: 20 },
+            640: { slidesPerView: 3, spaceBetween: 30 },
+            1024: { slidesPerView: 4, spaceBetween: 40 },
+          },
+        });
 
 
 
 
 
-          // form logic
+        // form logic
 
-  const form = document.getElementById("contactForm");
-  const successMessage = document.getElementById("successMessage");
+        const form = document.getElementById("contactForm");
+        const successMessage = document.getElementById("successMessage");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault(); 
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const phone = document.getElementById("phone").value.trim();
 
-    try {
-      const response = await fetch("https://dronex-serverless.vercel.app/api/sendEmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone_number: phone }),
-      });
+          try {
+            const response = await fetch("https://dronex-serverless.vercel.app/api/sendEmail", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ name, email, phone_number: phone }),
+            });
 
-      if (response.status === 200) {
-        successMessage.textContent = "One of our representative will be in touch with you soon.";
-        successMessage.classList.remove("hidden");
-        form.reset(); // clear form
-      } else {
-        successMessage.textContent = "Something went wrong. Please try again.";
-        successMessage.classList.remove("hidden");
-        successMessage.classList.replace("text-green-400", "text-red-400");
-      }
-    } catch (error) {
-      successMessage.textContent = "Error connecting to server. Please try again.";
-      successMessage.classList.remove("hidden");
-      successMessage.classList.replace("text-green-400", "text-red-400");
-    }
-  });
-    </script>
-  </body>
+            if (response.status === 200) {
+              successMessage.textContent = "One of our representative will be in touch with you soon.";
+              successMessage.classList.remove("hidden");
+              form.reset(); // clear form
+            } else {
+              successMessage.textContent = "Something went wrong. Please try again.";
+              successMessage.classList.remove("hidden");
+              successMessage.classList.replace("text-green-400", "text-red-400");
+            }
+          } catch (error) {
+            successMessage.textContent = "Error connecting to server. Please try again.";
+            successMessage.classList.remove("hidden");
+            successMessage.classList.replace("text-green-400", "text-red-400");
+          }
+        });
+      </script>
+</body>
+
 </html>
