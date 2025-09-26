@@ -228,6 +228,16 @@
         transform: translateY(-15px) translateX(-5px);
       }
     }
+
+
+  @keyframes move {
+    0%   { transform: translateX(-50%) }
+    50%  { transform: translateX(-40%) }
+    100% { transform: translateX(-50%) }
+  }
+  .move-animation {
+    animation: move 5s linear infinite;
+  }
   </style>
 </head>
 
@@ -350,13 +360,18 @@
     </div>
 
     <div class="hidden md:flex items-center space-x-4">
-      <a href="https://outlook.office.com/bookwithme/user/3b9b9205ff514f82b557b024ff26aa1f%40flatgigs.com?anonymous&ismsaljsauthenabled=true" class="bg-[#004B47] hover:bg-[#006A5A] text-white font-medium px-6 py-2 rounded-md">
-        Schedule Meeting
-      </a>
-      <a href="#" id="langToggle" class="bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-12 py-2 rounded-md">
-        Germany
-      </a>
-    </div>
+  <a href="https://outlook.office.com/bookwithme/user/3b9b9205ff514f82b557b024ff26aa1f%40flatgigs.com?anonymous&ismsaljsauthenabled=true" 
+     class="bg-[#004B47] hover:bg-[#006A5A] text-white font-medium px-6 py-2 rounded-md">
+    Schedule Meeting
+  </a>
+
+  <a href="#" id="langToggle" 
+     class="flex items-center space-x-2 bg-[#89F6F6] hover:bg-[#89F6F6] text-black px-6 py-2 rounded-md">
+    <img src="images/german-flag.png" alt="Germany Flag" class="w-5 h-5 object-cover rounded-sm" />
+    <span>GN</span>
+  </a>
+</div>
+
 
     <!-- Mobile Menu Button -->
     <div class="md:hidden">
@@ -369,24 +384,28 @@
   </div>
 
   <!-- Mobile Dropdown Menu -->
-  <div x-show="open"
-       class="md:hidden mt-4 mx-6 py-4 space-y-4 bg-[#161616]/90 backdrop-blur-md rounded-lg text-center">
-    <a href="#" data-key="Home" class="block text-white hover:text-[#89F6F6] text-lg">Home</a>
-    <a href="#about" data-key="Service_Benefits" class="block text-white hover:text-[#89F6F6] text-lg">Services</a>
-    <a href="#contact" data-key="Contact_Us" class="block text-white hover:text-[#89F6F6] text-lg">Contact</a>
-    
-    <!-- Germany Button -->
-    <a href="#"
-       @click.prevent="changeLanguage('gr')"
-       class="block bg-[#89F6F6] text-black font-medium px-6 py-2 rounded-md w-fit mx-auto">
-       Germany
-    </a>
 
-    <a href="https://outlook.office.com/bookwithme/user/3b9b9205ff514f82b557b024ff26aa1f%40flatgigs.com?anonymous&ismsaljsauthenabled=true"
-       class="block bg-[#004B47] hover:bg-[#006A5A] text-white font-medium px-6 py-2 rounded-md w-fit mx-auto">
-       Schedule Meeting
-    </a>
-  </div>
+<div x-show="open"
+     class="md:hidden mt-4 mx-6 py-4 space-y-4 bg-[#161616]/90 backdrop-blur-md rounded-lg text-center">
+
+  <a href="#" data-key="Home" class="block text-white hover:text-[#89F6F6] text-lg">Home</a>
+  <a href="#about" data-key="Service_Benefits" class="block text-white hover:text-[#89F6F6] text-lg">Services</a>
+  <a href="#contact" data-key="Contact_Us" class="block text-white hover:text-[#89F6F6] text-lg">Contact</a>
+  
+  <!-- Germany Button -->
+  <a href="#"
+     @click.prevent="changeLanguage('gr')"
+     class="flex items-center justify-center space-x-2 bg-[#89F6F6] text-black font-medium px-6 py-2 rounded-md w-fit mx-auto">
+    <img src="images/german-flag.png" alt="Germany Flag" class="w-5 h-5 object-cover rounded-sm" />
+    <span>GR</span>
+  </a>
+
+  <a href="https://outlook.office.com/bookwithme/user/3b9b9205ff514f82b557b024ff26aa1f%40flatgigs.com?anonymous&ismsaljsauthenabled=true"
+     class="block bg-[#004B47] hover:bg-[#006A5A] text-white font-medium px-6 py-2 rounded-md w-fit mx-auto">
+     Schedule Meeting
+  </a>
+</div>
+
 
 </nav>
 
@@ -439,13 +458,12 @@
       <!---------------------service section start hereee ------------------>
 
       <section id="services" class="relative bg-[#161616] text-white pt-35 px-8 overflow-hidden">
-        <!-- Big Background Text -->
-        <h2
-          class="absolute top-2 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 -mt-6 opacity-40 select-none tracking-widest">
-          DRONEX360
-        </h2>
+      <h2
+  class="absolute top-2 left-1/2 text-[120px] md:text-[180px] font-extrabold text-gray-800 -mt-6 opacity-40 select-none tracking-widest move-animation">
+  DRONEX360
+</h2>
 
-        <!-- Left vertical trail -->
+ 
         <div
           class="absolute top-[26rem] left-6 w-5 h-5 bg-white/15 animate-[float_4s_ease-in-out_infinite] rounded-full">
         </div>
@@ -835,7 +853,7 @@
         </div>
 
         <!-- Logos Section -->
-        <div class="relative py-10 bg-[#222D2D]/80 overflow-hidden rounded-2xl shadow-lg">
+        <div class="relative py-10 bg-[#222D2D]/80  overflow-hidden rounded-2xl shadow-lg">
           <!-- Cyan glow behind logos -->
           <div class="pointer-events-none absolute -inset-x-20 -top-24 h-64
                 [background:radial-gradient(40%_60%_at_50%_50%,rgba(77,216,216,0.25),transparent_70%)]"></div>
@@ -851,28 +869,30 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide flex items-center justify-center">
                   <img src="images/drone_logo_1.png" alt="Logo 1"
-                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                    class="h-24 w-auto object-contain transition duration-300" />
                 </div>
                 <div class="swiper-slide flex items-center justify-center">
                   <img src="images/dronex_logo_2.jpeg" alt="Logo 2"
-                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                    class="h-24 w-auto object-contain   duration-300" />
                 </div>
                 <div class="swiper-slide flex items-center justify-center">
                   <img src="images/drone_logo_4.png" alt="Logo 3"
-                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                    class="h-24 w-auto object-contain  transition duration-300" />
                 </div>
                 <div class="swiper-slide flex items-center justify-center">
                   <img src="images/dronex_logo_4.webp" alt="Logo 4"
-                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                    class="h-24 w-auto object-contain  transition duration-300" />
                 </div>
                 <!-- Repeat logos for smooth loop -->
                 <div class="swiper-slide flex items-center justify-center">
-                  <img src="images/drone_logo_1.png" alt="Logo 1"
-                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+                  <img src="images/logo_5.png" alt="Logo 5"
+                    class="h-24 w-auto object-contain  transition duration-300" />
                 </div>
                 <div class="swiper-slide flex items-center justify-center">
-                  <img src="images/dronex_logo_2.jpeg" alt="Logo 2"
-                    class="h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" />
+<img src="images/logo_6.jpg" alt="Logo 6"
+  class="w-[200px] h-24 object-contain  transition duration-300" />
+
+
                 </div>
               </div>
             </div>
@@ -925,7 +945,7 @@
 
                   <div class="bg-black/30 p-4 sm:p-5 rounded-xl shadow hover:shadow-lg transition">
                     <p class="text-cyan-400 text-base sm:text-lg font-semibold flex items-center gap-2 mb-2">
-                      <span class="material-icons text-cyan-400 text-xl"></span> Germany
+                      <span class="material-icons text-cyan-400 text-xl"></span> GR
                     </p>
                     <a href="tel:+4915214699912" class="block text-base sm:text-lg hover:text-cyan-300 transition">+49
                       15214699912</a>
@@ -1098,7 +1118,7 @@
         <a href="https://www.facebook.com/people/Dronex-360/61560037713039/" class="hover:text-cyan-400 transition">Facebook</a>
         <a href="https://x.com/Dronex360social" class="hover:text-cyan-400 transition">Twitter</a>
         <a href="https://www.linkedin.com/company/dronex-360/posts/?feedView=all" class="hover:text-cyan-400 transition">LinkedIn</a>
-        <a href="https://www.instagram.com/dronex360.de/" class="hover:text-cyan-400 transition">Instagram</a>
+        <a href="https://www.instagram.com/dronex_360?igsh=MXhkdmt0M2gwd2Q3MQ==" class="hover:text-cyan-400 transition">Instagram</a>
       </div>
     </div>
   </div>
@@ -1295,7 +1315,7 @@
             langToggle.textContent = "EN"; // Show option to switch back
           } else {
             changeLanguage("en");
-            langToggle.textContent = "Germany";
+            langToggle.textContent = "GR";
           }
         });
 
